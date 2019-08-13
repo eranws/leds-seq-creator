@@ -3,6 +3,7 @@ from enum import Enum
 
 from animations.rand_brightness import RandBrightnessAnimation
 from animations.rand_sat import RandSaturationAnimation
+from float_func.steps import StepsFloatFunc
 from infra import timing, stored_animations
 from animations.alternate_coloring import AlternateColoringAnimation
 from animations.brightness import BrightnessAnimation
@@ -41,20 +42,36 @@ class EffectFactory:
     def brightness(self, factor):
         BrightnessAnimation(ConstFloatFunc(factor)).apply()
 
-    def snake(self, tail=1.0):
+    def snake(self, tail=1.0, switch_direction=False):
         if isinstance(tail, str):
             tail = {short: 0.25, medium: 1.0, long: 4.0}[tail]
-        SnakeAnimation(LinearFloatFunc(0.0, 1.0 + tail), ConstFloatFunc(tail), ConstBooleanFunc()).apply()
+        if switch_direction:
+            SnakeAnimation(LinearFloatFunc(1.0, 0.0 - tail), ConstFloatFunc(tail), ConstBooleanFunc(not switch_direction)).apply()
+        else:
+            SnakeAnimation(LinearFloatFunc(0.0, 1.0 + tail), ConstFloatFunc(tail), ConstBooleanFunc(not switch_direction)).apply()
 
-    def blink(self, edge=0.5):
+    def snake_up_down(self, tail=1.0):
+        if isinstance(tail, str):
+            tail = {short: 0.25, medium: 1.0, long: 4.0}[tail]
+        SnakeAnimation(SinFloatFunc(1.0, -0.1, -0.25, 1), ConstFloatFunc(tail), ConstBooleanFunc(True)).apply()
+
+    def snake_down_up(self, tail=1.0):
+        if isinstance(tail, str):
+            tail = {short: 0.25, medium: 1.0, long: 4.0}[tail]
+        SnakeAnimation(SinFloatFunc(0.0, 1.0, -0.25, 1), ConstFloatFunc(tail), ConstBooleanFunc(False)).apply()
+
+    def blink(self, edge=0.5, reverse=False):
         if isinstance(edge, str):
             edge = {soft: 0.25, medium: 0.5, hard: 0.75, total: 1.0}[edge]
-        BrightnessAnimation(HalfFloatFunc(ConstFloatFunc(1.0), ConstFloatFunc(1.0 - edge))).apply()
+        v1 = 1.0 - edge if reverse else 1.0
+        v2 = 1.0 if reverse else 1.0 - edge
+        BrightnessAnimation(HalfFloatFunc(ConstFloatFunc(v1), ConstFloatFunc(v2))).apply()
 
-    def breath(self, edge=0.6):
+    def breath(self, edge=0.6, reverse=False):
         if isinstance(edge, str):
             edge = {soft: 0.4, medium: 0.6, hard: 0.8, total: 1.0}[edge]
-        BrightnessAnimation(SinFloatFunc(1.0 - edge, 1.0, -0.25, 1)).apply()
+        phase = 0.25 if reverse else -0.25
+        BrightnessAnimation(SinFloatFunc(1.0 - edge, 1.0, phase, 1)).apply()
 
     def saw_tooth(self, edge=0.6, reverse=False):
         if isinstance(edge, str):
@@ -62,6 +79,14 @@ class EffectFactory:
         min_val = 1.0 - edge if reverse else 1.0
         max_val = 1.0 if reverse else 1.0 - edge
         BrightnessAnimation(LinearFloatFunc(min_val, max_val)).apply()
+
+    def hue_shift(self, edge=0.5):
+        if isinstance(edge, str):
+            edge = {soft: 0.05, medium: 0.12, hard: 0.25, total: 0.5}[edge]
+        HueShiftAnimation(ConstFloatFunc(edge)).apply()
+
+    def brightness(self, val):
+        BrightnessAnimation(ConstFloatFunc(val)).apply()
 
     def hue_blink(self, edge=0.5, reverse=False):
         if isinstance(edge, str):

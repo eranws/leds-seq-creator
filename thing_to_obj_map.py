@@ -1,30 +1,31 @@
-from led_objects.cabbages import cabbage1, cabbage2, brain1, cabbage3, brain2, donut1, donut2
-from led_objects.flowers import flower1, bottle2, bottle1, paper1, cup_cake, paper2, flower2, rug1, rug2
-from led_objects.sticks import sticks1, sticks2, sticks3, lifa1, lifa2, lifa3
+from led_objects.cabbages import cabbage1, cabbage6, brain7, cabbage5, cup_cake4, donut1, donut3
+from led_objects.flood import cup_cake3
+from led_objects.flowers import flower6, bottle4, bottle5, paper5, paper2, flower1
+from led_objects.stands import sticks8, sticks7, sticks3, lifas5, lifas1, lifas4
 
 obj_to_thing = {
-    flower1: "amir",
-    cabbage3: "amit",
-    cabbage2: "ali",
-    brain1: "bigler",
-    brain2: "ran",
-    bottle2: "dan",
-    bottle1: "inbal",
-    paper1: "hadas",
-    paper2: "gur",
-    cup_cake: "tili",
-    flower2: "muli",
-    cabbage1: "shelly",
-    donut1: "leufey",
-    donut2: "mickey",
-    sticks1: "shani",
-    sticks2: "ariel",
+    flower6: "flower6",
+    cabbage5: "cabbage5",
+    cabbage6: "cabbage6",
+    brain7: "brain7",
+    cup_cake4: "cup_cake4",
+    bottle4: "bottle4",
+    bottle5: "bottle5",
+    paper5: "paper5",
+    paper2: "paper2",
+    cup_cake3: "cup_cake3",
+    flower1: "flower1",
+    cabbage1: "cabbage1",
+    donut1: "donut1",
+    donut3: "donut3",
+    sticks8: "sticks8",
+    sticks7: "sticks7",
     sticks3: "sticks3",
-    lifa1: "lifa1",
-    lifa2: "lifa2",
-    lifa3: "lifa3",
-    rug1: "rug1",
-    rug2: "rug2",
+    lifas5: "lifas5",
+    lifas1: "lifas1",
+    lifas4: "lifas4",
+    # rug6: "rug1",
+    # rug4: "rug2",
 
 }
 

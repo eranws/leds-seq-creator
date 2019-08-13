@@ -3,19 +3,28 @@ from led_objects.led_object import LedObject
 cabbages = []
 
 
-class Cabbage(LedObject):
+class Twist(LedObject):
 
     def __init__(self, num_pixels):
-        super(Cabbage, self).__init__(total_pixels=num_pixels)
-        cabbages.append(self)
+        super(Twist, self).__init__(total_pixels=num_pixels)
+        #cabbages.append(self)
 
 
-cabbage1 = Cabbage(260)
-cabbage2 = Cabbage(300)
-cabbage3 = Cabbage(300)
+cabbage1 = Twist(260)
+cabbage6 = Twist(300)
+cabbage5 = Twist(300)
 
-brain1 = Cabbage(299)
-brain2 = Cabbage(300)
+cabbages = [cabbage1, cabbage6, cabbage5]
 
-donut1 = Cabbage(296)
-donut2 = Cabbage(296)
+brain7 = Twist(299)
+cup_cake4 = Twist(300)
+
+brains = [brain7]
+
+twists = [cabbages, brains]
+
+
+donut1 = Twist(296)
+donut3 = Twist(296)
+
+donuts = [donut1, donut3]

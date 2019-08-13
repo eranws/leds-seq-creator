@@ -18,6 +18,7 @@ class HueShiftAnimation(Animation):
 def hue_shift_smooth(timing):
     return HueShiftAnimation(timing, LinearFloatFunc.from_timing(timing, 0.0, 1.0))
 
+
 def hue_shift_jump_on_cycle(timing, cycles_for_restart = 4):
     diff_per_cycle = 1.0 / cycles_for_restart
     return HueShiftAnimation(timing, StepsFloatFunc.from_timing(timing, diff_per_cycle, 0.0))

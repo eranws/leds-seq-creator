@@ -15,63 +15,57 @@ from network.send_to_mqtt import send_to_mqtt, start_song
 from infra.timing import song_settings, episodes, episode, cycle, cycle_beats, beats
 from infra.colors import *
 
-song_settings(bpm=123, beats_per_episode=32)
+song_settings(bpm=128, beats_per_episode=32)
 
-flower1.random
-flower6.random
+elements(all)
 
-episodes(0, 5)
-elements(flowers)
-color.gradient(0.0, 0.1)
+beats(0, 2)
+color.uniform((0.0, 0.9, 1.0))
 
-episode(0)
-cycle(4)
+beats(2, 18)
+color.gradient(0.0, 2.0)
 
-cycle_beats(0, 1)
-effect.hue_breath(0.02)
-
-cycle_beats(1.5, 2)
-elements(flower1)
-effect.breath(0.2, True)
-
-cycle_beats(2.5, 3)
-elements(flower6)
-effect.breath(0.2, True)
+cycle(8)
+elements(single_stands)
+cycle_beats(0, 4)
+effect.snake(1.0, True)
+cycle_beats(4, 8)
+effect.snake(1.0, False)
 
 
-# bring in the beat
-beats(29.5, 32)
-elements(papers)
-color.uniform((0.0, 0.3, 1.0))
-cycle(None)
-effect.saw_tooth(total, True)
+elements(all)
+
+beats(18, 52)
+color.uniform((0.7, 0.9, 1.0))
+
+beats(52, 80)
+color.uniform((0.2, 0.9, 1.0))
+
+beats(80, 112)
+color.uniform((0.9, 0.9, 1.0))
+
+beats(112, 116)
+color.uniform((0.6, 0.9, 1.0))
+
+beats(116, 182)
+color.uniform((0.1, 0.9, 1.0))
+
+beats(182, 216)
+color.uniform((0.8, 0.9, 1.0))
+
+beats(216, 244)
+color.uniform((0.2, 0.9, 1.0))
+
+beats(244, 280)
+color.uniform((0.7, 0.9, 1.0))
+
+beats(280, 348)
+color.uniform((0.0, 0.9, 1.0))
 
 
-# episode 1
 
-paper2.random
-paper5.random
-episodes(1, 5)
-elements(papers)
-color.gradient(0.0, 0.1)
 
-episodes(1, 3)
-elements([flowers, papers])
-
-cycle(2)
-elements([flower6, paper5])
-effect.blink(0.5, False)
-elements([flower1, paper2])
-effect.blink(0.5, True)
-
-episode(2)
-elements(cup_cakes)
-color.uniform(light_purple_strip)
-cycle(1)
-effect.random_brightness()
-effect.breath(total)
-
-send_to_mqtt("alterego")
-start_song("alterego", 0)
+send_to_mqtt("under")
+start_song("under", 0)
 
 

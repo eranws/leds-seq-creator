@@ -78,7 +78,10 @@ class TimeFrameFactory:
         self.bpm = bpm
 
     def from_beat(self, beat_start_index, beat_end_index):
-        return TimeFrame(self.bpm, beat_start_index, beat_end_index)
+        return TimeFrame(self.bpm, beat_start_index, beat_end_index - beat_start_index)
+
+    def from_beat_in_episode(self, episode_number, beat_start_index, beat_count):
+        return TimeFrame(self.bpm, (episode_number * self.beats_per_episode) + beat_start_index, beat_count)
 
     def episodes_length(self, episode_start_index, num_of_episodes):
         start_beat = episode_start_index * self.beats_per_episode
@@ -97,6 +100,18 @@ class TimeFrameFactory:
 def song_settings(bpm, beats_per_episode):
     global time_frame_factory
     time_frame_factory = TimeFrameFactory(bpm, beats_per_episode)
+
+
+def beats(beat_start_index, beat_end_index):
+    global time_frame_factory
+    global tf_global
+    tf_global = time_frame_factory.from_beat(beat_start_index, beat_end_index)
+
+
+def beats_in_episode(episode_number, beat_start_index, beat_end_index):
+    global time_frame_factory
+    global tf_global
+    tf_global = time_frame_factory.from_beat_in_episode(episode_number, beat_start_index, beat_end_index - beat_start_index)
 
 
 def episodes(episode_start_index, episode_end_index):
