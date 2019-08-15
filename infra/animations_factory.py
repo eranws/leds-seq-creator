@@ -60,6 +60,11 @@ class EffectFactory:
             tail = {short: 0.25, medium: 1.0, long: 4.0}[tail]
         SnakeAnimation(SinFloatFunc(0.0, 1.0, -0.25, 1), ConstFloatFunc(tail), ConstBooleanFunc(False)).apply()
 
+    def blink_repeat(self, repeat, edge=0.5):
+        if isinstance(edge, str):
+            edge = {soft: 0.25, medium: 0.5, hard: 0.75, total: 1.0}[edge]
+        BrightnessAnimation(RepeatFloatFunc(repeat, HalfFloatFunc(ConstFloatFunc(1.0), ConstFloatFunc(1.0 - edge)))).apply()
+
     def blink(self, edge=0.5, reverse=False):
         if isinstance(edge, str):
             edge = {soft: 0.25, medium: 0.5, hard: 0.75, total: 1.0}[edge]

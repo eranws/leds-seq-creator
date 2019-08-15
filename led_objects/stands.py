@@ -30,7 +30,8 @@ single_sticks = [stick.all for stick in sticks]
 
 lifas5 = Stands([46, 84, 125, 159, 193])
 lifas1 = Stands([19, 47, 80, 119, 164])
-lifas4 = Stands([78, 145, 201, 256, 306]) # missing 7 - 307
+lifas4 = Stands([67, 123, 178, 228])
+
 
 lifas = [lifas1, lifas4, lifas5]
 single_lifas = [lifa.all for lifa in lifas]
