@@ -15,7 +15,7 @@ from network.send_to_mqtt import send_to_mqtt, start_song
 from infra.timing import song_settings, episodes, episode, cycle, cycle_beats
 from infra.colors import *
 
-song_settings(bpm=117, beats_per_episode=32)
+song_settings(bpm=120, beats_per_episode=32)
 
 episodes(0,3)
 cycle(16)
@@ -221,7 +221,7 @@ effect.hue_breath()
 # color.gradient(0,1)
 # effect.hue_breath()
 
-send_to_mqtt("outlier")
-start_song("outlier",0)#offset in seconds
+send_to_mqtt("looped")
+start_song("looped",0)#offset in seconds
 
 
