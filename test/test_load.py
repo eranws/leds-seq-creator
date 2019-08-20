@@ -13,7 +13,7 @@ def send_new_file(file_name):
 
 
 for i in range(1000):
-    send_new_file("alterego.wav")
+    send_new_file("useit.wav")
     time.sleep(10)
     # send_new_file("millenium.wav")
     # time.sleep(3)

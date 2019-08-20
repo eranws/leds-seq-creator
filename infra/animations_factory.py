@@ -79,6 +79,12 @@ class EffectFactory:
         phase = 0.25 if reverse else -0.25
         BrightnessAnimation(SinFloatFunc(1.0 - edge, 1.0, phase, 1)).apply()
 
+    def fade_in(self):
+        BrightnessAnimation(LinearFloatFunc(0.0, 1.0)).apply()
+
+    def fade_out(self):
+        BrightnessAnimation(LinearFloatFunc(1.0, 0.0)).apply()
+
     def saw_tooth(self, edge=0.6, reverse=False):
         if isinstance(edge, str):
             edge = {soft: 0.4, medium: 0.6, hard: 0.8, total: 1.0}[edge]

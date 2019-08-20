@@ -11,11 +11,12 @@ from led_objects.flowers import flower6, flowers, paper5, papers, bottles, flowe
 from led_objects.objects_selector import elements
 from led_objects.stands import sticks8, single_sticks, sticks7, sticks3, lifas5, lifas1, lifas4, sticks, lifas, stands, \
     single_stands, single_lifas
+from led_objects.meduza import meduza
 from network.send_to_mqtt import send_to_mqtt, start_song
 from infra.timing import song_settings, episodes, episode, cycle, cycle_beats, beats
 from infra.colors import *
 
-song_settings(bpm=124, beats_per_episode=64)
+song_settings(bpm=124, beats_per_episode=64,start_offset = 3)
 
 
 ''' Episode 0: groups blink, siren on stands '''
@@ -56,7 +57,7 @@ color.gradient(0.61,0.995)
 cycle_beats(1,2)
 elements(paper5,flower6,cup_cake4,donut3)
 color.gradient(0.39,0.695)
-#effect.random_saturation()
+
 
 #drums
 episodes(2, 3)
@@ -95,7 +96,7 @@ for element in wanted_elements:
     effect.saw_tooth(total)
     current_beat += 8
 
-color.uniform(red)
+color.uniform(purple_string)
 effect.saw_tooth(total)
 
 """
@@ -148,7 +149,7 @@ effect.hue_shift_steps(8, 0.25)
 sticks 8 doing something special, lead beat - white blink
 """
 episodes (4.5,6)
-elements(sticks8)
+elements(sticks8,meduza)
 cycle(1/3)
 color.uniform((0.98, 0.45, 1))
 effect.blink()
@@ -228,6 +229,10 @@ cycle(8)
 elements(paper2,cup_cakes,flowers,paper5)
 color.gradient(turquoise_string[0],aquamarine[0])
 effect.breath(total)
+elements(meduza)
+color.uniform(purple_string)
+effect.breath(total)
+
 
 episodes(6 + 5/8, 6+7/8)
 cycle(1)
@@ -308,8 +313,8 @@ before sticks removed, drama start - shine with red
 
 beats(536,552)
 cycle(2/3)
-elements(group1,group2,cup_cakes,donuts,group4,group5,group6,cabbages,brains,rugs)
-color.uniform(red)
+elements(group1,group2,cup_cakes,donuts,group4,group5,group6,cabbages,brains,rugs,meduza)
+color.uniform(purple_string)
 effect.breath(hard)
 cycle(16)
 effect.saw_tooth(total, True)
@@ -403,23 +408,23 @@ def light_8_beats(beats_start, e):
     elements(e)
 
 light_8_beats(672, all)
-color.alternate(indigo,aquamarine,5)
+color.alternate(indigo,turquoise_string,10)
 effect.snake()
 
-# drum - make one beat of white
+# drum - make one beat of white (320s)
 beats(672,673)
 elements(all)
 color.uniform(black)
-elements(stands,cabbages)
+elements(stands,cabbages,meduza)
 color.uniform(light_pink_strip)
 effect.saw_tooth()
 
 light_8_beats(680, [group1,group3,group5])
-color.alternate(red,light_pink_strip,10)
+color.alternate(coral,light_pink_strip,10)
 effect.snake()
 
 light_8_beats(688, [group2,group6,group4,group7,group8])
-color.alternate(pink_string,purple_string,10)
+color.alternate(light_pink_strip,orange_strip,10)
 effect.snake()
 
 light_8_beats(696, [stands])
@@ -468,10 +473,10 @@ effect.saw_tooth(soft)
 
 beats(828,840)
 cycle(12)
-elements(single_lifas)
-color.uniform(dark_blue)
+elements(single_lifas,meduza)
+color.uniform(purple_string)
 effect.snake(0.4,True)
 
 
 send_to_mqtt("millenium")
-start_song("millenium", 260)
+start_song("millenium", 0)
