@@ -40,15 +40,18 @@ def fast( start_beat, end_beat, elem, elem_strong, col_grad ):
 
     beats(start_beat+2,end_beat)
     cycle(3)
-    cycle_beats(0,1)
+
     for el in elem:
+        cycle_beats(0, 1)
         elements(el)
         color.gradient(col_grad[0], col_grad[1])
         effect.snake()
+
         cycle_beats(1,2)
         elements(el)
         color.gradient(col_grad[0], col_grad[1])
         effect.snake()
+
     cycle_beats(2,3)
     for elem_s in elem_strong:
         elements(elem_s)
@@ -286,11 +289,11 @@ bling(lifas4,yellow_string)
 
 # fast(13*32, 14*32, [sticks3],[single_sticks,cup_cakes],[aquamarine[0],aquamarine[0]])
 
-for el in [cabbage1,cabbage5,cabbage6,brain7,flower6,flower1,paper5,paper2,donut1,donut3]:
-    el.random
+# for el in [cabbage1,cabbage5,cabbage6,brain7,flower6,flower1,paper5,paper2,donut1,donut3]:
+#     el.random
 
-fast(512,568, [lifas,sticks],[single_sticks,single_lifas,cabbages,brains,flowers,papers,donuts],[aquamarine[0],purple_strip[0]])
-fast(568,700, [lifas,sticks],[single_sticks,single_lifas,cabbages,brains,flowers,papers,donuts],[aquamarine[0],purple_strip[0]])
+fast(512,568, [lifas,sticks],[single_sticks,single_lifas,cabbages,brains,flowers,papers,donuts],[red[0],red[0]])
+fast(568,700, [lifas,sticks],[single_sticks,single_lifas,cabbages,brains,flowers,papers,donuts],[red[0],red[0]])
 # fast(17*32,[lifas,sticks],[single_sticks,single_lifas,cabbages,brains,flowers,papers,donuts],[aquamarine[0],purple_strip[0]])
 #
 # episode(15)
@@ -421,6 +424,6 @@ color.gradient(0,1)
 effect.hue_breath()
 
 send_to_mqtt("outlier")
-start_song("outlier",16.4*16-10)#offset in seconds
+start_song("outlier",16.4*17-10)#offset in seconds
 
 
