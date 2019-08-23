@@ -85,9 +85,10 @@ song_settings(bpm=123, beats_per_episode=32, start_offset=3)
 # effect.breath()
 
 episodes(0, 30)
-elements(sticks8)
-for i in range(0, 200):
-    color.uniform((0.0, 0.8, 0.8))
+elements(all)
+color.gradient(0.0, 1.0)
+cycle(8)
+effect.segment_saw_tooth()
 
 send_to_mqtt("alterego")
 start_song("alterego", 3)

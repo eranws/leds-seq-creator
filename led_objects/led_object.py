@@ -5,14 +5,15 @@ all = []
 
 class LedObject:
 
-    def __init__(self, total_pixels):
+    def __init__(self, total_pixels, add_to_all = True):
         self.total_pixels = total_pixels
         self.animations = []
         random_index = list(range(self.total_pixels))
         random.shuffle(random_index)
         self.current_mapping = "a"
         self.mapping = {"a": list(range(self.total_pixels)), "r": random_index}
-        all.append(self)
+        if add_to_all:
+            all.append(self)
 
     def add_for_segment(self, segments, animation):
 

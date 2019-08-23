@@ -3,7 +3,7 @@ from led_objects.led_object import LedObject
 class Meduza(LedObject):
 
     def __init__(self):
-        super(Meduza, self).__init__(total_pixels=302)
+        super(Meduza, self).__init__(total_pixels=302, add_to_all=False)
         # self.mapping = {"a": list(range(self.total_pixels)), "r": random_index}
 
 

@@ -235,29 +235,23 @@ effect.hue_saw_tooth(0.1 + 1.0/12.0)
 episodes(11.0, 11.125)
 effect.fade_in()
 
-episodes(11.5 + 0.0 / 32, 13.0)
-elements(flower1, cup_cake3)
-cycle(4)
-effect.breath(1.0, True)
-elements(brain7, rug4)
-cycle(8)
-effect.breath(0.4, True)
+def breath_elements_11_13(elem, cycle_amount, beat_offset, edge):
+    episodes(11.5 + beat_offset / 32, 13.0)
+    elements(elem)
+    cycle(cycle_amount)
+    effect.breath(edge, True)
 
-episodes(11.5 + 1.0 / 32, 13.0)
-elements(paper2, bottle5)
-cycle(4)
-effect.breath(0.5, True)
-elements(bottle4, flower6)
-cycle(2)
-effect.breath(0.6, True)
+breath_elements_11_13([flower1, cup_cake3], 4, 0, 0.3)
+breath_elements_11_13([brain7, rug4, sticks7], 8, 0, 0.4)
 
-episodes(11.5 + 2.0 / 32, 13.0)
-elements(rug6, sticks3)
-cycle(4)
-effect.breath(0.8, True)
-elements(lifas5, lifas1)
-cycle(8)
-effect.breath(0.7, True)
+breath_elements_11_13([cabbage1, bottle5, donut1], 4, 1, 0.5)
+breath_elements_11_13([bottle4, flower6, sticks7], 16, 1, 0.6)
+
+breath_elements_11_13([paper5, sticks8, cabbage5], 4, 2, 0.3)
+breath_elements_11_13([donut3, lifas5], 8, 2, 0.8)
+
+breath_elements_11_13([lifas1, sticks3, lifas4], 4, 3, 0.3)
+breath_elements_11_13([cabbage6, paper2], 8, 3, 0.8)
 
 episode(13)
 elements(all)
@@ -329,6 +323,6 @@ turn_off_on_16(group8, 7)
 
 
 send_to_mqtt("useit")
-start_song("useit", 190)
+start_song("useit", 180)
 
 

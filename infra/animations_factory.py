@@ -2,6 +2,7 @@ import copy
 from enum import Enum
 
 from animations.confetti import ConfettiAnimation
+from animations.fill import FillAnimation
 from animations.rand_brightness import RandBrightnessAnimation
 from animations.rand_sat import RandSaturationAnimation
 from float_func.steps import StepsFloatFunc
@@ -130,6 +131,19 @@ class EffectFactory:
 
     def confetti(self):
         ConfettiAnimation(ConstFloatFunc(0.5)).apply()
+
+    def fill(self):
+        FillAnimation(ConstFloatFunc(0.0), LinearFloatFunc(0.0, 1.0)).apply()
+
+    def fill_in_out(self, edge = 1.0):
+        FillAnimation(ConstFloatFunc(0.0), HalfFloatFunc(LinearFloatFunc(0.0, edge), LinearFloatFunc(edge, 0.0))).apply()
+
+    def segment_breath(self, length = 0.25):
+        FillAnimation(SinFloatFunc(0.0, 1.0 - length, -0.25, 1), SinFloatFunc(length, 1.0, -0.25, 1)).apply()
+
+    def segment_saw_tooth(self, length = 0.25):
+        FillAnimation(HalfFloatFunc(LinearFloatFunc(0.0, 1.0 - length), LinearFloatFunc(1.0 - length, 0.0)),
+                      HalfFloatFunc(LinearFloatFunc(length, 1.0), LinearFloatFunc(1.0, length))).apply()
 
 effect = EffectFactory()
 

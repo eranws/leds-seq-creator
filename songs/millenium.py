@@ -4,11 +4,12 @@ from infra.length import short, medium, long, soft, hard, total
 from infra.stored_animations import save, beat, load
 from led_objects.cabbages import cabbage1, cabbage6, brain7, cup_cake4, cabbage5, cabbages, donut1, donut3, \
     brains, twists, donuts
-from led_objects.flood import cup_cakes, cup_cake3, rug6, rugs
+from led_objects.flood import cup_cakes, cup_cake3, rug6, rugs, rug4
 from led_objects.groups import group1, group2, group3, group4, group5, group6, group7, group8
 from led_objects.led_object import all
 from led_objects.flowers import flower6, flowers, paper5, papers, bottles, flower1, paper2, bottle5, bottle4
 from led_objects.objects_selector import elements
+from led_objects.sheep import sheep
 from led_objects.stands import sticks8, single_sticks, sticks7, sticks3, lifas5, lifas1, lifas4, sticks, lifas, stands, \
     single_stands, single_lifas
 from led_objects.meduza import meduza
@@ -96,7 +97,7 @@ for element in wanted_elements:
     effect.saw_tooth(total)
     current_beat += 8
 
-color.uniform(purple_string)
+color.uniform(red)
 effect.saw_tooth(total)
 
 """
@@ -116,10 +117,15 @@ elements(cup_cake4,cup_cake4,cabbages,paper2)
 color.uniform(light_pink_strip)
 effect.snake(1,switch_direction=True)
 
+beats(256,262)
+elements(meduza)
+color.uniform(light_pink_strip)
+effect.fade_out()
 
 """
 Episodes 4, 5. start after drop ((120s)
 """
+
 
 def light_one(start_beat, element, c1,c2,c3):
     cycle_beats(start_beat, start_beat + 1)
@@ -149,7 +155,7 @@ effect.hue_shift_steps(8, 0.25)
 sticks 8 doing something special, lead beat - white blink
 """
 episodes (4.5,6)
-elements(sticks8,meduza)
+elements(sticks8)
 cycle(1/3)
 color.uniform((0.98, 0.45, 1))
 effect.blink()
@@ -161,10 +167,10 @@ main_beat - next 4/8
 episodes (4 + 4/8, 4 + 8/8)
 cycle(8)
 light_one(0, [cabbage1, flower6,cup_cake4], green,light_turquoise_strip,10)
-light_one(1, [cabbage5,paper5,donut3], turquoise_string,light_pink_strip,10)
+light_one(1, [cabbage5,rug6, paper5,donut3], turquoise_string,light_pink_strip,10)
 light_one(2, [brain7,flower6,flower1], yellow_string,orange_strip,25)
 light_one(3, [cup_cake3,paper2,bottle5], blue,red,10)
-light_one(4, [donut3,cabbage1,brain7], purple_string,pink_string,5)
+light_one(4, [donut3,cabbage1,rug4, brain7], purple_string,pink_string,5)
 light_one(5, [cup_cake4,bottle4,cabbage5], blue, coral,6)
 light_one(6, [paper2,rug6,flower6], green,light_purple_strip,10)
 light_one(7, [flower1,brain7,cup_cake4], aquamarine,turquoise_string,25)
@@ -229,9 +235,6 @@ cycle(8)
 elements(paper2,cup_cakes,flowers,paper5)
 color.gradient(turquoise_string[0],aquamarine[0])
 effect.breath(total)
-elements(meduza)
-color.uniform(purple_string)
-effect.breath(total)
 
 
 episodes(6 + 5/8, 6+7/8)
@@ -243,7 +246,7 @@ effect.snake()
 #drama
 episodes(6 + 7/8, 6+8/8)
 cycle(1)
-elements(all)
+elements(all,sheep)
 color.uniform(light_pink_strip)
 effect.blink(medium)
 
@@ -313,7 +316,7 @@ before sticks removed, drama start - shine with red
 
 beats(536,552)
 cycle(2/3)
-elements(group1,group2,cup_cakes,donuts,group4,group5,group6,cabbages,brains,rugs,meduza)
+elements(group1,group2,cup_cakes,donuts,group4,group5,group6,cabbages,brains,rugs,meduza,sheep)
 color.uniform(purple_string)
 effect.breath(hard)
 cycle(16)
@@ -413,11 +416,17 @@ effect.snake()
 
 # drum - make one beat of white (320s)
 beats(672,673)
-elements(all)
+elements(all,meduza)
 color.uniform(black)
 elements(stands,cabbages,meduza)
 color.uniform(light_pink_strip)
 effect.saw_tooth()
+
+paper2.random
+flower1.random
+flower6.random
+cup_cake3.random
+cup_cake4.random
 
 light_8_beats(680, [group1,group3,group5])
 color.alternate(coral,light_pink_strip,10)
@@ -448,18 +457,23 @@ color.gradient(0,1)
 effect.snake()
 #drums
 
+paper2.random
+flower6.random
+flower1.random
+paper5.random
+
 beats (736,808)
 cycle(32)
 cycle_beats(0,12)
 elements(paper2,flowers,paper5)
 color.uniform(turquoise_string)
-effect.breath(total)
+effect.snake()
 cycle_beats(12,32)
 elements(paper2,flowers, paper5)
 color.uniform(pink_string)
-effect.breath(total)
+effect.snake()
 
-beats(736,828)
+beats(736,832)
 cycle(2)
 elements(cup_cake3)
 cycle_beats(0,1)
@@ -467,16 +481,25 @@ color.uniform(light_coral)
 effect.saw_tooth(soft)
 effect.blink_repeat(3)
 cycle_beats(1,2)
-color.uniform(red)
+color.uniform(orange)
 effect.saw_tooth(soft)
+
+cycle(None)
+beats(782,834)
+effect.fade_out()
+
 
 
 beats(828,840)
 cycle(12)
-elements(single_lifas,meduza)
+elements(single_lifas)
 color.uniform(purple_string)
 effect.snake(0.4,True)
 
+beats(840,844)
+elements(meduza,sheep)
+color.uniform(purple_string)
+effect.breath(1.0)
 
 send_to_mqtt("millenium")
-start_song("millenium", 0)
+start_song("millenium", 350)

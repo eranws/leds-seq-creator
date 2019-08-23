@@ -4,7 +4,7 @@ from led_objects.led_object import LedObject, SegmentProxy
 class Sheep(LedObject):
 
     def __init__(self):
-        super(Sheep, self).__init__(total_pixels=302)
+        super(Sheep, self).__init__(total_pixels=302, add_to_all=False)
 
         self.mapping["head"] = list(range(0, 52))
 
