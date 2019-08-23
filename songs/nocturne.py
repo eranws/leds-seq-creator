@@ -5,9 +5,9 @@ from infra.stored_animations import save, beat, load
 from led_objects.groups import group1, group2, group3, group4, group5, group6, group7, group8
 from led_objects.meduza import meduza
 from led_objects.cabbages import cabbage1, cabbage6, brain7, cabbage5, cabbages, brains, donut1, donut3, twists, donuts
-from led_objects.flood import floods, cup_cakes
+from led_objects.flood import floods, cup_cakes, cup_cake3, rug4, cup_cake4, rug6
 from led_objects.led_object import all
-from led_objects.flowers import flower6, flowers, paper5, strings, flower1, bottles, papers
+from led_objects.flowers import flower6, flowers, paper5, strings, flower1, bottles, papers, paper2, bottle4, bottle5
 from led_objects.objects_selector import elements
 from led_objects.sheep import sheep
 from led_objects.stands import sticks8, single_sticks, sticks7, sticks3, lifas5, lifas1, lifas4, lifas, single_lifas, \
@@ -439,9 +439,32 @@ beats(863.33, 864)
 elements(group4, group5, group7)
 color.gradient(0, 1)
 effect.fade_out()
+#
+# flower1.random
+# donut1.random
+# lifas1.random
+# cabbage1.random
+# paper2.random
+# cup_cake3.random
+# donut3.random
+# sticks3.random
+# lifas4.random
+# rug4.random
+# bottle4.random
+# cup_cake4.random
+# paper5.random
+# lifas5.random
+# bottle5.random
+# cabbage5.random
+# flower6.random
+# cabbage6.random
+# rug6.random
+# sticks7.random
+# brain7.random
+# sticks8.random
 
 # episodes 27, 28, 29, 30 full beat with music
-episodes(27, 31)
+episodes(27, 29)
 elements(floods, twists)
 cycle(2/3)
 color.gradient(0, 1)
@@ -477,9 +500,9 @@ effect.snake_down_up(tail=1)
 # episode 29 second half has downwards music
 
 # episodes 31, 32 fade down music all through 2 episodes to soft crash at end
-episodes(31, 33)
+episodes(31, 32.75)
 elements(floods)
-cycle(2/3)
+cycle(2)
 color.gradient(0, 1)
 effect.breath(edge=soft)
 cycle(16)
@@ -500,6 +523,29 @@ effect.snake(tail=1)
 cycle_beats(24, 32)
 color.gradient(0, 1)
 effect.snake_down_up(tail=1)
+#
+# flower1.straight
+# donut1.straight
+# lifas1.straight
+# cabbage1.straight
+# paper2.straight
+# cup_cake3.straight
+# donut3.straight
+# sticks3.straight
+# lifas4.straight
+# rug4.straight
+# bottle4.straight
+# cup_cake4.straight
+# paper5.straight
+# lifas5.straight
+# bottle5.straight
+# cabbage5.straight
+# flower6.straight
+# cabbage6.straight
+# rug6.straight
+# sticks7.straight
+# brain7.straight
+# sticks8.straight
 
 # some drum sounds at end of 31
 beats(1022, 1024)
