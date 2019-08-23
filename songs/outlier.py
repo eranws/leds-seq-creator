@@ -27,7 +27,8 @@ from infra.colors import *
 ###########################
 song_settings(bpm=117, beats_per_episode=32, start_offset=3)
 
-not_tubes = [strings,cabbages,rugs,donuts,cup_cakes]
+all.append(meduza.meduza)
+not_tubes = [strings,cabbages,rugs,donuts,cup_cakes,meduza.meduza]
 def bling(elem, col_uni):
     cycle(32)
     cycle_beats(4, 12)
@@ -44,12 +45,12 @@ def bling_b(beat, elem, col_uni):
 def fast( start_beat, end_beat, elem, elem_strong, col_grad ):
     beats(start_beat, start_beat+1)
     for el in elem:
-        for e in all+[meduza.meduza,sheep.sheep]:
+        for e in all+[sheep.sheep]:
             e.random
         elements(el)
         color.gradient(col_grad[0],col_grad[1])
         effect.snake(0.5)
-        for e in all+[meduza.meduza,sheep.sheep]:
+        for e in all+[sheep.sheep]:
             e.straight
     beats(start_beat+1, start_beat+2)
     for elem_s in elem_strong:
@@ -61,7 +62,7 @@ def fast( start_beat, end_beat, elem, elem_strong, col_grad ):
     cycle(3)
 
     for el in elem:
-        for e in all+[meduza.meduza,sheep.sheep]:
+        for e in all+[sheep.sheep]:
             e.random
         cycle_beats(0, 2/3)
         elements(el)
@@ -77,7 +78,7 @@ def fast( start_beat, end_beat, elem, elem_strong, col_grad ):
         elements(el)
         color.gradient(col_grad[0], col_grad[1])
         effect.snake(0.5)
-        for e in all+[meduza.meduza,sheep.sheep]:
+        for e in all+[sheep.sheep]:
             e.straight
     cycle_beats(2,3)
     for elem_s in elem_strong:
@@ -132,7 +133,7 @@ effect.snake()
 # lots of color coming in
 episodes(5,7)
 cycle(2)
-elements(all,meduza.meduza,sheep.sheep)
+elements(all)
 color.gradient(0,1)
 effect.hue_breath()
 
@@ -298,7 +299,7 @@ effect.blink()
 beats(360,384)
 cycle(2)
 cycle_beats(1,2)
-elements(cabbages)
+elements(cabbages,bottles)
 color.gradient(0,0.1)
 effect.blink()
 
@@ -406,7 +407,7 @@ effect.blink()
 beats(574,p_end_beat)
 cycle(2)
 cycle_beats(1,2)
-elements(bottles)
+elements(rugs)
 color.gradient(turquoise_string[0],coral[0])
 effect.blink()
 
@@ -445,13 +446,18 @@ cycle(8)
 elements(all)
 color.gradient(turquoise_string[0],coral[0])
 effect.hue_breath(0.4)
-#maybe add more hue breath for episode 21?
 
 episodes(20,22)
 cycle(2)
 elements(papers,rugs)
 color.uniform(coral)
 effect.saw_tooth()
+
+episode(21)
+cycle(32)
+cycle_beats(24,32)
+elements(all)
+effect.fade_out()
 
 last_blinking = [sheep.sheep,flower6,meduza.meduza,cup_cakes]
 fast(664,696,last_blinking,last_blinking,[0,1])
@@ -465,7 +471,7 @@ effect.snake()
 
 episodes(22,24)
 cycle(32)
-for b,e in enumerate(all+[donut1,cup_cake3,cup_cake4,flower1,flower6,paper2,paper5]):
+for b,e in enumerate(all+[cup_cake3,cup_cake4,flower1,flower6,paper2,paper5]):
     cycle_beats(b,b+4)
     e.random
     elements(e)
@@ -517,21 +523,24 @@ effect.saw_tooth()
 beats(32*22+16,32*22+24)
 elements(papers,rugs)
 effect.fade_out()
-beats(32*22,32*23)
-elements(all)
-effect.fade_out()
+episode(22)
+elements(papers,rugs)
+effect.fill_out()
 
+
+
+episode(24)
+cycle(0.1)
+elements(all)
+color.gradient(0,0.07)
+effect.random_brightness()
+cycle(32)
+for e in all:
+    e.random
+effect.fill_in_out()
 
 for e in all:
     e.random
-episode(24)
-cycle(1)
-elements(strings,cup_cakes)
-color.uniform(orange_string)
-effect.random_saturation()
-cycle(32)
-effect.snake()
-
 episode(25)
 cycle(32)
 elements(all)
@@ -565,6 +574,6 @@ color.gradient(0,1)
 effect.fade_out()
 
 send_to_mqtt("outlier")
-start_song("outlier",16.4*22-10)#offset in seconds
+start_song("outlier",0)#16.4*26-10)#offset in seconds
 
 
