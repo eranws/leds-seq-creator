@@ -44,12 +44,12 @@ def bling_b(beat, elem, col_uni):
 def fast( start_beat, end_beat, elem, elem_strong, col_grad ):
     beats(start_beat, start_beat+1)
     for el in elem:
-        for e in all:
+        for e in all+[meduza.meduza,sheep.sheep]:
             e.random
         elements(el)
         color.gradient(col_grad[0],col_grad[1])
         effect.snake(0.5)
-        for e in all:
+        for e in all+[meduza.meduza,sheep.sheep]:
             e.straight
     beats(start_beat+1, start_beat+2)
     for elem_s in elem_strong:
@@ -61,7 +61,7 @@ def fast( start_beat, end_beat, elem, elem_strong, col_grad ):
     cycle(3)
 
     for el in elem:
-        for e in all:
+        for e in all+[meduza.meduza,sheep.sheep]:
             e.random
         cycle_beats(0, 2/3)
         elements(el)
@@ -77,7 +77,7 @@ def fast( start_beat, end_beat, elem, elem_strong, col_grad ):
         elements(el)
         color.gradient(col_grad[0], col_grad[1])
         effect.snake(0.5)
-        for e in all:
+        for e in all+[meduza.meduza,sheep.sheep]:
             e.straight
     cycle_beats(2,3)
     for elem_s in elem_strong:
@@ -431,7 +431,7 @@ elements(sticks)
 color.gradient(turquoise_string[0],coral[0])
 effect.blink()
 
-bling_b(605,sticks3,green)
+bling_b(604,sticks3,green)
 bling_b(637,lifas5,coral)
 
 episode(20)
@@ -465,7 +465,7 @@ effect.snake()
 
 episodes(22,24)
 cycle(32)
-for b,e in enumerate(all+[cup_cake3,cup_cake4,flower6,paper2,paper5]):
+for b,e in enumerate(all+[donut1,cup_cake3,cup_cake4,flower1,flower6,paper2,paper5]):
     cycle_beats(b,b+4)
     e.random
     elements(e)
@@ -509,26 +509,38 @@ for b,e in enumerate(all+[cup_cake3,cup_cake4,flower6,paper2,paper5]):
 #     e.straight
 
 
-beats(32*22,32*22+16)
+beats(32*22,32*22+24)
 cycle(2)
 elements(papers,rugs)
 color.uniform(coral)
 effect.saw_tooth()
+beats(32*22+16,32*22+24)
+elements(papers,rugs)
+effect.fade_out()
+beats(32*22,32*23)
+elements(all)
+effect.fade_out()
 
 
-episode(24)
 for e in all:
     e.random
+episode(24)
+cycle(1)
+elements(strings,cup_cakes)
+color.uniform(orange_string)
+effect.random_saturation()
+cycle(32)
+effect.snake()
+
+episode(25)
 cycle(32)
 elements(all)
 color.uniform(indigo)
 effect.snake(2)
-cycle(32)
-
 for e in all:
     e.straight
 
-episode(25)
+episode(26)
 cycle(32)
 elements(all)
 color.uniform(indigo)
@@ -538,21 +550,21 @@ episode(23)
 cycle(32)
 elements(sticks8)
 color.gradient(0,1)
-effect.fade_in()
+effect.fill()
 
-episodes(24,28)
+episodes(24,29)
 cycle(4)
 elements(sticks8)
 color.gradient(0,1)
 effect.hue_breath()
 
-episode(27)
+episode(28)
 cycle(32)
 elements(sticks8)
 color.gradient(0,1)
 effect.fade_out()
 
 send_to_mqtt("outlier")
-start_song("outlier",0)#16.4*19)#offset in seconds
+start_song("outlier",16.4*22-10)#offset in seconds
 
 
