@@ -76,4 +76,4 @@ pattern(2, sticks8)
 pattern(10, sticks7)
 
 send_to_mqtt("under")
-start_song("under", 0*8*60/118+3)
+start_song("under", 0)

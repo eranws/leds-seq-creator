@@ -10,6 +10,7 @@ from led_objects.flood import cup_cakes, rug4, rugs, cup_cake3, rug6
 from led_objects.groups import group1, group2, group3, group4, group5, group6, group7, group8
 from led_objects.led_object import all
 from led_objects.flowers import flower6, flowers, paper5, papers, bottles, paper2, flower1, bottle4, bottle5
+from led_objects.meduza import meduza
 from led_objects.objects_selector import elements
 from led_objects.sheep import sheep
 from led_objects.stands import sticks8, single_sticks, sticks7, sticks3, lifas5, lifas1, lifas4, sticks, lifas, stands, \
@@ -270,59 +271,96 @@ effect.saw_tooth(0.7, True)
 episodes(13+31/32.0, 14)
 color.uniform(black)
 
-episode(14)
-elements(all)
-cycle(2)
-cycle_beats(0, 1)
-color.alternate((0.72, 1.0, 1.0), (0.82, 1.0, 1.0))
-cycle_beats(1, 2)
-color.alternate((0.82, 1.0, 1.0), (0.72, 1.0, 1.0))
-
-episodes(15, 17)
-elements(all)
-color.uniform((0.72, 1.0, 1.0))
-
-
-episodes(14, 16)
-cycle(16)
-
 for e in all:
     e.straight
 
-def snake_group(g, start_beat):
-    cycle_beats(start_beat, start_beat + 6)
-    elements(g)
-    effect.snake()
-
-snake_group(group1, 0)
-snake_group(group2, 2)
-snake_group(group3, 4)
-snake_group(group4, 6)
-snake_group(group5, 7)
-snake_group(group6, 8)
-snake_group(group7, 9)
-snake_group(group8, 10)
-
-def turn_off_on_16(e, beat_index):
-    length = 1
-    episodes(16 + beat_index / 32.0, 17)
+def snake_group_14(g, start_beat):
+    episodes(14 + start_beat / 32.0, 15 + start_beat / 32.0)
     cycle(8)
-    cycle_beats(0, length)
+    cycle_beats(0, 4)
+    elements(g)
+    color.uniform((0.72, 1.0, 1.0))
+    effect.snake(3)
+
+snake_group_14(group1, 0)
+snake_group_14(group2, 1)
+snake_group_14(group3, 2)
+snake_group_14(group4, 3)
+snake_group_14(group5, 4)
+snake_group_14(group6, 5)
+snake_group_14(group7, 6)
+snake_group_14(group8, 7)
+
+
+def turn_off_on_15(e, beat_index, c):
+    episodes(15 + beat_index / 32.0, 16 + beat_index / 32.0)
     elements(e)
-    effect.breath(0.7)
-
-turn_off_on_16(group1, 0)
-turn_off_on_16(group2, 1)
-turn_off_on_16(group3, 2)
-turn_off_on_16(group4, 3)
-turn_off_on_16(group5, 4)
-turn_off_on_16(group6, 5)
-turn_off_on_16(group7, 6)
-turn_off_on_16(group8, 7)
+    cycle(4)
+    cycle_beats(0, 2)
+    color.uniform(c)
+    effect.saw_tooth(edge=1.0, reverse=False)
 
 
+turn_off_on_15(group1, 0, (0.72, 1.0, 1.0))
+turn_off_on_15(group3, 0.75, (0.72, 1.0, 1.0))
+turn_off_on_15(group4, 1.5, (0.72, 1.0, 1.0))
+turn_off_on_15(group5, 2.75, (0.82, 1.0, 1.0))
+turn_off_on_15(group6, 3.0, (0.82, 1.0, 1.0))
+
+episode(16)
+elements(single_stands)
+
+cycle(4)
+cycle_beats(0.0, 3.25)
+color.uniform((0.72, 1.0, 1.0))
+
+cycle(4)
+cycle_beats(0.0, 0.75)
+effect.segment_up(0.2)
+cycle_beats(0.75, 1.5)
+effect.segment_down(0.2)
+cycle_beats(1.5, 2.75)
+effect.segment_up(0.2)
+cycle_beats(2.75, 3.0)
+effect.segment_down(0.1)
+cycle_beats(3.0, 3.25)
+effect.segment_up(0.1)
+
+episodes(17 - 4/32.0, 17)
+elements(all)
+color.uniform((0.72, 1.0, 1.0))
+effect.fill()
+
+episodes(17, 18)
+elements(all)
+color.uniform((0.72, 1.0, 1.0))
+
+final_hue_shift = 0.1
+cycle(4)
+cycle_beats(0, 0.75)
+effect.hue_shift(1.0 * final_hue_shift / 5.0)
+cycle_beats(0.75, 1.5)
+effect.hue_shift(2.0 * final_hue_shift / 5.0)
+cycle_beats(1.5, 2.75)
+effect.hue_shift(3.0 * final_hue_shift / 5.0)
+cycle_beats(2.75, 3.0)
+effect.hue_shift(4.0 * final_hue_shift / 5.0)
+cycle_beats(3.0, 4.0)
+effect.hue_shift(5.0 * final_hue_shift / 5.0)
+
+cycle(16)
+cycle_beats(8, 13)
+elements(meduza)
+color.uniform(yellow_string)
+cycle(1)
+effect.saw_tooth()
+
+episodes(18, 18 + 0.5/32.0)
+elements(all)
+color.uniform((0.82, 1.0, 1.0))
+effect.fill_out()
 
 send_to_mqtt("useit")
-start_song("useit", 180)
+start_song("useit", 0)
 
 

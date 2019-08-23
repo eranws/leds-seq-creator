@@ -135,6 +135,9 @@ class EffectFactory:
     def fill(self):
         FillAnimation(ConstFloatFunc(0.0), LinearFloatFunc(0.0, 1.0)).apply()
 
+    def fill_out(self):
+        FillAnimation(ConstFloatFunc(0.0), LinearFloatFunc(1.0, 0.0)).apply()
+
     def fill_in_out(self, edge = 1.0):
         FillAnimation(ConstFloatFunc(0.0), HalfFloatFunc(LinearFloatFunc(0.0, edge), LinearFloatFunc(edge, 0.0))).apply()
 
@@ -144,6 +147,13 @@ class EffectFactory:
     def segment_saw_tooth(self, length = 0.25):
         FillAnimation(HalfFloatFunc(LinearFloatFunc(0.0, 1.0 - length), LinearFloatFunc(1.0 - length, 0.0)),
                       HalfFloatFunc(LinearFloatFunc(length, 1.0), LinearFloatFunc(1.0, length))).apply()
+
+    def segment_up(self, length = 0.25):
+        FillAnimation(LinearFloatFunc(0.0, 1.0 - length),LinearFloatFunc(length, 1.0)).apply()
+
+    def segment_down(self, length = 0.25):
+        FillAnimation(LinearFloatFunc(1.0 - length, 0.0),LinearFloatFunc(1.0, length)).apply()
+
 
 effect = EffectFactory()
 
