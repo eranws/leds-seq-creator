@@ -574,6 +574,6 @@ color.gradient(0,1)
 effect.fade_out()
 
 send_to_mqtt("outlier")
-start_song("outlier",0)#16.4*26-10)#offset in seconds
+start_song("outlier",0)#16.4*28)#offset in seconds
 
 
