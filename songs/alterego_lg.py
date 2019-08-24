@@ -1,7 +1,12 @@
 import random
 
 from animations import brightness
+from animations.brightness import BrightnessAnimation
+from animations.fill import FillAnimation
 from animations.hue_shift import hue_shift_jump_on_cycle
+from float_func.const import ConstFloatFunc
+from float_func.linear import LinearFloatFunc
+from float_func.sin import SinFloatFunc
 from infra.animations_factory import color, effect
 from infra.length import short, medium, long, soft, hard, total
 from infra.stored_animations import save, beat, load
@@ -24,6 +29,16 @@ song_settings(bpm=123, beats_per_episode=32, start_offset=3)
 
 all.append(meduza)
 groups = [group1, group2, group3, group4, group5, group6, group7, group8]
+
+def single_equalizer(phase, max_val):
+    FillAnimation(ConstFloatFunc(0.0), SinFloatFunc(0.1, max_val, phase, 1)).apply()
+
+def equalizer(elem):
+
+    for p, s in enumerate(elem.all):
+        elements(s)
+        single_equalizer(p/len(elem.all),random.uniform(0.6,1))
+
 
 def full_wave(cyc,col_grad):
     cycle(cyc)
@@ -261,31 +276,31 @@ effect.fade_out()
 episodes(9,9.5)
 cycle(16)
 elements(sticks,lifas)
-color.uniform(indigo)
+color.uniform(purple_strip)
 effect.fill()
 
 episodes(9.5,12)
 cycle(1)
 elements(sticks,lifas)
-color.uniform(indigo)
+color.uniform(purple_strip)
 effect.snake(0.5)
 
 episodes(9.5,10)
 cycle(16)
 elements(flowers,cup_cakes,rugs)
-color.uniform(purple_strip)
+color.uniform(indigo)
 effect.fill()
 
 episodes(10,12)
 cycle(1)
 elements(flowers,cup_cakes,rugs)
-color.uniform(purple_strip)
+color.uniform(indigo)
 effect.snake(0.5)
 
 episodes(10,12)
 cycle(2)
 elements(papers,bottles,donuts)
-color.uniform(red)
+color.uniform(coral)
 effect.saw_tooth()
 
 for e in all:
@@ -311,17 +326,130 @@ cycle(4)
 elements(all)
 effect.hue_shift_steps(6,0.1)
 
-episodes(14,17)
+episodes(14,16)
 for e in all:
     e.random
-full_wave(4, [0,0.07])
+cycle(6)
+color.gradient(0.4,0.57)
+elements([group1, group2])
+BrightnessAnimation(SinFloatFunc(0.2, 1.0, 0.0, 1)).apply()
+elements([group8, group3])
+BrightnessAnimation(SinFloatFunc(0.2, 1.0, 0.25, 1)).apply()
+elements([group6, group7])
+BrightnessAnimation(SinFloatFunc(0.2, 1.0, 0.5, 1)).apply()
+elements([group5, group4])
+BrightnessAnimation(SinFloatFunc(0.2, 1.0, 0.75, 1)).apply()
 
-episodes(15,17)
+episodes(14,16)
+cycle(2)
+elements(donuts,meduza)
+color.uniform(coral)
+effect.saw_tooth()
+
+episodes(15,16)
 cycle(8)
 elements(all)
-effect.hue_shift_steps(6,0.2)
+effect.hue_breath(0.4)
 
+episodes(16,17)
+cycle(2)
+for e in lifas+sticks:
+    e.straight
+    elements(e.all)
+    c = random.uniform(0, 1)
+    color.gradient(c, c+0.2)
+    equalizer(e)
+cycle(32)
+cycle_beats(16,32)
+elements(cup_cakes,donuts, lifas, sticks, rugs,strings,meduza)
+effect.hue_saw_tooth(1)
+
+episodes(17,18)
+cycle(0.5)
+for e in lifas+sticks:
+    elements(e.all)
+    c = random.uniform(0, 1)
+    color.gradient(c, c+0.2)
+    equalizer(e)
+cycle(32)
+cycle_beats(16,32)
+elements(cup_cakes,donuts, lifas, sticks, rugs,strings,meduza)
+effect.hue_saw_tooth(1)
+
+episodes(16,18)
+cycle(2)
+cycle_beats(0, 0.5)
+elements(cup_cakes,donuts, rugs,strings)
+color.gradient(coral[0]-0.1,coral[0])
+cycle_beats(1,1.5)
+elements(cup_cakes,donuts, rugs,strings)
+color.gradient(coral[0]-0.1,coral[0])
+effect.breath()
+cycle_beats(1.5,2)
+elements(cup_cakes,donuts, rugs,strings)
+color.gradient(coral[0]-0.1,coral[0])
+effect.saw_tooth()
+
+episodes(17,18)
+cycle(2)
+cycle_beats(1,1.5)
+elements(meduza)
+color.gradient(coral[0]-0.1,coral[0])
+effect.breath()
+cycle_beats(1.5,2)
+elements(meduza)
+color.gradient(coral[0]-0.1,coral[0])
+effect.saw_tooth()
+
+episodes(17.5,18)
+cycle(16)
+elements(cup_cakes,donuts, rugs,strings)
+effect.fill_out()
+
+episodes(17.75,18)
+cycle(8)
+elements(cup_cakes,donuts, rugs,strings)
+effect.fade_out()
+
+episodes(17,19)
+cycle(0.5)
+for e in lifas+sticks:
+    e.straight
+    elements(e.all)
+    c = random.uniform(0, 1)
+    color.gradient(c, c+0.2)
+    equalizer(e)
+
+cycle(8)
+elements(brains, cabbages, cup_cakes, flowers)
+color.gradient(aquamarine[0],purple_strip[0])
+effect.fill_in_out()
+
+cycle(32)
+cycle_beats(16,32)
+elements(cup_cakes,donuts, lifas, sticks, rugs,strings,meduza)
+effect.hue_saw_tooth(1)
+
+episodes(17.5,18)
+cycle(1)
+for e in lifas+sticks:
+    e.straight
+    elements(e.all)
+    c = random.uniform(0, 1)
+    color.gradient(c, c+0.2)
+    equalizer(e)
+    episodes(17.5, 18)
+    cycle(1)
+
+episodes(18,19)
+cycle(2)
+for e in lifas + sticks:
+    e.straight
+    elements(e.all)
+    c = random.uniform(0, 1)
+    color.gradient(c, c + 0.2)
+    equalizer(e)
 send_to_mqtt("alterego")
-start_song("alterego",  15.6*14)
+start_song("alterego",  15.6*16)
 
 
