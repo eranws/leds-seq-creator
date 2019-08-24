@@ -8,6 +8,7 @@ from led_objects.flood import cup_cakes, cup_cake3, rug4, rug6, rugs
 from led_objects.groups import group1, group2, group3, group4, group5, group6, group7, group8
 from led_objects.led_object import all
 from led_objects.flowers import flower6, flowers, paper5, papers, bottles, paper2, flower1, bottle4, bottle5
+from led_objects.meduza import meduza
 from led_objects.objects_selector import elements
 from led_objects.stands import sticks8, single_sticks, sticks7, sticks3, lifas5, lifas1, lifas4, sticks, lifas, stands, \
     single_lifas
@@ -83,7 +84,7 @@ def coloropening():
     elements(sticks)
     cycle(beats=16)
     cycle_beats(2.0, 2.74)
-    color.uniform(pink_strip)
+    color.uniform(magenta)
     effect.breath(0.4)
     cycle_beats(2.74, 16)
     color.uniform(magenta)
@@ -119,7 +120,7 @@ def coloropening():
     elements(bottles)
     cycle(beats=16)
     cycle_beats(8, 8.74)
-    color.uniform(magenta)
+    color.uniform(pink_string)
     effect.breath(0.4)
     cycle_beats(8.74 , 16)
     color.uniform(pink_string)
@@ -462,7 +463,6 @@ effect.saw_tooth(total)
 
 def quickgroupcolorchange():
     cycle(4)
-    effect.breath(0.1)
 
     cycle_beats(0.0, 0.5)
     elements(group3)
@@ -471,7 +471,6 @@ def quickgroupcolorchange():
     cycle_beats(0.50, 1.0)
     elements(group6)
     color.alternate(indigo, magenta, 5)
-
 
     cycle_beats(1.0, 1.5)
     elements(group1)
@@ -507,81 +506,81 @@ elements(all)
 effect.hue_breath(0.1)
 
 
+
+
 episode(10)
 
-cycle(0.5)
+cycle(1.0)
 elements(all)
 color.gradient(blue[0], aquamarine[0])
 effect.breath(soft)
-
 
 
 cycle(beats=8)
 cycle_beats(0.0, 0.5)
 elements(cup_cakes)
 color.gradient(0.78, 0.9)
-effect.breath(0.8)
+effect.saw_tooth(hard, False)
 
 cycle_beats(0.5, 1.0)
 elements(cup_cakes)
-effect.breath(0.8)
+effect.saw_tooth(hard, False)
 color.gradient(0.78, 0.9)
-
 
 cycle_beats(1.0, 1.5)
 elements(donuts)
 color.gradient(0.78, 0.9)
-effect.breath(0.8)
+effect.saw_tooth(hard, False)
 
 cycle_beats(1.5, 2.0)
 elements(donuts)
 color.gradient(0.78, 0.9)
-effect.breath(0.8)
+effect.saw_tooth(hard, False)
 
 cycle_beats(2.0, 2.5)
 elements(rug4, rug6)
 color.gradient(0.78, 0.9)
-effect.breath(0.8)
+effect.saw_tooth(hard, False)
 
 cycle_beats(2.5, 2.9)
 elements(rug4,rug6)
 color.gradient(0.78, 0.9)
-effect.breath(0.8)
+effect.saw_tooth(hard, False)
 
 cycle_beats(2.9, 4.1)
 elements(cabbages, single_sticks)
 color.gradient(0.78, 0.9)
-effect.breath(0.8)
+effect.saw_tooth(hard, False)
 
 cycle_beats(4.0, 4.5)
 elements(cup_cakes)
 color.gradient(0.78, 0.9)
-effect.breath(0.8)
+effect.saw_tooth(hard, False)
 
 cycle_beats(4.5, 5.0)
 elements(cup_cakes)
 color.gradient(0.78, 0.9)
-effect.breath(0.8)
+effect.saw_tooth(hard, False)
 
 cycle_beats(5.0, 5.5)
 elements(bottles)
 color.gradient(0.78, 0.9)
-effect.breath(0.8)
+effect.saw_tooth(hard, False)
 
 cycle_beats(5.5, 6.0)
 elements(bottles)
 color.gradient(0.78, 0.9)
-effect.breath(0.8)
+effect.saw_tooth(hard, False)
 
 cycle_beats(6.0, 7.0)
 elements(cabbages, papers, single_sticks)
 color.gradient(0.78, 0.9)
-effect.breath(0.8)
+effect.saw_tooth(hard, False)
 
 cycle_beats(7.0, 8.0)
 elements(papers,cabbages, single_sticks)
 color.gradient(0.78, 0.9)
-effect.breath(0.8)
+effect.saw_tooth(hard, False)
 
 
 # def wave():
@@ -689,92 +688,92 @@ def full_wave():
 
     elements(flower1)
     cycle_beats(0.0, 0.47)
-    effect.breath(0.1)
+    effect.fill()
     color.uniform(aquamarine)
 
     elements(lifas1, cabbage1)
     cycle_beats(0.025, 0.47)
-    effect.breath(0.1)
+    effect.fill()
     color.uniform(aquamarine)
 
     elements(donut1)
     cycle_beats(0.05, 0.47)
-    effect.breath(0.1)
+    effect.fill()
     color.uniform(aquamarine)
 
     elements(sticks8, paper2, flower6)
     cycle_beats(0.075, 0.47)
-    effect.breath(0.1)
+    effect.fill()
     color.uniform(aquamarine)
 
     elements(cup_cake3, cabbage6, rug6)
     cycle_beats(0.1, 0.47)
-    effect.breath(0.1)
+    effect.fill()
     color.uniform(aquamarine)
 
     elements(sticks3, donut3, brain7)
     cycle_beats(0.125, 0.47)
-    effect.breath(0.1)
+    effect.fill()
     color.uniform(aquamarine)
 
     elements(sticks7, lifas4, rug4)
     cycle_beats(0.15, 0.47)
-    effect.breath(0.1)
+    effect.fill()
     color.uniform(aquamarine)
 
-    elements(paper5)
+    elements(cup_cake4)
     cycle_beats(0.175, 0.47)
-    effect.breath(0.1)
+    effect.fill()
     color.uniform(aquamarine)
 
-    elements(cabbage6, bottle5)
+    elements(cabbage6, bottle4)
     cycle_beats(0.2, 0.47)
-    effect.breath(0.1)
+    effect.fill()
     color.uniform(aquamarine)
 
     elements(paper5, lifas5, bottle5)
     cycle_beats(0.225, 0.47)
-    effect.breath(0.1)
+    effect.fill()
     color.uniform(aquamarine)
 
     elements(cabbage6, bottle5)
     cycle_beats(0.25, 0.47)
-    effect.breath(0.1)
+    effect.fill()
     color.uniform(aquamarine)
 
     elements(paper5)
     cycle_beats(0.275, 0.47)
-    effect.breath(0.1)
+    effect.fill()
     color.uniform(aquamarine)
 
     elements(sticks7, lifas4, rug4)
     cycle_beats(0.3, 0.47)
-    effect.breath(0.1)
+    effect.fill()
     color.uniform(aquamarine)
 
     elements(sticks3, donut3, brain7)
     cycle_beats(0.325, 0.47)
-    effect.breath(0.1)
+    effect.fill()
     color.uniform(aquamarine)
 
     elements(cup_cake3, cabbage6, rug6)
     cycle_beats(0.35, 0.47)
-    effect.breath(0.1)
+    effect.fill()
     color.uniform(aquamarine)
 
     elements(sticks8, paper2, flower6)
     cycle_beats(0.375, 0.47)
-    effect.breath(0.1)
+    effect.fill()
     color.uniform(aquamarine)
 
     elements(donut1)
     cycle_beats(0.4, 0.47)
-    effect.breath(0.1)
+    effect.fill()
     color.uniform(aquamarine)
 
     elements(lifas1, cabbage1)
     cycle_beats(0.425, 0.47)
-    effect.breath(0.1)
+    effect.fill()
     color.uniform(aquamarine)
 
 
@@ -787,26 +786,39 @@ cycle(8)
 elements(all)
 effect.hue_breath(medium)
 
+
+# for e in all:
+#     e.random
+
 beats(184, 192)
 elements(cabbages, brains,lifas)
-color.uniform(orange_strip)
+color.gradient(yellow_strip[0], 0.01)
 effect.snake(0.6)
 
 beats(186, 192)
 elements(sticks, flowers, cup_cakes)
-color.uniform(orange_strip)
+color.gradient(yellow_strip[0], 0.01)
 effect.snake(0.6)
 
 beats(188, 192)
 elements(papers, bottles, rugs, donuts)
-color.uniform(orange_strip)
+color.gradient(yellow_strip[0], 0.01)
 effect.snake(0.6)
 
+# beats(190, 192)
+# elements(all)
+# color.gradient(yellow_strip[0], red[0])
+# effect.snake(0.3)
+# effect.hue_breath(soft)
+# effect.fade_out()
 
 # episode(11)
 # cycle(16)
 # elements(all)
 # effect.saw_tooth(total, False)
+
+for e in all:
+    e.straight
 
 def light_stick_on_note_end(stick_to_light, c, stand_index, b_start, b_end):
 
@@ -900,6 +912,7 @@ def violin2end (lifa_to_light, c):
 #     light_lifa_on_note(lifa_to_light, c, 4, 7.0, 8.0)
 
 
+
 episodes(12, 14)
 violin1end(sticks3, light_yellow_strip)
 
@@ -908,41 +921,74 @@ violin1end(sticks8, light_yellow_strip)
 violin1end(sticks7, light_yellow_strip)
 
 episode(12)
-violin2end(lifas5, (0.74, 0.6, 1.0))
-violin2end(lifas1, (0.74, 0.6, 1.0))
-violin2end(lifas4, (0.74, 0.6, 1.0))
+violin2end(lifas5, (0.74, 0.65, 1.0))
+violin2end(lifas1, (0.74, 0.65, 1.0))
+violin2end(lifas4, (0.74, 0.65, 1.0))
 
 
 episode(12)
 cycle(16)
-elements(lifas, sticks8, sticks8)
-effect.saw_tooth(1.0, False)
+elements(lifas, sticks8, sticks8, meduza)
+effect.fade_out()
 
-episodes(12, 13)
+# for e in all:
+#     e.random
+episode(12)
 cycle(16)
-elements(donut1, rug4, flower6)
+elements(cabbages)
 color.uniform(coral)
-effect.breath(1.0)
+effect.fade_out()
 
-elements(bottle5, paper2)
-color.uniform(pink_string)
-effect.breath(1.0)
-
-elements(cup_cake4, cabbage6)
-color.uniform(light_coral)
-effect.breath(1.0)
-
-elements(cabbage5, bottle4, donut3)
+elements(rugs)
 color.uniform(magenta)
-effect.breath(1.0)
+effect.fade_out()
 
-elements(flower1, cup_cake3, brain7)
-color.uniform(red)
-effect.breath(1.0)
+elements(flowers)
+color.uniform((0.03, 1.0, 1.0))
+effect.fade_out()
 
-elements(cabbage1, paper5, rug6)
-color.uniform((0.9, 0.9, 1.0))
-effect.breath(1.0)
+elements(brains)
+color.uniform((0.995, 0.85, 1.0))
+effect.fade_out()
+
+elements(donuts)
+color.uniform(light_coral)
+effect.fade_out()
+
+elements(bottles)
+color.uniform(pink_string)
+effect.fade_out()
+
+elements(cup_cakes)
+color.uniform((0.80, 1.0, 1.0))
+effect.fade_out()
+
+elements(papers)
+color.uniform((0.03, 1.0, 0.8))
+effect.fade_out()
+
+
+# episode(12)
+# elements(rugs,flowers,bottles,papers,cup_cakes,cabbages)
+# effect.random_saturation()
+
+episodes(0, 13)
+cycle(2)
+elements(meduza)
+color.uniform((1.0, 0.1, 1.0))
+effect.saw_tooth(medium)
+
+episodes(0, 2)
+elements(meduza)
+cycle(32)
+effect.fade_in()
+
+episodes(2, 13)
+elements(meduza)
+cycle(16)
+effect.breath(hard)
+
+
 
 send_to_mqtt("essoteric")
 start_song("essoteric", 0)
