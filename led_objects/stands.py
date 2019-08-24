@@ -38,3 +38,4 @@ single_lifas = [lifa.all for lifa in lifas]
 
 stands = [sticks, lifas]
 single_stands = [single_lifas, single_sticks]
+single_stands_per_stand = single_sticks + single_lifas

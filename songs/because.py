@@ -1,5 +1,7 @@
 from animations import brightness
+from animations.brightness import BrightnessAnimation
 from animations.hue_shift import hue_shift_jump_on_cycle
+from float_func.sin import SinFloatFunc
 from infra.animations_factory import color, effect
 from infra.length import short, medium, long, soft, hard, total
 from infra.stored_animations import save, beat, load
@@ -35,9 +37,6 @@ effect.breath(edge=0.5)
 beats(7, 9)
 effect.fade_out()
 
-half_all_1 = all[0: len(all) / 2]
-half_all_2 = all[len(all) / 2: len(all)]
-
 for e in all:
     e.random
 
@@ -66,6 +65,99 @@ effect.fade_in()
 beats(31.5, 33.5)
 effect.fade_out()
 
+beats(34.25, 39)
+elements(all)
+color.gradient(0.8, 1.1)
+effect.breath(1.0)
+
+#Second singing
+for e in all:
+    e.random
+
+beats(39.5, 51)
+elements(all)
+color.gradient(0.8, 1.1)
+cycle(6)
+effect.segment_breath(0.5)
+
+beats(39.5, 41.5)
+effect.fade_in()
+beats(49, 51)
+effect.fade_out()
+
+for e in all:
+    e.straight
+
+
+beats(52, 64)
+elements(all)
+color.gradient(0.8, 1.1)
+cycle(6)
+effect.segment_breath(0.5)
+
+beats(52, 54)
+effect.fade_in()
+beats(62, 64)
+effect.fade_out()
+
+
+beats(65, 68.5)
+elements(all)
+color.uniform((1.05, 0.9, 1.0))
+effect.hue_saw_tooth(0.98 - 1.05)
+effect.fade_in()
+
+beats(68.5, 82)
+color.uniform((0.98, 0.9, 1.0))
+effect.fill_out()
+
+beats(83, 107)
+elements(all)
+color.gradient(indigo[0], aquamarine[0])
+
+cycle(6)
+elements([group1, group2])
+BrightnessAnimation(SinFloatFunc(0.2, 1.0, 0.0, 1)).apply()
+elements([group8, group3])
+BrightnessAnimation(SinFloatFunc(0.2, 1.0, 0.25, 1)).apply()
+elements([group6, group7])
+BrightnessAnimation(SinFloatFunc(0.2, 1.0, 0.5, 1)).apply()
+elements([group5, group4])
+BrightnessAnimation(SinFloatFunc(0.2, 1.0, 1.0, 1)).apply()
+
+elements(all)
+beats(83, 87)
+effect.fade_in()
+beats(103, 107)
+effect.fade_out()
+
+
+beats(107.7, 117)
+elements(all)
+color.uniform((0.33, 0.8, 1.0))
+effect.breath(1.0)
+effect.blink_repeat(64, 0.03)
+
+beats(119.5, 128)
+elements(all)
+color.uniform((0.2, 0.8, 1.0))
+effect.breath(1.0)
+effect.blink_repeat(64, 0.03)
+
+beats(132.2, 137.5)
+elements(all)
+color.uniform((0.1, 0.8, 1.0))
+effect.breath(1.0)
+effect.blink_repeat(64, 0.03)
+
+beats(138, 145)
+elements(all)
+color.uniform((0.98, 0.9, 1.0))
+effect.breath(1.0)
+effect.blink_repeat(64, 0.03)
+
+beats(0, 145)
+effect.brightness(0.5)
 
 # def note(start, end, elem):
 #     beats(start, end)
@@ -108,6 +200,6 @@ effect.fade_out()
 
 
 send_to_mqtt("because")
-start_song("because", 3)
+start_song("because", 0)
 
 

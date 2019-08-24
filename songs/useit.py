@@ -264,12 +264,11 @@ episodes(13 + 11/32.0, 13 + 15/32.0)
 effect.brightness(0.3)
 episodes(13 + 15/32.0, 13 + 15.5/32.0)
 effect.saw_tooth(0.7, True)
-# episodes(13 + 24/32.0, 13 + 25/32.0)
-# effect.saw_tooth(0.7)
-# episodes(13 + 25/32.0, 14)
-# effect.brightness(0.3)
 episodes(13+31/32.0, 14)
 color.uniform(black)
+
+elements(meduza)
+color.uniform((0.72, 1.0, 1.0))
 
 for e in all:
     e.straight
@@ -309,9 +308,6 @@ turn_off_on_15(group6, 3.0, (0.82, 1.0, 1.0))
 
 episode(16)
 elements(single_stands)
-
-cycle(4)
-cycle_beats(0.0, 3.25)
 color.uniform((0.72, 1.0, 1.0))
 
 cycle(4)
@@ -325,6 +321,13 @@ cycle_beats(2.75, 3.0)
 effect.segment_down(0.1)
 cycle_beats(3.0, 3.25)
 effect.segment_up(0.1)
+cycle_beats(3.25, 4.0)
+color.uniform(black)
+
+cycle_beats(3.25, 4.0)
+elements(cabbages)
+color.uniform((0.72, 1.0, 1.0))
+
 
 episodes(17 - 4/32.0, 17)
 elements(all)
@@ -361,6 +364,6 @@ color.uniform((0.82, 1.0, 1.0))
 effect.fill_out()
 
 send_to_mqtt("useit")
-start_song("useit", 0)
+start_song("useit", 200)
 
 

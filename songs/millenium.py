@@ -40,8 +40,11 @@ cycle(16)
 cycle_beats(0,4)
 elements(sticks)
 color.gradient(0.0,0.11)
-effect.breath(medium)
-
+effect.fill()
+cycle_beats(4,6)
+elements(sticks)
+color.gradient(0.0,0.11)
+effect.saw_tooth(total)
 
 ''' Episodes 1, 2:
 - Siren: continue on stands, change mood
@@ -290,11 +293,13 @@ Episodes: 7.5 - 8.5
 equilaizer on sticks, add graduately
 """
 
+effect.fill_in_out(edge=0.5)
+
 def sticks_eq(e):
     elements(e)
     cycle(4/3)
     color.gradient(0.4, 0.55)
-    effect.snake_down_up(1.0)
+    effect.fill_in_out(1.0)
 
 
 episodes(7.5, 8.5)
@@ -330,7 +335,7 @@ beats(552,576)
 cycle(1/3)
 elements(all)
 color.gradient(magenta[0],light_coral[0])
-effect.breath()
+effect.breath(soft)
 
 
 beats(576,592)
@@ -453,7 +458,7 @@ color.alternate(pink_string,indigo,10)
 effect.snake()
 
 light_8_beats(728, [all])
-color.gradient(0,1)
+color.gradient(0.04 ,0.1)
 effect.snake()
 #drums
 
@@ -462,26 +467,38 @@ flower6.random
 flower1.random
 paper5.random
 
+# beats (736,808)
+# cycle(32)
+# cycle_beats(0,12)
+# elements(paper2,flowers,paper5)
+# color.uniform(turquoise_string)
+# effect.snake()
+# cycle_beats(12,32)
+# elements(paper2,flowers, paper5)
+# color.uniform(pink_string)
+# effect.snake()
+
 beats (736,808)
 cycle(32)
 cycle_beats(0,12)
-elements(paper2,flowers,paper5)
+elements(all)
 color.uniform(turquoise_string)
-effect.snake()
+effect.fill_in_out()
 cycle_beats(12,32)
-elements(paper2,flowers, paper5)
+elements(all)
 color.uniform(pink_string)
-effect.snake()
+effect.fill_in_out()
+
 
 beats(736,832)
 cycle(2)
-elements(cup_cake3)
+elements(meduza,sheep)
 cycle_beats(0,1)
 color.uniform(light_coral)
 effect.saw_tooth(soft)
 effect.blink_repeat(3)
 cycle_beats(1,2)
-color.uniform(orange)
+color.uniform(purple_string)
 effect.saw_tooth(soft)
 
 cycle(None)
@@ -502,4 +519,4 @@ color.uniform(purple_string)
 effect.breath(1.0)
 
 send_to_mqtt("millenium")
-start_song("millenium", 350)
+start_song("millenium", 360)
