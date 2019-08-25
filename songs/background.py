@@ -1,3 +1,5 @@
+import random
+
 from animations import brightness
 from infra.animations_factory import color, effect
 from infra.length import short, medium, long, soft, hard, total
@@ -21,15 +23,23 @@ episodes(0, 2)
 cycle(3)
 elements(all)
 color.uniform((0.5, 1.0, 1.0))
-effect.snake_down_up(0.05)
+
+for elem in all:
+    start_beat = -(random.random() * 3.0)
+    print(start_beat)
+    episodes(start_beat / 60.0, 2.0)
+    elements(elem)
+    cycle(5)
+    #cycle(2.0 + random.random() * 1.0)
+    effect.segment_breath(0.05)
+
+    cycle(3.0 + random.random() * 3.0)
+    elements(elem)
+    effect.breath(total)
 
 cycle(4)
 elements(all)
 effect.hue_breath(medium)
-
-cycle(6)
-elements(all)
-effect.breath(total)
 
 send_to_mqtt("background")
 start_song("background", 0)
