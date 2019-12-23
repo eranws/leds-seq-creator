@@ -40,117 +40,18 @@ def equalizer(elem):
         single_equalizer(p/len(elem.all),random.uniform(0.6,1))
 
 
-def full_wave(cyc,col_grad):
-    cycle(cyc)
-    steps = 20
-
-    elements(flower1)
-    cycle_beats(0, cyc)
-    effect.breath(0.1)
-    color.gradient(col_grad[0],col_grad[1])
-
-    elements(lifas1, cabbage1)
-    cycle_beats(1/steps, cyc)
-    effect.breath(0.1)
-    color.gradient(col_grad[0],col_grad[1])
-
-    elements(donut1)
-    cycle_beats(2/steps, cyc)
-    effect.breath(0.1)
-    color.gradient(col_grad[0],col_grad[1])
-
-    elements(sticks8, paper2, flower6)
-    cycle_beats(3/steps, cyc)
-    effect.breath(0.1)
-    color.gradient(col_grad[0],col_grad[1])
-
-    elements(cup_cake3, cabbage6, rug6)
-    cycle_beats(4/steps, cyc)
-    effect.breath(0.1)
-    color.gradient(col_grad[0],col_grad[1])
-
-    elements(sticks3, donut3, brain7)
-    cycle_beats(5/steps, cyc)
-    effect.breath(0.1)
-    color.gradient(col_grad[0],col_grad[1])
-
-    elements(sticks7, lifas4, rug4)
-    cycle_beats(6/steps, cyc)
-    effect.breath(0.1)
-    color.gradient(col_grad[0],col_grad[1])
-
-    elements(bottle4,cabbage5)
-    cycle_beats(7 / steps, cyc)
-    effect.breath(0.1)
-    color.gradient(col_grad[0], col_grad[1])
-
-    elements(paper5)
-    cycle_beats(8/steps, cyc)
-    effect.breath(0.1)
-    color.gradient(col_grad[0],col_grad[1])
-
-    elements(cabbage6, bottle5)
-    cycle_beats(9/steps, cyc)
-    effect.breath(0.1)
-    color.gradient(col_grad[0],col_grad[1])
-
-    elements(paper5, lifas5, bottle5)
-    cycle_beats(10/steps, cyc)
-    effect.breath(0.1)
-    color.gradient(col_grad[0],col_grad[1])
-
-    elements(cabbage6, bottle5)
-    cycle_beats(11/steps, cyc)
-    effect.breath(0.1)
-    color.gradient(col_grad[0],col_grad[1])
-
-    elements(paper5)
-    cycle_beats(12/steps, cyc)
-    effect.breath(0.1)
-    color.gradient(col_grad[0],col_grad[1])
-
-    elements(sticks7, lifas4, rug4)
-    cycle_beats(13/steps, cyc)
-    effect.breath(0.1)
-    color.gradient(col_grad[0],col_grad[1])
-
-    elements(sticks3, donut3, brain7)
-    cycle_beats(14/steps, cyc)
-    effect.breath(0.1)
-    color.gradient(col_grad[0],col_grad[1])
-
-    elements(cup_cake3, cabbage6, rug6)
-    cycle_beats(14/steps, cyc)
-    effect.breath(0.1)
-    color.gradient(col_grad[0],col_grad[1])
-
-    elements(sticks8, paper2, flower6)
-    cycle_beats(15/steps, cyc)
-    effect.breath(0.1)
-    color.gradient(col_grad[0],col_grad[1])
-
-    elements(donut1)
-    cycle_beats(16/steps, cyc)
-    effect.breath(0.1)
-    color.gradient(col_grad[0],col_grad[1])
-
-    elements(lifas1, cabbage1)
-    cycle_beats(17/steps, cyc)
-    effect.breath(0.1)
-    color.gradient(col_grad[0],col_grad[1])
-
 episode(0)
 cycle(32)
 cycle_beats(0,16)
-elements(all)
+elements(all,sheep)
 color.uniform(aquamarine)
 effect.fill()
 cycle_beats(16,32)
-elements(all)
+elements(all,sheep)
 color.uniform(aquamarine)
 effect.hue_saw_tooth(red[0]-aquamarine[0])
 cycle_beats(31,32)
-elements(all)
+elements(all,sheep)
 color.uniform(red)
 effect.saw_tooth()
 
@@ -163,11 +64,17 @@ for b in range(0,32,2):
     color.uniform(random.choice(col))
     effect.saw_tooth()
 
-meduza.random
+episode(1)
 cycle(1)
-elements(meduza)
-color.gradient(0,1)
-effect.snake()
+elements(all)
+effect.random_brightness()
+
+episode(2)
+cycle(0.5)
+elements(all)
+effect.random_brightness()
+
+meduza.random
 
 episodes(2,3)
 cycle(2)
@@ -177,17 +84,13 @@ effect.snake(3)
 
 episodes(3,5)
 cycle(4)
-elements(strings,cup_cakes)
+elements(strings,cup_cakes,donuts)
 color.uniform(red)
 effect.snake()
-cycle(2)
-elements(papers,rugs)
+cycle(1)
+elements(papers)
 color.uniform(purple_strip)
 effect.saw_tooth()
-cycle(1)
-elements(meduza)
-color.uniform(red)
-effect.breath()
 
 beats(32*3+2,32*5+2)
 cycle(4)
@@ -199,6 +102,16 @@ episode(4)
 cycle(32)
 elements(all)
 effect.fill_out()
+
+cycle(4)
+cycle_beats(0,1)
+elements(rugs)
+color.uniform(purple_strip)
+effect.blink_repeat(1)
+cycle_beats(2,4)
+elements(rugs)
+color.uniform(purple_strip)
+effect.blink_repeat(2)
 
 episode(5)
 cycle(2)
@@ -285,21 +198,21 @@ elements(sticks,lifas)
 color.uniform(purple_strip)
 effect.snake(0.5)
 
-episodes(9.5,10)
-cycle(16)
-elements(flowers,cup_cakes,rugs)
+episodes(9.375,10)
+cycle(20)
+elements(flowers,cup_cakes,rugs,bottles)
 color.uniform(indigo)
 effect.fill()
 
 episodes(10,12)
 cycle(1)
-elements(flowers,cup_cakes,rugs)
+elements(flowers,cup_cakes,rugs,bottles)
 color.uniform(indigo)
 effect.snake(0.5)
 
-episodes(10,12)
+episodes(9.875,12)
 cycle(2)
-elements(papers,bottles,donuts)
+elements(papers,donuts)
 color.uniform(coral)
 effect.saw_tooth()
 
@@ -582,7 +495,7 @@ effect.fill_out()
 
 episodes(23.25, 25)
 cycle(8)
-elements(bottles)
+elements(bottles, rugs)
 color.uniform(magenta)
 effect.breath()
 
@@ -595,12 +508,12 @@ effect.breath()
 episodes(23.5, 25)
 cycle(8)
 elements(rugs)
-color.uniform([magenta[0]+turquoise_string[0]/2, 0.5, 0.5])
+color.uniform([(magenta[0]+turquoise_string[0])/2, 0.5, 0.5])
 effect.breath()
 
 episodes(23.75, 25)
 cycle(8)
-elements(donuts,flowers)
+elements(flowers)
 color.uniform(turquoise_string)
 effect.breath()
 
@@ -617,11 +530,11 @@ effect.hue_blink(1/3)
 episodes(25,27)
 cycle(0.5)
 elements(all)
-color.uniform(red)
+color.uniform(indigo)
 effect.random_brightness()
 cycle(4)
 elements(all)
-effect.hue_shift_steps(6,0.1)
+effect.hue_shift_steps(4,0.25)
 
 episode(25)
 cycle(32)
@@ -631,14 +544,14 @@ effect.fade_out()
 
 episodes(26,27)
 cycle(32)
-elements(floods,twists)
+elements(floods,twists,donuts)
 effect.fill_out()
 effect.fade_out()
 elements(strings)
 color.uniform(black)
 
 c = dict()
-for n, e in enumerate(stands):
+for n, e in enumerate(lifas+sticks):
     elements(e.all)
     c[n] = random.uniform(0, 1)
     color.gradient(c[n], c[n]+0.2)
@@ -646,7 +559,7 @@ for n, e in enumerate(stands):
 
 episodes(27,28)
 cycle(8)
-for n, e in enumerate(stands):
+for n, e in enumerate(lifas+sticks):
     elements(e.all)
     color.gradient(c[n], c[n]+0.2)
     equalizer(e)
@@ -657,6 +570,6 @@ elements(all)
 effect.fill_out()
 
 send_to_mqtt("alterego")
-start_song("alterego", 15.6*26)
+start_song("alterego", 15.6*0)
 
 

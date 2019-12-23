@@ -1,6 +1,5 @@
 import http.client
 import json
-import time
 
 import paho.mqtt.client as mqtt
 

@@ -256,4 +256,4 @@ snakes_grdiant(62,65)
 snakes_grdiant(65,66, fade_out_intense=1)
 
 send_to_mqtt("lost")
-start_song("lost", 49*8*60/118+0)
+start_song("lost", 0)
