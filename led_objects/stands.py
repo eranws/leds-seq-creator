@@ -22,15 +22,15 @@ class Stands(LedObject):
 
 
 sticks8 = Stands([30 - 11, 45 - 11, 55 - 11, 67 - 11, 68 - 11])
-sticks7 = Stands([31 - 17, 53 - 17, 70 - 17, 91 - 17, 107 - 17, 107 - 16])
-sticks3 = Stands([55, 107, 151, 191, 228])
+sticks7 = Stands([16, 29, 51, 68, 87, 103])
+sticks3 = Stands([55, 106, 150, 190, 227])
 
 sticks = [sticks3, sticks7, sticks8]
 single_sticks = [stick.all for stick in sticks]
 
 lifas5 = Stands([46, 84, 125, 159, 193])
-lifas1 = Stands([19, 47, 80, 119, 164])
-lifas4 = Stands([67, 123, 178, 228])
+lifas1 = Stands([45, 84, 103, 131, 164])
+lifas4 = Stands([55, 122, 178, 228])
 
 
 lifas = [lifas1, lifas4, lifas5]

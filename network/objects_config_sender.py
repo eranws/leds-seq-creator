@@ -4,10 +4,15 @@ import led_objects.object_config_pb2
 import paho.mqtt.client as mqtt
 import json
 
+from led_objects.cabbages import cabbage1, cabbage6, cabbage5, brain7, donut3, donut1
+from led_objects.flood import cup_cake3, cup_cake4, rug6, rug4
+from led_objects.flowers import flower6, flower1, paper5, paper2, bottle4, bottle5, gloves8
 from led_objects.she import she
+from led_objects.stands import sticks7, lifas4, lifas1, lifas5, sticks3
+from led_objects.stars import star7
 from thing_to_obj_map import obj_to_thing
 
-mqtt_host_name = "192.168.1.29"
+mqtt_host_name = "10.0.0.200"
 mqtt_client_id = "objects_map_sender"
 
 def ledObjectToJson(led_object):
@@ -42,7 +47,9 @@ def send_to_all_things():
         led_object = obj_with_thing[0]
         send_to_single_thing(thing_name, led_object)
 
-send_to_single_thing("she", she)
+
+send_to_single_thing("donuts1", donut1)
+#send_to_all_things();
 
 time.sleep(3)
 
