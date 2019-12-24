@@ -28,7 +28,7 @@ sticks3 = Stands([55, 106, 150, 190, 227])
 sticks = [sticks3, sticks7, sticks8]
 single_sticks = [stick.all for stick in sticks]
 
-lifas5 = Stands([46, 84, 125, 159, 193])
+lifas5 = Stands([38, 72, 106, 147, 193])
 lifas1 = Stands([45, 84, 103, 131, 164])
 lifas4 = Stands([55, 122, 178, 228])
 
