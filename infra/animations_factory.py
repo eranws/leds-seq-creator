@@ -141,6 +141,9 @@ class EffectFactory:
     def fill_in_out(self, edge = 1.0):
         FillAnimation(ConstFloatFunc(0.0), HalfFloatFunc(LinearFloatFunc(0.0, edge), LinearFloatFunc(edge, 0.0))).apply()
 
+    def fill_out_in(self, edge = 1.0):
+        FillAnimation(ConstFloatFunc(0.0), HalfFloatFunc(LinearFloatFunc(1.0, 1-edge), LinearFloatFunc(1-edge, 1.0))).apply()
+
     def segment_breath(self, length = 0.25):
         FillAnimation(SinFloatFunc(0.0, 1.0 - length, -0.25, 1), SinFloatFunc(length, 1.0, -0.25, 1)).apply()
 
