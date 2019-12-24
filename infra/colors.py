@@ -56,3 +56,5 @@ light_aquamarine = (0.39, 0.55, 1.0)
 
 dark_green = (0.315, 1.0, 0.5)
 dark_blue = (0.61, 1.0, 0.5)
+
+white = (0.0, 0.0, 1.0)
