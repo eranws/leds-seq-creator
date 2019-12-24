@@ -216,10 +216,37 @@ cycle(2)
 effect.segment_breath(0.5)
 
 beats(124, 132)
+cycle(2)
+effect.hue_breath(0.3)
 
+beats(132, 140)
+cycle(2)
+effect.segment_saw_tooth()
 
+beats(140, 148)
+cycle(2)
+effect.fill_out_in(0.7)
+
+beats(148, 156)
+cycle(1)
+effect.hue_blink()
+
+beats(156, 164)
+cycle(2)
+effect.snake_down_up()
+
+beats(164, 172)
+cycle(2)
+effect.blink_repeat(48)
+
+beats(172, 180)
+cycle(2)
+elements(dotted)
+effect.breath(edge=0.4, reverse=True)
+elements(not_dotted)
+effect.breath(edge=0.4, reverse=False)
 
 send_to_mqtt("under")
-start_song("under", 50)
+start_song("under", 0)
 
 
