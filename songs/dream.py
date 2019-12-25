@@ -20,105 +20,111 @@ from infra.colors import *
 song_settings(bpm=65, beats_per_episode=8, start_offset=1.44)
 
 def turqouise_opening():
+    cycle(8)
 
     elements(flowers)
-    beats(0, 2)
+    cycle_beats(0, 2)
     color.uniform(turquoise_string)
     effect.fade_in()
 
     elements(flowers)
-    beats(2, 7)
+    cycle_beats(2, 7)
     color.uniform(turquoise_string)
 
     elements(sticks)
-    beats(2, 4)
+    cycle_beats(2, 4)
     color.uniform(turquoise_string)
     effect.fade_in()
 
     elements(sticks)
-    beats(4, 7)
+    cycle_beats(4, 7)
     color.uniform(turquoise_string)
 
     elements(cabbages)
-    beats(4, 6)
+    cycle_beats(4, 6)
     color.uniform(turquoise_string)
     effect.fade_in()
 
     elements(cabbages)
-    beats(6, 7)
+    cycle_beats(6, 7)
     color.uniform(turquoise_string)
 
     elements(papers)
-    beats(6, 7)
+    cycle_beats(6, 7)
     color.uniform(turquoise_string)
     effect.fade_in()
 
+    elements(sticks, cabbages, papers, flowers)
+    cycle_beats(7, 7.25)
+    color.uniform(indigo)
+    cycle_beats(7.25, 7.5)
+    color.uniform(purple_string)
+    cycle_beats(7.5, 7.75)
+    color.uniform(pink_string)
+    cycle_beats(7.75, 8)
+    color.uniform(light_coral)
 
 episode(0)
 turqouise_opening()
+elements(sticks, cabbages, papers, flowers)
+beats(8, 16)
+color.uniform(light_coral)
+def opening_coral():
+    cycle(8)
+
+    cycle_beats(0, 2)
+    elements(lifas)
+    color.uniform(coral)
+    effect.fade_in()
+
+    cycle_beats(2, 8)
+    elements(lifas)
+    color.uniform(coral)
+
+    cycle_beats(2, 4)
+    elements(rugs)
+    color.uniform(coral)
+    effect.fade_in()
+
+    cycle_beats(4, 8)
+    elements(rugs)
+    color.uniform(coral)
+
+    cycle_beats(4, 5)
+    elements(cup_cakes)
+    color.uniform(coral)
+    effect.fade_in()
+
+    cycle_beats(5, 8)
+    elements(cup_cakes)
+    color.uniform(coral)
+
+    cycle_beats(5, 6)
+    elements(bottles, brain7)
+    color.uniform(coral)
+    effect.fade_in()
+
+    cycle_beats(6, 8)
+    elements(bottles, brain7)
+    color.uniform(coral)
+
+    cycle_beats(6, 7)
+    elements(donuts, gloves)
+    color.uniform(coral)
+    effect.fade_in()
+
+    cycle_beats(7, 8)
+    elements(donuts, gloves)
+    color.uniform(coral)
+
+    cycle_beats(7, 8)
+    elements(star7.all)
+    color.gradient(0.6, 1.0)
+    effect.snake(0.1)
 
 episode(1)
+opening_coral()
 
-elements(sticks, cabbages, papers, flowers)
-beats(7, 7.25)
-color.uniform(indigo)
-beats(7.25, 7.5)
-color.uniform(purple_string)
-beats(7.5, 7.75)
-color.uniform(pink_string)
-beats(7.75, 16)
-color.uniform(coral)
-
-
-beats(8, 10)
-elements(lifas)
-color.uniform(coral)
-effect.fade_in()
-
-beats(10, 16)
-elements(lifas)
-color.uniform(coral)
-
-beats(10, 12)
-elements(rugs)
-color.uniform(coral)
-effect.fade_in()
-
-beats(12, 16)
-elements(rugs)
-color.uniform(coral)
-
-beats(12, 13)
-elements(cup_cakes)
-color.uniform(coral)
-effect.fade_in()
-
-beats(13, 16)
-elements(cup_cakes)
-color.uniform(coral)
-
-beats(13, 14)
-elements(bottles, brain7)
-color.uniform(coral)
-effect.fade_in()
-
-beats(14, 16)
-elements(bottles, brain7)
-color.uniform(coral)
-
-beats(14, 15)
-elements(donuts, gloves)
-color.uniform(coral)
-effect.fade_in()
-
-beats(15, 16)
-elements(donuts, gloves)
-color.uniform(coral)
-
-beats(15, 16)
-elements(star7.all)
-color.gradient(0.6, 1.0)
-effect.snake(0.1)
 
 beats(16, 17)
 elements(all)
@@ -166,7 +172,7 @@ effect.snake(0.3, True)
 
 beats(27, 28)
 elements(papers, sticks, lifas, rugs, cup_cakes, bottles, cabbages, donuts, gloves, flowers)
-effect.fade_out(0.3, True)
+effect.fade_out()
 
 beats(28, 32)
 elements(papers, lifas, rugs, cup_cakes, bottles, cabbages, donuts, gloves, flowers, brain7)
@@ -179,7 +185,7 @@ effect.fade_out()
 
 beats(27, 28)
 elements(sticks)
-color(turquoise_strip)
+color.uniform(turquoise_strip)
 effect.breath(medium)
 
 beats(24, 31)
@@ -308,7 +314,7 @@ color.gradient(coral[0], orange_strip[0])
 effect.fill_in_out()
 
 episode(5)
-cycle_beats(6/10)
+cycle(6/10)
 elements(gloves)
 effect.breath(soft)
 
@@ -328,7 +334,7 @@ color.alternate(light_yellow_strip, yellow_strip)
 effect.fill()
 
 beats(84, 88)
-elements(all)
+elements(star7.all, sticks, lifas)
 color.alternate(light_yellow_strip, yellow_strip)
 
 beats(84, 88)
@@ -350,51 +356,113 @@ effect.fade_in()
 
 episode(11)
 
+for elem in all:
+    elem.random
+
 beats(88, 92)
 elements(group1)
 color.gradient(purple_string[0], blue[0])
-effect.breath(total)
+effect.saw_tooth(total)
+beats(92, 102)
+elements(group1)
+color.uniform((0.11, 0.8, 0.4))
+effect.fade_in()
 
 beats(90,94)
 elements(group2)
 color.gradient(blue[0], turquoise_string[0])
-effect.breath(total)
+effect.saw_tooth(total)
+beats(94, 102)
+elements(group2)
+color.uniform((0.11, 0.8, 0.4))
+effect.fade_in()
 
 beats(92,96)
 elements(group3)
 color.gradient(aquamarine[0], turquoise_string[0])
-effect.breath(total)
+effect.saw_tooth()
+beats(96, 102)
+elements(group3)
+color.uniform((0.11, 0.8, 0.4))
+effect.fade_in()
 
-beats(94,98)
+beats(93,95)
 elements(group4)
 color.gradient(aquamarine[0], green[0])
-effect.breath(total)
+effect.saw_tooth(total)
+beats(95, 102)
+elements(group4)
+color.uniform((0.11, 0.8, 0.4))
+effect.fade_in()
 
-beats(96,100)
+beats(94,96)
 elements(group5)
 color.gradient(green[0], yellow_strip[0])
-effect.breath(total)
+effect.saw_tooth(total)
+beats(96, 102)
+elements(group5)
+color.uniform((0.11, 0.8, 0.4))
+effect.fade_in()
 
-beats(98,102)
+
+beats(96,98)
 elements(group6)
 color.gradient(yellow_strip[0], orange_strip[0])
-effect.breath(total)
-
-beats(98, 100)
-cycle_beats(0.33)
+effect.saw_tooth(total)
+beats(98, 102)
 elements(group6)
-effect.hue_blink(hard)
+color.uniform((0.11, 0.8, 0.4))
+effect.fade_in()
 
-beats(100, 104)
-elements(group7, group8)
-color.gradient(coral[0], orange_strip[0])
-effect.breath(total)
+beats(97,99)
+elements(group8)
+color.gradient(pink_strip[0], magenta[0])
+effect.saw_tooth(total)
+beats(99, 102)
+elements(group8)
+color.uniform((0.11, 0.8, 0.4))
+effect.fade_in()
 
-episodes(11, 12)
-cycle_beats(6/10)
+beats(98,98.3)
+elements(group7)
+color.uniform(pink_string)
+beats(98.3, 98.6)
+elements(group7)
+color.uniform(magenta)
+beats(98.6, 99)
+elements(group7)
+color.uniform(purple_string)
+beats(99, 99.3)
+elements(group7)
+color.uniform(magenta)
+beats(99.3, 99.6)
+elements(group7)
+color.uniform(pink_string)
+beats(99.6, 100)
+elements(group7)
+color.uniform(light_orange_strip)
+beats(100, 102)
+elements(group7)
+color.uniform((0.11, 0.8, 0.4))
+
+beats(101,102)
+elements(all)
+effect.breath(medium)
+
+beats(102, 103)
+elements(all)
+color.uniform((0.11, 0.8, 0.4))
+effect.snake(0.4)
+
+for elem in all:
+    elem.straight
+
+beats(88, 104)
+cycle(1/6)
 elements(gloves)
-color.uniform(aquamarine)
-effect.breath(soft)
+color.uniform(light_coral)
+effect.breath(0.2)
+
 
 beats(95, 96)
 elements(star7.all)
@@ -403,74 +471,76 @@ effect.snake(0.2, True)
 
 episode(13)
 
-beats(104, 116)
-elements(star7.all ,single_sticks, single_lifas)
-color.alternate(light_yellow_strip, yellow_strip)
+beats(104, 115.5)
+elements(flowers, papers, brain7, gloves, cabbages)
+color.alternate(light_purple_string, purple_string)
 effect.fill()
+cycle(1)
+effect.hue_saw_tooth(soft)
+beats(115.5, 116)
+elements(flowers, papers, brain7, gloves, cabbages)
+color.alternate(light_purple_string, purple_string)
+effect.fill_out()
 
-beats(116, 120)
-elements(all)
-color.alternate(aquamarine, light_blue)
+beats(104, 106)
+cycle(2)
+elements(sticks7)
+color.uniform(coral)
+effect.blink(medium)
+
+beats(106, 108)
+cycle(2)
+elements(lifas5)
+color.uniform(coral)
+effect.blink(medium)
+
+beats(108, 110)
+cycle(2)
+elements(sticks3)
+color.uniform(coral)
+effect.blink(medium)
+
+beats(110, 112)
+cycle(2)
+elements(lifas1)
+color.uniform(coral)
+effect.blink(medium)
+
+beats(112, 114)
+cycle(2)
+elements(sticks8)
+color.uniform(coral)
+effect.blink(medium)
+
+beats(114, 116)
+cycle(2)
+elements(lifas4)
+color.uniform(coral)
+effect.blink(medium)
 
 beats(116, 120)
 elements(donuts, gloves , brain7)
 color.alternate(aquamarine, light_blue)
-effect.fade_in()
+effect.saw_tooth(total)
 
 beats(117, 120)
 elements(bottles, papers, cup_cakes)
 color.alternate(aquamarine, light_blue)
-effect.fade_in()
+effect.saw_tooth(total)
 
 beats(118, 120)
-elements(rugs, flowers)
+elements(rugs, flowers, cabbages)
 color.alternate(aquamarine, light_blue)
-effect.fade_in()
-
-beats(104, 120)
-cycle(1)
-elements(all)
-effect.hue_saw_tooth(hard, False)
-beats(104, 120)
-cycle(16)
-elements(all)
-effect.hue_breath(soft)
-
-beats(104)
-elements(donut1)
-color([1.0, 0.0, 1.0])
 effect.saw_tooth(total)
 
-beats(106)
-elements(brain7)
-color([1.0, 0.0, 1.0])
+beats(119, 120)
+elements(sticks, lifas, star7)
+color.alternate(aquamarine, light_blue)
 effect.saw_tooth(total)
 
-beats(108)
-elements(flower1)
-color([1.0, 0.0, 1.0])
-effect.saw_tooth(total)
-
-beats(110)
-elements(paper5)
-color([1.0, 0.0, 1.0])
-effect.saw_tooth(total)
-
-beats(112)
-elements(cup_cake3)
-color([1.0, 0.0, 1.0])
-effect.saw_tooth(total)
-
-beats(114)
-elements(cabbage6)
-color([1.0, 0.0, 1.0])
-effect.saw_tooth(total)
-
-beat(119)
-elements(all)
-effect.fade_out()
 
 episodes(15, 18)
+beats(120, 152)
 elements(flowers, bottles, gloves, papers)
 color.uniform(aquamarine)
 elements(sticks, lifas)
@@ -478,84 +548,266 @@ color.uniform(light_blue)
 elements(rugs, star7, cup_cakes)
 color.uniform(blue)
 elements(cabbages, brain7)
+color.uniform(turquoise_strip)
+elements(all)
 cycle(4)
 effect.hue_saw_tooth(soft)
-cycle(1/6)
-effect.blink(soft)
+
 
 beats(120, 128)
 elements(all)
 effect.fade_in()
 
+beats(120, 128)
+cycle(0.01)
+elements(all)
+effect.breath(0.1)
+
+beats(128, 136)
+cycle(0.5)
+elements(all)
+effect.breath(0.1)
+
 episode(18)
 beats(136, 138)
 cycle(1)
 elements(sticks)
-color.gradient(yellow_strip, orange_strip)
+color.gradient(yellow_strip[0], orange_strip[0])
 effect.breath(medium)
 beats(138, 150)
 elements(sticks)
-color.gradient(yellow_strip, orange_strip)
+color.gradient(yellow_strip[0], orange_strip[0])
 
 beats(138, 140)
 cycle(1)
 elements(flowers)
-color.gradient(yellow_strip, orange_strip)
+color.gradient(yellow_strip[0], orange_strip[0])
 effect.breath(medium)
 beats(140, 150)
 elements(flowers)
-color.gradient(yellow_strip, orange_strip)
+color.gradient(yellow_strip[0], orange_strip[0])
 
 beats(140, 142)
 cycle(1)
 elements(cup_cakes)
-color.gradient(yellow_strip, orange_strip)
+color.gradient(yellow_strip[0], orange_strip[0])
 effect.breath(medium)
 beats(142, 150)
 elements(cup_cakes)
-color.gradient(yellow_strip, orange_strip)
+color.gradient(yellow_strip[0], orange_strip[0])
 
 beats(142, 144)
 cycle(1)
 elements(rugs)
-color.gradient(yellow_strip, orange_strip)
+color.gradient(yellow_strip[0], orange_strip[0])
 effect.breath(medium)
 beats(144, 150)
 elements(rugs)
-color.gradient(yellow_strip, orange_strip)
+color.gradient(yellow_strip[0], orange_strip[0])
 
 beats(144, 146)
 cycle(1)
-elements(papers, cabbages)
-color.gradient(yellow_strip, orange_strip)
+elements(papers, cabbages, brain7)
+color.gradient(yellow_strip[0], orange_strip[0])
 effect.breath(medium)
 beats(146, 150)
-elements(papers,cabbages)
-color.gradient(yellow_strip, orange_strip)
+elements(papers,cabbages, brain7)
+color.gradient(yellow_strip[0], orange_strip[0])
 
 beats(146, 148)
 cycle(1)
 elements(lifas, cup_cakes)
-color.gradient(yellow_strip, orange_strip)
+color.gradient(yellow_strip[0], orange_strip[0])
 effect.breath(medium)
 beats(148, 150)
 elements(lifas, cup_cakes)
-color.gradient(yellow_strip, orange_strip)
+color.gradient(yellow_strip[0], orange_strip[0])
 
 beats(148, 150)
 cycle(1)
 elements(star7, gloves, bottles)
-color.gradient(yellow_strip, orange_strip)
+color.gradient(yellow_strip[0], orange_strip[0])
 effect.breath(medium)
 
 beats(150, 151)
 elements(all)
 color.uniform(indigo)
 
-beats(152, 152)
+beats(151, 152)
 elements(all)
-color.uniform(light_blue)
+color.gradient(indigo[0], light_blue[0])
 effect.fill_out()
+
+
+
+beats(152, 153)
+elements(all)
+color.uniform(magenta)
+
+beats(152+17-16, 152+18-16)
+elements(all)
+color.uniform(coral)
+
+beats(152+18-16, 152+19-16)
+elements(all)
+color.uniform(magenta)
+
+beats(152+19-16, 152+20-16)
+cycle(0.5)
+elements(all)
+color.gradient(purple_string[0], coral[0])
+effect.hue_blink(medium)
+
+
+beats(152+20-16, 152+24-16)
+elements(all)
+color.uniform([1.0, 0.0, 0.7])
+
+beats(152+20-16, 152+21-16)
+elements( sticks, bottles, stars, donuts, papers)
+color.gradient(purple_string[0], coral[0])
+
+beats(152+20-16, 152+22-16)
+elements(flowers, rugs, cup_cakes, gloves, rugs, lifas)
+color.gradient(purple_string[0], coral[0])
+
+
+beats(152+23-16, 152+24-16)
+cycle(0.5)
+elements(cabbages)
+color.gradient(purple_string[0], coral[0])
+effect.hue_blink(medium)
+
+
+color.uniform(magenta)
+
+beats(152+17-16, 152+18-16)
+elements(all)
+color.uniform(coral)
+
+beats(152+18-16, 152+19-16)
+elements(all)
+color.uniform(magenta)
+
+beats(152+19-16, 152+20-16)
+cycle(0.5)
+elements(all)
+color.gradient(purple_string[0], coral[0])
+effect.hue_blink(medium)
+
+
+beats(152+20-16, 152+24-16)
+elements(all)
+color.uniform([1.0, 0.0, 0.7])
+
+beats(152+20-16, 152+21-16)
+elements( sticks, bottles, stars, donuts, papers)
+color.gradient(purple_string[0], coral[0])
+
+beats(152+20-16, 152+22-16)
+elements(flowers, rugs, cup_cakes, gloves, rugs, lifas)
+color.gradient(purple_string[0], coral[0])
+
+
+beats(152+23-16, 152+24-16)
+cycle(0.5)
+elements(cabbages)
+color.gradient(purple_string[0], coral[0])
+effect.hue_blink(medium)
+
+# episodes(3, 4)
+# beats(24, 28)
+# elements(papers, sticks, lifas, rugs, cup_cakes, bottles, cabbages, donuts, gloves, flowers)
+# color.gradient(turquoise_string[0], purple_string[0])
+# effect.snake(0.3, True)
+#
+# beats(152+27, 152+28)
+# elements(papers, sticks, lifas, rugs, cup_cakes, bottles, cabbages, donuts, gloves, flowers)
+# effect.fade_out()
+#
+# beats(152+28, 152+32)
+# elements(papers, lifas, rugs, cup_cakes, bottles, cabbages, donuts, gloves, flowers, brain7)
+# color.gradient(pink_string[0], purple_string[0])
+# effect.snake(0.7)
+#
+# beats(152+31, 152+32)
+# elements(papers, lifas, rugs, cup_cakes, bottles, cabbages, donuts, gloves, flowers, brain7)
+# effect.fade_out()
+#
+# beats(152+27, 152+28)
+# elements(sticks)
+# color.uniform(turquoise_strip)
+# effect.breath(medium)
+#
+# beats(152+24, 152+31)
+# elements(star7.all)
+# color.gradient(turquoise_string[0], purple_string[0])
+# effect.fill()
+#
+# beats(152+31, 152+32)
+# elements(star7)
+# cycle(0.25)
+# color.gradient(turquoise_string[0], purple_string[0])
+# effect.random_brightness()
+# effect.hue_shift_steps(4, 0.08)
+#
+#
+#
+# episode(4)
+# beats(152+32, 152+33)
+# elements(all)
+# color.uniform([0.88, 0.7, 0.25])
+#
+# beats(152+33, 152+34)
+# elements(all)
+# color.uniform([0.88, 0.7, 0.5])
+#
+#
+# beats(152+34, 152+34.3)
+# elements(all)
+# color.uniform([0.88, 0.7, 0.75])
+#
+#
+# beats(152+34.3, 152+36)
+# elements(group4, group8)
+# color.uniform([0.675, 1.0, 1.0])
+#
+# beats(152+34.66, 152+36)
+# elements(group2, group6)
+# color.uniform([0.675, 1.0, 1.0])
+#
+# beats(152+35, 152+36)
+# elements(group3)
+# color.uniform([0.675, 1.0, 1.0])
+#
+# beats(152+35.33, 152+36)
+# elements(group7, group5)
+# color.uniform([0.675, 1.0, 1.0])
+#
+# beats(152+35.66, 152+36)
+# elements(group1)
+# color.uniform([0.675, 1.0, 1.0])
+#
+# beats(152+36, 152+37)
+# elements(all)
+# color.uniform([0.675, 1.0, 0.8])
+#
+# beats(152+37, 152+38)
+# elements(all)
+# color.uniform([0.675, 1.0, 0.66])
+#
+# beats(152+38, 152+39)
+# elements(all)
+# color.uniform([0.675, 1.0, 0.33])
+# effect.fill_out()
+#
+# beats(152+39, 152+40)
+# elements(all)
+# cycle(0.25)
+# color.gradient(indigo[0], purple_string[0])
+# effect.random_brightness()
+# effect.hue_shift_steps(4, 0.08)
+
 #
 # elements(flowers)
 # beats(24, 25)
@@ -581,5 +833,5 @@ effect.fill_out()
 
 
 send_to_mqtt("dream")
-start_song("dream", 0)
+start_song("dream", 120)
 
