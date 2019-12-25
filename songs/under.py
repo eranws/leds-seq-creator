@@ -160,20 +160,6 @@ play_note_elem("D", 6.0)
 play_note_elem("C", 6.5)
 play_note_elem("Bb", 7.0)
 
-
-def drum(t, length):
-    beats(t, t+length)
-    effect.brightness(2.0)
-    #effect.fade_out()
-
-beats(20, 52)
-elements(drums_e)
-color.uniform((0.0, 0.0, 0.5))
-for t in [34.5, 35, 35.5, 35.75, 39.5, 39.75, 47.5, 49, 50.5, 50.75, 51.5, 51.75]:
-    drum(t, 0.1)
-for t in [36, 40, 44, 46, 48, 50, 51]:
-    drum(t, 0.25)
-
 beats(52, 80)
 elements(e)
 cycle(1)
