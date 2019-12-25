@@ -6,7 +6,6 @@ from animations.hue_shift import hue_shift_jump_on_cycle
 from float_func.linear import LinearFloatFunc
 from infra.animations_factory import color, effect
 from infra.length import short, medium, long, soft, hard, total
-from infra.stored_animations import save, beat, load
 from led_objects.cabbages import cabbage1, cabbage6, brain7, cup_cake4, cabbage5, cabbages, donut1, donut3, \
     brains, twists, donuts
 from led_objects.common import no_stands
@@ -161,20 +160,6 @@ play_note_elem("D", 6.0)
 play_note_elem("C", 6.5)
 play_note_elem("Bb", 7.0)
 
-
-def drum(t, length):
-    beats(t, t+length)
-    effect.brightness(2.0)
-    #effect.fade_out()
-
-beats(20, 52)
-elements(drums_e)
-color.uniform((0.0, 0.0, 0.5))
-for t in [34.5, 35, 35.5, 35.75, 39.5, 39.75, 47.5, 49, 50.5, 50.75, 51.5, 51.75]:
-    drum(t, 0.1)
-for t in [36, 40, 44, 46, 48, 50, 51]:
-    drum(t, 0.25)
-
 beats(52, 80)
 elements(e)
 cycle(1)
@@ -243,13 +228,58 @@ play_note("F", 3.5)
 play_note("Bb", 3.5)
 
 
+# energy part!!!!!
+dotted = [paper2, paper5, gloves8, flower1, flower6, bottle4, bottle5, cup_cake3]
+not_dotted = [donuts, stands, rugs, brains, stars, cabbages]
+for elem in dotted:
+    elem.random
+beats(116, 180)
+elements(all)
+color.gradient(0.0, 2.0)
+
+beats(116, 124)
+cycle(2)
+effect.segment_breath(0.5)
+
+beats(124, 132)
+cycle(2)
+effect.hue_breath(0.3)
+
+beats(132, 140)
+cycle(2)
+effect.segment_saw_tooth()
+
+beats(140, 148)
+cycle(2)
+effect.fill_out_in(0.7)
+
+beats(148, 156)
+cycle(1)
+effect.hue_blink()
+
+beats(156, 164)
+cycle(2)
+effect.snake_down_up()
+
+beats(164, 172)
+cycle(2)
+effect.blink_repeat(48)
+
+beats(172, 180)
+cycle(2)
+elements(dotted)
+effect.breath(edge=0.4, reverse=True)
+elements(not_dotted)
+effect.breath(edge=0.4, reverse=False)
 
 
 
 
-
-
-
+############################################################
+############################################################
+# second part
+############################################################
+############################################################
 
 
 
@@ -332,15 +362,13 @@ effect.snake(switch_direction = True)
 
 
 
-
-# energy part!!!!!
-dotted = [paper2, paper5, gloves8, flower1, flower6, bottle4, bottle5, cup_cake3]
-not_dotted = [donuts, stands, rugs, brains, stars, cabbages]
-for elem in dotted:
-    elem.random
 beats(280, 344)
+for elem in all:
+    elem.straight
+    elements(elem)
+    color.uniform((random.random(), 1.0, 1.0))
+
 elements(all)
-color.gradient(0.0, 2.0)
 
 beats(280, 288)
 cycle(2)

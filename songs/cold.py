@@ -2,9 +2,9 @@ import random
 
 from animations import brightness
 from animations.hue_shift import hue_shift_jump_on_cycle
+from animations_lib.fade import fade_out_gradually_rand, fade_out_wave_rand
 from infra.animations_factory import color, effect
 from infra.length import short, medium, long, soft, hard, total
-from infra.stored_animations import save, beat, load
 from led_objects.cabbages import cabbage1, cabbage6, brain7, cup_cake4, cabbage5, cabbages, donut1, donut3, \
     brains, twists, donuts
 from led_objects.flood import cup_cakes, rugs
@@ -39,23 +39,6 @@ voices = [{"name": segment["name"],
            "cues": list(sorted([cue for cue in cues if cue >= segment["start"] and cue <= segment["end"]]))
            } for segment in segments if segment["name"] != "fade"]
 
-fade_back = [group1, [group2, group8], [group3, group6], group4, group7, group5]
-fade_front = list(reversed([group1, [group2, group8], [group3, group6], group4, group7, group5]))
-fade_left = [[group3, group4], [group2, group7], [group8], [group1, group5], group6]
-fade_right = list(reversed([[group3, group4], [group2, group7], [group8], [group1, group5], group6]))
-fade_orders = [fade_back, fade_front, fade_left, fade_left]
-
-def rand_fade_out(fade_start, fade_end):
-    fade_time = fade_end - fade_start
-    fade_order = random.choice(fade_orders)
-    for i, elem in enumerate(fade_order):
-        elements(elem)
-        curr_fade_start = fade_start + (i / len(fade_order)) * fade_time
-        beats(curr_fade_start, fade_end)
-        effect.fade_out()
-        cycle(0.1)
-        effect.blink(0.03)
-
 for voice in voices:
 
     elements(all)
@@ -74,7 +57,11 @@ for voice in voices:
     beats(voice["start"], voice["start"] + 0.3)
     effect.fade_in()
 
-    rand_fade_out(voice["fade"], voice["end"])
+    beats(voice["fade"], voice["end"])
+    if voice["name"] == "la":
+        fade_out_wave_rand()
+    else:
+        fade_out_gradually_rand()
 
 send_to_mqtt("cold")
 start_song("cold", 0)

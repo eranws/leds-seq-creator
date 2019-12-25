@@ -9,7 +9,6 @@ from animations.rand_sat import RandSaturationAnimation
 from discrete_float_func.step_diff import StepDiffDiscreteFloatFunc
 from discrete_float_func.step_target import StepTargetDiscreteFloatFunc
 from float_func.steps import StepsFloatFunc
-from infra import timing, stored_animations
 from animations.alternate_coloring import AlternateColoringAnimation
 from animations.brightness import BrightnessAnimation
 from animations.const_color import ConstColorAnimation

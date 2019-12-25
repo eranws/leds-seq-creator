@@ -1,7 +1,6 @@
 from animations import brightness
 from infra.animations_factory import color, effect
 from infra.length import short, medium, long, soft, hard, total
-from infra.stored_animations import save, beat, load
 from led_objects.cabbages import cabbage1, cabbage6, brain7, cabbage5, cabbages, brains, donut1, donut3
 from led_objects.led_object import all
 from led_objects.flowers import *

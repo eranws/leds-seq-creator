@@ -1,4 +1,5 @@
 from led_objects.led_object import LedObject
+from led_objects.objects_selector import elements_flatten
 
 cabbages = []
 
@@ -14,17 +15,17 @@ cabbage1 = Twist(260)
 cabbage6 = Twist(300)
 cabbage5 = Twist(300)
 
-cabbages = [cabbage1, cabbage6, cabbage5]
+cabbages = elements_flatten([cabbage1, cabbage6, cabbage5])
 
 brain7 = Twist(299)
 cup_cake4 = Twist(300)
 
-brains = [brain7]
+brains = elements_flatten([brain7])
 
-twists = [cabbages, brains]
+twists = elements_flatten([cabbages, brains])
 
 
 donut1 = Twist(296)
 donut3 = Twist(296)
 
-donuts = [donut1, donut3]
+donuts = elements_flatten([donut1, donut3])
