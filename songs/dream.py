@@ -721,6 +721,51 @@ effect.hue_shift_steps(4, 0.08)
 for elem in [sticks7, sticks3, sticks8, star7]:
     elem.straight
 
+
+beats(168, 169)
+elements(papers, lifas, donuts)
+color.uniform(aquamarine)
+effect.fade_in()
+beats(169, 169.3)
+elements(papers, lifas, donuts)
+color.uniform((0.39, 0.75, 1.0))
+beats(169.3, 169.6)
+elements(papers, lifas, donuts)
+color.uniform((0.39, 0.55, 1.0))
+beats(169.6, 170)
+elements(papers, lifas, donuts)
+color.uniform((0.39, 0.35, 1.0))
+
+
+
+beats(170, 171)
+elements(sticks, star7, flowers)
+color.uniform(orange_strip)
+effect.fade_in()
+beats(171, 172)
+elements(sticks, star7.all, flowers)
+color.uniform((0.045, 0.75, 1.0))
+effect.fill_out()
+
+beats(172, 173)
+elements(all)
+color.uniform(light_coral)
+effect.breath(soft)
+
+beats(173, 174)
+elements(all)
+color.uniform((0.995, 0.75, 1.0))
+effect.breath(soft)
+
+beats(174, 175)
+elements(all)
+color.uniform(coral)
+effect.breath(soft)
+
+beats(175, 176)
+elements(all)
+color.gradient(coral[0], light_pink_strip[0])
+effect.fill_out()
 #
 # episode(4)
 # beats(152+32, 152+33)
@@ -802,5 +847,5 @@ for elem in [sticks7, sticks3, sticks8, star7]:
 
 
 send_to_mqtt("dream")
-start_song("dream", 130)
+start_song("dream", 140)
 
