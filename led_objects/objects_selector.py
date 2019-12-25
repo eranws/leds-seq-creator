@@ -24,9 +24,14 @@ def unpack_elements(elems):
     return new_elems
 
 
+def elements_flatten(elems):
+    unpacked = unpack_elements(elems)
+    while should_unapack(unpacked):
+        unpacked = unpack_elements(unpacked)
+    return unpacked
+
+
 def elements(*args):
     global stored_objects
-    new_args = unpack_elements(args)
-    while should_unapack(new_args):
-        new_args = unpack_elements(new_args)
-    stored_objects = [SegmentProxy(obj, obj.default_mapping()) if isinstance(obj, LedObject) else obj for obj in new_args]
+    unpacked = elements_flatten(args)
+    stored_objects = [SegmentProxy(obj, obj.default_mapping()) if isinstance(obj, LedObject) else obj for obj in unpacked]

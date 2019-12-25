@@ -1,4 +1,5 @@
 from led_objects.led_object import LedObject, SegmentProxy
+from led_objects.objects_selector import elements_flatten
 
 
 class Stands(LedObject):
@@ -25,17 +26,17 @@ sticks8 = Stands([12, 31, 46, 56, 72])
 sticks7 = Stands([16, 29, 51, 68, 87, 103])
 sticks3 = Stands([55, 106, 150, 190, 227])
 
-sticks = [sticks3, sticks7, sticks8]
-single_sticks = [stick.all for stick in sticks]
+sticks = elements_flatten([sticks3, sticks7, sticks8])
+single_sticks = elements_flatten([stick.all for stick in sticks])
 
 lifas5 = Stands([38, 72, 106, 147, 193])
 lifas1 = Stands([45, 84, 103, 131, 164])
 lifas4 = Stands([55, 122, 178, 228])
 
 
-lifas = [lifas1, lifas4, lifas5]
-single_lifas = [lifa.all for lifa in lifas]
+lifas = elements_flatten([lifas1, lifas4, lifas5])
+single_lifas = elements_flatten([lifa.all for lifa in lifas])
 
-stands = [sticks, lifas]
-single_stands = [single_lifas, single_sticks]
-single_stands_per_stand = single_sticks + single_lifas
+stands = elements_flatten([sticks, lifas])
+single_stands = elements_flatten([single_lifas, single_sticks])
+single_stands_per_stand = elements_flatten(single_sticks + single_lifas)
