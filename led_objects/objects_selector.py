@@ -35,3 +35,18 @@ def elements(*args):
     global stored_objects
     unpacked = elements_flatten(args)
     stored_objects = [SegmentProxy(obj, obj.default_mapping()) if isinstance(obj, LedObject) else obj for obj in unpacked]
+
+def elements_random(*args):
+    global stored_objects
+    unpacked = elements_flatten(args)
+    if any([obj for obj in unpacked if not isinstance(obj, LedObject)]):
+        raise Exception("elements_random(...) can only be called on led objects, not segments")
+    stored_objects = [SegmentProxy(obj, "r") for obj in unpacked]
+
+
+
+
+
+
+
+
