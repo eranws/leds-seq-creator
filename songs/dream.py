@@ -678,80 +678,49 @@ elements(cabbages)
 color.gradient(purple_string[0], coral[0])
 effect.hue_blink(medium)
 
+beats(24+136, 28+136)
+elements(papers, sticks, lifas, rugs, cup_cakes, bottles, cabbages, donuts, gloves, flowers)
+color.gradient(turquoise_string[0], purple_string[0])
+effect.snake(0.3, True)
 
-color.uniform(magenta)
-
-beats(152+17-16, 152+18-16)
-elements(all)
-color.uniform(coral)
-
-beats(152+18-16, 152+19-16)
-elements(all)
-color.uniform(magenta)
-
-beats(152+19-16, 152+20-16)
-cycle(0.5)
-elements(all)
-color.gradient(purple_string[0], coral[0])
-effect.hue_blink(medium)
+beats(27+136, 28+136)
+elements(papers, sticks, lifas, rugs, cup_cakes, bottles, cabbages, donuts, gloves, flowers)
+effect.fade_out()
 
 
-beats(152+20-16, 152+24-16)
-elements(all)
-color.uniform([1.0, 0.0, 0.7])
+beats(28+136, 32+136)
+elements(papers, lifas, rugs, cup_cakes, bottles, cabbages, donuts, gloves, flowers, brain7)
+color.gradient(pink_string[0], purple_string[0])
+effect.snake(0.7)
 
-beats(152+20-16, 152+21-16)
-elements( sticks, bottles, stars, donuts, papers)
-color.gradient(purple_string[0], coral[0])
-
-beats(152+20-16, 152+22-16)
-elements(flowers, rugs, cup_cakes, gloves, rugs, lifas)
-color.gradient(purple_string[0], coral[0])
+beats(31+136, 32+136)
+elements(papers, lifas, rugs, cup_cakes, bottles, cabbages, donuts, gloves, flowers, brain7)
+effect.fade_out()
 
 
-beats(152+23-16, 152+24-16)
-cycle(0.5)
-elements(cabbages)
-color.gradient(purple_string[0], coral[0])
-effect.hue_blink(medium)
+for elem in [sticks7, sticks3, sticks8, sticks7]:
+    elem.random
+beats(27+136, 28+136)
+elements(sticks)
+color.uniform(turquoise_strip)
+effect.snake(0.2)
 
-# episodes(3, 4)
-# beats(24, 28)
-# elements(papers, sticks, lifas, rugs, cup_cakes, bottles, cabbages, donuts, gloves, flowers)
-# color.gradient(turquoise_string[0], purple_string[0])
-# effect.snake(0.3, True)
-#
-# beats(152+27, 152+28)
-# elements(papers, sticks, lifas, rugs, cup_cakes, bottles, cabbages, donuts, gloves, flowers)
-# effect.fade_out()
-#
-# beats(152+28, 152+32)
-# elements(papers, lifas, rugs, cup_cakes, bottles, cabbages, donuts, gloves, flowers, brain7)
-# color.gradient(pink_string[0], purple_string[0])
-# effect.snake(0.7)
-#
-# beats(152+31, 152+32)
-# elements(papers, lifas, rugs, cup_cakes, bottles, cabbages, donuts, gloves, flowers, brain7)
-# effect.fade_out()
-#
-# beats(152+27, 152+28)
-# elements(sticks)
-# color.uniform(turquoise_strip)
-# effect.breath(medium)
-#
-# beats(152+24, 152+31)
-# elements(star7.all)
-# color.gradient(turquoise_string[0], purple_string[0])
-# effect.fill()
-#
-# beats(152+31, 152+32)
-# elements(star7)
-# cycle(0.25)
-# color.gradient(turquoise_string[0], purple_string[0])
-# effect.random_brightness()
-# effect.hue_shift_steps(4, 0.08)
-#
-#
+
+beats(24+136, 31+136)
+elements(star7.all)
+color.gradient(turquoise_string[0], purple_string[0])
+effect.fill()
+
+beats(31+136, 32+136)
+elements(star7)
+cycle(0.25)
+color.gradient(turquoise_string[0], purple_string[0])
+effect.random_brightness()
+effect.hue_shift_steps(4, 0.08)
+
+for elem in [sticks7, sticks3, sticks8, star7]:
+    elem.straight
+
 #
 # episode(4)
 # beats(152+32, 152+33)
@@ -833,5 +802,5 @@ effect.hue_blink(medium)
 
 
 send_to_mqtt("dream")
-start_song("dream", 120)
+start_song("dream", 130)
 
