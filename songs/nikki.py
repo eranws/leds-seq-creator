@@ -3,7 +3,6 @@ from animations.brightness import BrightnessAnimation
 from float_func.linear import LinearFloatFunc
 from infra.animations_factory import color, effect
 from infra.length import short, medium, long, soft, hard, total
-from infra.stored_animations import save, beat, load
 from led_objects.stars import stars
 from led_objects.groups import group1, group2, group3, group4, group5, group6, group7, group8
 from led_objects.meduza import meduza

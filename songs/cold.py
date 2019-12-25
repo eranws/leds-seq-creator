@@ -5,7 +5,6 @@ from animations.hue_shift import hue_shift_jump_on_cycle
 from animations_lib.fade import fade_out_gradually_rand, fade_out_wave_rand
 from infra.animations_factory import color, effect
 from infra.length import short, medium, long, soft, hard, total
-from infra.stored_animations import save, beat, load
 from led_objects.cabbages import cabbage1, cabbage6, brain7, cup_cake4, cabbage5, cabbages, donut1, donut3, \
     brains, twists, donuts
 from led_objects.flood import cup_cakes, rugs

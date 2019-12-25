@@ -2,8 +2,6 @@
 """ global object - accessed from other modules """
 import copy
 
-from infra import stored_animations
-
 time_frame_factory = None
 
 
