@@ -243,13 +243,58 @@ play_note("F", 3.5)
 play_note("Bb", 3.5)
 
 
+# energy part!!!!!
+dotted = [paper2, paper5, gloves8, flower1, flower6, bottle4, bottle5, cup_cake3]
+not_dotted = [donuts, stands, rugs, brains, stars, cabbages]
+for elem in dotted:
+    elem.random
+beats(116, 180)
+elements(all)
+color.gradient(0.0, 2.0)
+
+beats(116, 124)
+cycle(2)
+effect.segment_breath(0.5)
+
+beats(124, 132)
+cycle(2)
+effect.hue_breath(0.3)
+
+beats(132, 140)
+cycle(2)
+effect.segment_saw_tooth()
+
+beats(140, 148)
+cycle(2)
+effect.fill_out_in(0.7)
+
+beats(148, 156)
+cycle(1)
+effect.hue_blink()
+
+beats(156, 164)
+cycle(2)
+effect.snake_down_up()
+
+beats(164, 172)
+cycle(2)
+effect.blink_repeat(48)
+
+beats(172, 180)
+cycle(2)
+elements(dotted)
+effect.breath(edge=0.4, reverse=True)
+elements(not_dotted)
+effect.breath(edge=0.4, reverse=False)
 
 
 
 
-
-
-
+############################################################
+############################################################
+# second part
+############################################################
+############################################################
 
 
 
@@ -332,15 +377,13 @@ effect.snake(switch_direction = True)
 
 
 
-
-# energy part!!!!!
-dotted = [paper2, paper5, gloves8, flower1, flower6, bottle4, bottle5, cup_cake3]
-not_dotted = [donuts, stands, rugs, brains, stars, cabbages]
-for elem in dotted:
-    elem.random
 beats(280, 344)
+for elem in all:
+    elem.straight
+    elements(elem)
+    color.uniform((random.random(), 1.0, 1.0))
+
 elements(all)
-color.gradient(0.0, 2.0)
 
 beats(280, 288)
 cycle(2)
