@@ -16,12 +16,14 @@ from led_objects.common import no_stands
 from led_objects.flood import cup_cakes, rug4, rugs, cup_cake3, rug6, floods
 from led_objects.groups import group1, group2, group3, group4, group5, group6, group7, group8
 from led_objects.led_object import all
-from led_objects.flowers import flower6, flowers, paper5, papers, bottles, paper2, flower1, strings, bottle5, bottle4
+from led_objects.flowers import flower6, flowers, paper5, papers, bottles, paper2, flower1, strings, bottle5, bottle4, \
+    gloves8
 from led_objects.meduza import meduza
 from led_objects.objects_selector import elements
 from led_objects.sheep import sheep
 from led_objects.stands import sticks8, single_sticks, sticks7, sticks3, lifas5, lifas1, lifas4, sticks, lifas, stands, \
     single_lifas, single_stands
+from led_objects.stars import star7
 from network.send_to_mqtt import send_to_mqtt, start_song
 from infra.timing import song_settings, episodes, episode, cycle, cycle_beats, beats
 from infra.colors import *
@@ -288,19 +290,19 @@ effect.snake(0.5)
 
 episodes(9.5,10)
 cycle(16)
-elements(flowers,cup_cakes,rugs)
+elements(flowers,cup_cakes,rugs,star7)
 color.uniform(indigo)
 effect.fill()
 
 episodes(10,12)
 cycle(1)
-elements(flowers,cup_cakes,rugs)
+elements(flowers,cup_cakes,rugs,star7)
 color.uniform(indigo)
 effect.snake(0.5)
 
 episodes(10,12)
 cycle(2)
-elements(papers,bottles,donuts)
+elements(papers,bottles,donuts,gloves8)
 color.uniform(coral)
 effect.saw_tooth()
 
@@ -308,7 +310,7 @@ for e in all:
     e.straight
 episodes(11,12)
 cycle(4)
-elements(cabbages,brains,donuts,meduza)
+elements(cabbages,brains,donuts,meduza,star7.all)
 color.uniform(blue)
 effect.fill_in_out()
 
@@ -343,7 +345,7 @@ BrightnessAnimation(SinFloatFunc(0.2, 1.0, 0.75, 1)).apply()
 
 episodes(14,16)
 cycle(2)
-elements(donuts,meduza)
+elements(donuts,meduza,star7)
 color.uniform(coral)
 effect.saw_tooth()
 
@@ -571,7 +573,7 @@ effect.breath()
 for e in all:
     e.random
 cycle(4)
-elements(cabbages,brains,cup_cakes)
+elements(cabbages,brains,cup_cakes,star7)
 color.gradient(magenta[0],turquoise_string[0])
 effect.snake()
 
@@ -595,13 +597,13 @@ effect.breath()
 
 episodes(23.5, 25)
 cycle(8)
-elements(rugs)
+elements(rugs,gloves8)
 color.uniform([magenta[0]+turquoise_string[0]/2, 0.5, 0.5])
 effect.breath()
 
 episodes(23.75, 25)
 cycle(8)
-elements(donuts,flowers)
+elements(donuts,flowers,star7)
 color.uniform(turquoise_string)
 effect.breath()
 
@@ -658,6 +660,6 @@ elements(all)
 effect.fill_out()
 
 send_to_mqtt("alterego")
-start_song("alterego", 0)#15.6*26)
+start_song("alterego", 15.6*10)
 
 

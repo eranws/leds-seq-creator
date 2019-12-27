@@ -14,6 +14,7 @@ from led_objects.flowers import flower6, flowers, paper5, papers, flower1, paper
 from led_objects.objects_selector import elements
 from led_objects.stands import sticks8, single_sticks, sticks7, sticks3, lifas5, lifas1, lifas4, lifas, sticks, \
     single_lifas
+from led_objects.stars import star7
 
 from network.send_to_mqtt import send_to_mqtt, start_song
 from infra.timing import song_settings, episodes, episode, cycle, cycle_beats, beats
@@ -172,11 +173,11 @@ elements(brains)
 color.uniform(purple_string)
 effect.snake(3)
 cycle_beats(16,26)
-elements(single_sticks,single_lifas)
+elements(single_sticks,single_lifas,star7.all)
 color.uniform(purple_string)
 effect.snake()
 cycle_beats(22,32)
-elements(single_sticks,single_lifas)
+elements(single_sticks,single_lifas,star7.all)
 color.uniform(purple_string)
 effect.breath()
 
@@ -191,11 +192,11 @@ elements(brains)
 color.uniform(purple_string)
 effect.snake(3)
 cycle_beats(2,12)
-elements(single_sticks,single_lifas)
+elements(single_sticks,single_lifas,star7.all)
 color.uniform(purple_string)
 effect.snake()
 cycle_beats(8,18)
-elements(single_sticks,single_lifas)
+elements(single_sticks,single_lifas,star7.all)
 color.uniform(purple_string)
 effect.breath()
 
@@ -208,11 +209,11 @@ elements(brains)
 color.uniform(purple_string)
 effect.snake(3)
 cycle_beats(16,26)
-elements(single_sticks,single_lifas)
+elements(single_sticks,single_lifas,star7.all)
 color.uniform(purple_string)
 effect.snake()
 cycle_beats(22,32)
-elements(single_sticks,single_lifas)
+elements(single_sticks,single_lifas,star7.all)
 color.uniform(purple_string)
 effect.breath()
 
@@ -225,7 +226,7 @@ elements(brains)
 color.uniform(purple_string)
 effect.snake(3)
 cycle_beats(26,32)
-elements(single_sticks,single_lifas)
+elements(single_sticks,single_lifas,star7.all)
 color.uniform(purple_string)
 effect.snake()
 
@@ -471,7 +472,7 @@ effect.snake()
 
 episodes(22,24)
 cycle(32)
-for b,e in enumerate(all+[cup_cake3,cup_cake4,flower1,flower6,paper2,paper5]):
+for b,e in enumerate(all+[cup_cake3,flower1,flower6]):
     cycle_beats(b,b+4)
     e.random
     elements(e)
@@ -574,6 +575,6 @@ color.gradient(0,1)
 effect.fade_out()
 
 send_to_mqtt("outlier")
-start_song("outlier",0)#16.4*28)#offset in seconds
+start_song("outlier",16.4*8)#offset in seconds
 
 
