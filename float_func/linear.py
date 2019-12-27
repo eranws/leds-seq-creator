@@ -15,3 +15,10 @@ class LinearFloatFunc:
             "start": self.start,
             "end": self.end
         }
+
+    def to_compact_json_obj(self):
+        return {
+            "t": "lin",
+            "start": self.start,
+            "end": self.end
+        }

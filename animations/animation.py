@@ -11,14 +11,19 @@ class Animation:
         self.repeat_params = None
         self.segments = None
 
-    def to_json_obj(self):
+    def to_json_obj(self, compact):
+
+        if compact:
+            params = self.get_compact_params_json()
+        else:
+            params = self.get_params_json()
 
         json_obj = {
             "t": self.name,
             "p": self.segments if len(self.segments) != 1 else self.segments[0],
             "s": self.timing.get_start_time_ms(),
             "e": self.timing.get_end_time_ms(),
-            "params": self.get_params_json()
+            "params": params
         }
 
         if self.timing.repeats:
