@@ -22,3 +22,13 @@ class SinFloatFunc:
             "phase": self.phase,
             "rep": self.repeats
         }
+
+    def to_compact_json_obj(self):
+        return {
+            "t": "sin",
+
+            "min": self.min_value,
+            "max": self.max_value,
+            "phase": self.phase,
+            "rep": self.repeats
+        }

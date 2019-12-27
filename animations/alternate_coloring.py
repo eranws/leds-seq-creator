@@ -18,3 +18,10 @@ class AlternateColoringAnimation(Animation):
             "hsv2": hsv_to_json(self.c2),
             "numPix": self.number_of_pixels
         }
+
+    def get_compact_params_json(self):
+        return {
+            "hsv1": hsv_to_json(self.c1),
+            "hsv2": hsv_to_json(self.c2),
+            "numPix": self.number_of_pixels
+        }

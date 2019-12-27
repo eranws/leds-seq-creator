@@ -24,9 +24,29 @@ def unpack_elements(elems):
     return new_elems
 
 
+def elements_flatten(elems):
+    unpacked = unpack_elements(elems)
+    while should_unapack(unpacked):
+        unpacked = unpack_elements(unpacked)
+    return unpacked
+
+
 def elements(*args):
     global stored_objects
-    new_args = unpack_elements(args)
-    while should_unapack(new_args):
-        new_args = unpack_elements(new_args)
-    stored_objects = [SegmentProxy(obj, obj.default_mapping()) if isinstance(obj, LedObject) else obj for obj in new_args]
+    unpacked = elements_flatten(args)
+    stored_objects = [SegmentProxy(obj, obj.default_mapping()) if isinstance(obj, LedObject) else obj for obj in unpacked]
+
+def elements_random(*args):
+    global stored_objects
+    unpacked = elements_flatten(args)
+    if any([obj for obj in unpacked if not isinstance(obj, LedObject)]):
+        raise Exception("elements_random(...) can only be called on led objects, not segments")
+    stored_objects = [SegmentProxy(obj, "r") for obj in unpacked]
+
+
+
+
+
+
+
+

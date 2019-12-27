@@ -1,6 +1,7 @@
 from animations.animation import Animation
 from float_func.linear import LinearFloatFunc
 from float_func.steps import StepsFloatFunc
+from infra.functions_store import float_functions_store
 
 
 class HueShiftAnimation(Animation):
@@ -13,6 +14,9 @@ class HueShiftAnimation(Animation):
 
     def get_params_json(self):
         return {"shiftAmount": self.shift_amount.to_json_obj() }
+
+    def get_compact_params_json(self):
+        return {"shiftAmount": float_functions_store.get_index(self.shift_amount) }
 
 
 def hue_shift_smooth(timing):

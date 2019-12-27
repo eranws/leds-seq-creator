@@ -2,26 +2,36 @@
 """ global object - accessed from other modules """
 import copy
 
-from infra import stored_animations
-
-tf_global = None
 time_frame_factory = None
 
 
-def get_timing():
-    global tf_global
-    return copy.deepcopy(tf_global)
-
-
 class TimeFrame:
+    """
+    represent a continues time frame in the song, with data on beats and cycle
+    """
 
-    def __init__(self, bpm, start_beat_index, number_of_beats, beats_in_cycle = None, start_offset = 0):
-        self.start_offset = start_offset
-        self.bpm = bpm
-        self.start_beat_index = start_beat_index
-        self.end_beat_index = start_beat_index + number_of_beats
+    def __init__(self, bpm:float, start_beat_index:float, end_beat_index:float, beats_in_cycle:float = None, start_offset:float = 0):
+        """
+        :param bpm: the song's beat per minutes
+        :param start_beat_index: the index of the beat that start the time frame
+        :param end_beat_index: the index of the (one plus) last beat in the time frame
+        :param beats_in_cycle: how many beats form a cycle in this time frame
+        :param start_offset: the offset in ms for the first beat in the song
+        """
+        self._start_offset = start_offset
+        self._bpm = bpm
+        self._start_beat_index = start_beat_index
+        self._end_beat_index = end_beat_index
         self._beats_in_cycle = beats_in_cycle
         self._cycle_beats = None
+
+    @property
+    def start_beat_index(self):
+        return self._start_beat_index
+
+    @property
+    def end_beat_index(self):
+        return self._end_beat_index
 
     @property
     def beats_in_cycle(self):
@@ -57,20 +67,69 @@ class TimeFrame:
         return self._cycle_beats[1] / float(self.beats_in_cycle)
 
     def get_start_time_ms(self):
-        return self.get_beat_time_ms(self.start_beat_index)
+        return self.get_beat_time_ms(self._start_beat_index)
 
     def get_end_time_ms(self):
-        return self.get_beat_time_ms(self.end_beat_index)
+        return self.get_beat_time_ms(self._end_beat_index)
 
     def number_of_beats(self):
-        return self.end_beat_index - self.start_beat_index
+        return self._end_beat_index - self._start_beat_index
 
     def get_beat_time_ms(self, beat_index):
-        beat_time_seconds = self.start_offset + beat_index * self.__get_beats_per_second()
+        beat_time_seconds = self._start_offset + beat_index * self.__get_beats_per_second()
         return int(beat_time_seconds * 1000.0)
 
     def __get_beats_per_second(self):
-        return 60.0 / self.bpm
+        return 60.0 / self._bpm
+
+    def copy(self):
+        """
+        copy the instance and return a new instance which is a copy of self
+        :return: a new TimeFrame instance which is a copy of self
+        """
+        return copy.deepcopy(self)
+
+    def extend(self, rel_start:float, rel_end:float):
+        """
+        extent the time frame to start and end at different times,
+        relatively to the current start and end times.
+
+        the parameters are the new start and end time, relativily
+        to the current time frame, where 0.0 is the current start,
+        and 1.0 is the current end.
+        for example:
+        extend(0.0, 2.0) will double the time frame length,
+            while starting at the same time
+        extend(-1.0, 0.0) will double the time frame length,
+            starting sooner, and ending at the orig end time
+        extend(0.0, 0.5) will shorten the time frame to half
+
+        :param rel_start: the new start time, relatively to the current time frame
+        :param rel_end: the new end time, relatively to the current time frame
+        :raise: ValueError if rel_start >= rel_end
+        """
+
+        if rel_start >= rel_end:
+            raise ValueError("TimeFrame extend rel_start >= rel _end")
+
+        orig_num_of_beats = self.number_of_beats()
+        orig_start_beat = self._start_beat_index
+        self._start_beat_index = orig_start_beat + orig_num_of_beats * rel_start
+        self._end_beat_index = orig_start_beat + orig_num_of_beats * rel_end
+
+
+tf_global = None
+
+
+def get_timing() -> TimeFrame:
+    global tf_global
+    return tf_global.copy()
+
+
+def set_timing(src_tf: TimeFrame):
+    global tf_global
+    tf_global = src_tf.copy()
+
 
 
 class TimeFrameFactory:
@@ -81,20 +140,22 @@ class TimeFrameFactory:
         self.bpm = bpm
 
     def from_beat(self, beat_start_index, beat_end_index):
-        return TimeFrame(self.bpm, beat_start_index, beat_end_index - beat_start_index, start_offset=self.start_offset)
+        return TimeFrame(self.bpm, beat_start_index, beat_end_index, start_offset=self.start_offset)
 
-    def from_beat_in_episode(self, episode_number, beat_start_index, beat_count):
-        return TimeFrame(self.bpm, (episode_number * self.beats_per_episode) + beat_start_index, beat_count, start_offset=self.start_offset)
+    def from_beat_in_episode(self, episode_number, beat_start_in_eipsode, beat_end_in_episode):
+        beat_start_index = (episode_number * self.beats_per_episode) + beat_start_in_eipsode
+        beat_end_index = (episode_number * self.beats_per_episode) + beat_end_in_episode
+        return TimeFrame(self.bpm, beat_start_index, beat_end_index, start_offset=self.start_offset)
 
     def episodes_length(self, episode_start_index, num_of_episodes):
-        start_beat = episode_start_index * self.beats_per_episode
-        num_of_beats = num_of_episodes * self.beats_per_episode
-        return TimeFrame(self.bpm, start_beat, num_of_beats, None, start_offset=self.start_offset)
+        start_beat_index = episode_start_index * self.beats_per_episode
+        end_beat_index = (episode_start_index + num_of_episodes) * self.beats_per_episode
+        return TimeFrame(self.bpm, start_beat_index, end_beat_index, None, start_offset=self.start_offset)
 
     def episodes_index(self, episode_start_index, episode_end_index):
-        start_beat = episode_start_index * self.beats_per_episode
-        num_of_beats = (episode_end_index - episode_start_index) * self.beats_per_episode
-        return TimeFrame(self.bpm, start_beat, num_of_beats, start_offset=self.start_offset)
+        start_beat_index = episode_start_index * self.beats_per_episode
+        end_beat_index = episode_end_index * self.beats_per_episode
+        return TimeFrame(self.bpm, start_beat_index, end_beat_index, start_offset=self.start_offset)
 
     def single_episode(self, episode_index):
         return self.episodes_length(episode_index, 1)
@@ -114,7 +175,7 @@ def beats(beat_start_index, beat_end_index):
 def beats_in_episode(episode_number, beat_start_index, beat_end_index):
     global time_frame_factory
     global tf_global
-    tf_global = time_frame_factory.from_beat_in_episode(episode_number, beat_start_index, beat_end_index - beat_start_index)
+    tf_global = time_frame_factory.from_beat_in_episode(episode_number, beat_start_index, beat_end_index)
 
 
 def episodes(episode_start_index, episode_end_index):
