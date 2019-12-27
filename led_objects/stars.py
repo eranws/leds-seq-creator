@@ -43,11 +43,16 @@ class Star(LedObject):
             raise Exception(f"star ray index {index} not valid")
         return SegmentProxy(self, str(index) + "r")
 
+    def ray(self, index):
+        return self.ray_in(index)
+
     @property
     def all(self):
-        return [SegmentProxy(self, str(i)) for i in range(1, self.number_of_rays + 1)]
+        return [SegmentProxy(self, str(i)) for i in range(0, self.number_of_rays)]
 
 
 star7 = Star(50, 3)
+single_star7 = elements_flatten([star7.all])
 
 stars = elements_flatten([star7])
+single_stars = elements_flatten([star.all for star in stars])
