@@ -45,7 +45,7 @@ class Star(LedObject):
 
     @property
     def all(self):
-        return [SegmentProxy(self, str(i)) for i in range(1, self.number_of_rays + 1)]
+        return [SegmentProxy(self, str(i)) for i in range(0, self.number_of_rays )]
 
 
 star7 = Star(50, 3)
