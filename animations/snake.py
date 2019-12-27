@@ -1,5 +1,5 @@
 from animations.animation import Animation
-from infra.functions_store import float_functions_store
+from infra.functions_store import float_functions_store, boolean_functions_store
 
 
 class SnakeAnimation(Animation):
@@ -23,5 +23,5 @@ class SnakeAnimation(Animation):
         return {
             "headPos": float_functions_store.get_index(self.head_pos),
             "length": float_functions_store.get_index(self.length),
-            "dir": self.dir.to_json_obj()
+            "dir": boolean_functions_store.get_index(self.dir)
         }

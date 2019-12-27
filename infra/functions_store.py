@@ -4,6 +4,9 @@ import json
 class FunctionsStore:
 
     def __init__(self):
+        self.reset()
+
+    def reset(self):
 
         # the index in the list is the index of the func
         # the value is the json obj
@@ -31,3 +34,5 @@ class FunctionsStore:
 
 
 float_functions_store = FunctionsStore()
+boolean_functions_store = FunctionsStore()
+discrete_float_functions_store = FunctionsStore()

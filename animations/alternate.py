@@ -5,7 +5,7 @@ from float_func.const import ConstFloatFunc
 from float_func.linear import LinearFloatFunc
 from float_func.repeat import RepeatFloatFunc
 from float_func.sin import SinFloatFunc
-from infra.functions_store import float_functions_store
+from infra.functions_store import float_functions_store, boolean_functions_store
 
 
 class AlternateAnimation(Animation):
@@ -28,7 +28,7 @@ class AlternateAnimation(Animation):
     def get_compact_params_json(self):
         return {
             "numPix": self.number_of_pixels,
-            "stateFunc": self.state_func.to_json_obj(),
+            "stateFunc": boolean_functions_store.get_index(self.state_func),
             "hueShiftFunc": float_functions_store.get_index(self.hue_shift_func)
         }
 

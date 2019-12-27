@@ -1,4 +1,6 @@
 from animations.animation import Animation
+from infra.functions_store import discrete_float_functions_store
+
 
 class HueShiftCycleAnimation(Animation):
 
@@ -12,6 +14,8 @@ class HueShiftCycleAnimation(Animation):
         return {"shiftAmount": self.shift_amount_c.to_json_obj() }
 
     def get_compact_params_json(self):
-        return {"shiftAmount": self.shift_amount_c.to_json_obj() }
+        return {
+            "shiftAmount": discrete_float_functions_store.get_index(self.shift_amount_c)
+        }
 
 

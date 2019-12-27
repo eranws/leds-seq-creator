@@ -10,4 +10,10 @@ class ConstBooleanFunc:
             "v": self.val
         }
 
+    def to_compact_json_obj(self):
+        return {
+            "t": "const",
+            "v": self.val
+        }
+
 

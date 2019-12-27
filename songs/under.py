@@ -425,10 +425,6 @@ play_note("C", 2.5)
 play_note("Bb", 3.0)
 play_note("D", 3.0)
 
-episodes(0, 1000)
-elements(star7)
-color.uniform(red)
-
 send_to_mqtt("under")
 # start_song("under", 1000)
 
