@@ -31,6 +31,7 @@ class FunctionsStore:
         self.saved_func_by_index.append(json_obj)
         index = len(self.saved_func_by_index)
         self.json_str_to_index[json_str] = index
+        return index
 
 
 float_functions_store = FunctionsStore()
