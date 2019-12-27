@@ -13,7 +13,8 @@ from led_objects.flood import cup_cakes, rugs, cup_cake3, rug6, rug4
 from led_objects.led_object import all
 from led_objects.flowers import flower6, flowers, paper5, papers, bottles, paper2, flower1, strings, gloves, gloves8, \
     bottle4, bottle5
-from led_objects.objects_selector import elements
+from led_objects.meduza import meduza
+from led_objects.objects_selector import elements, elements_random
 from led_objects.stands import sticks8, single_sticks, sticks7, sticks3, lifas5, lifas1, lifas4, sticks, lifas, stands, \
     single_lifas, single_stands, single_stands_per_stand
 from led_objects.stars import stars, star7
@@ -22,6 +23,37 @@ from infra.timing import song_settings, episodes, episode, cycle, cycle_beats, b
 from infra.colors import *
 
 song_settings(bpm=125, beats_per_episode=32, start_offset=0.025)
+
+# functions
+
+def meitar(elem, col):
+    elements(elem)
+    color.uniform(col)
+
+    cycle(4)
+    cycle_beats(0, 2)
+    elements_random(elem)
+    effect.fill()
+    cycle_beats(2, 4)
+    elements(elem)
+    effect.fill_out()
+
+
+
+episodes(0, 10)
+meitar([stars.all, meduza], aquamarine)
+
+episodes(9/16, 10)
+meitar([papers, cup_cakes, sticks], purple_strip)
+
+episodes(1, 10)
+elements(bottles, donuts)
+color.uniform(coral)
+
+cycle(4)
+effect.breath()
+
+
 
 
 send_to_mqtt("kerala")
