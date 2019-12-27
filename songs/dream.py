@@ -1,3 +1,5 @@
+import random
+
 from animations import brightness
 from infra.animations_factory import color, effect
 from infra.length import short, medium, long, soft, hard, total
@@ -564,7 +566,7 @@ elements(all)
 effect.breath(0.1)
 
 beats(128, 136)
-cycle(0.5)
+cycle(0.3)
 elements(all)
 effect.breath(0.1)
 
@@ -766,6 +768,58 @@ beats(175, 176)
 elements(all)
 color.gradient(coral[0], light_pink_strip[0])
 effect.fill_out()
+
+beats(176, 177)
+elements(group8,group4, group2, group6)
+color.alternate(dark_blue, blue)
+
+beats(177, 177.3)
+elements(group8,group4, group2, group6)
+color.alternate(light_blue, blue)
+
+beats(177.3, 177.6)
+elements(group8,group4, group2, group6)
+color.alternate(light_blue, turquoise_strip)
+
+beats(177.6, 184)
+elements(group8,group4, group2, group6)
+color.alternate(turquoise_strip, aquamarine)
+
+beats(178, 179)
+elements(group1,group3, group5, group7)
+color.alternate(yellow_strip, orange_strip)
+
+beats(179, 179.3)
+elements(group1,group3, group5, group7)
+color.alternate(yellow_strip, light_green)
+
+beats(179.3, 179.6)
+elements(group1,group3, group5, group7)
+color.alternate(light_green, turquoise_strip)
+
+beats(179.6, 184)
+elements(group1,group3, group5, group7)
+color.alternate(turquoise_strip, aquamarine)
+
+
+beats(180, 184)
+elements(all)
+effect.fade_in()
+
+
+beats(184, 188)
+for elem in all:
+    elements(elem)
+    color.uniform(random.choice([blue, indigo, purple_string, turquoise_strip]))
+elements(all)
+effect.fade_out()
+beats(184,186)
+cycle(0.3)
+elements(all)
+effect.breath(0.2, 0.2)
+
+beats(187, 188)
+
 #
 # episode(4)
 # beats(152+32, 152+33)
@@ -844,8 +898,5 @@ effect.fill_out()
 
 
 
-
-
 send_to_mqtt("dream")
-start_song("dream", 140)
-
+start_song("dream", 170)
