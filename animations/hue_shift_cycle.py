@@ -11,4 +11,7 @@ class HueShiftCycleAnimation(Animation):
     def get_params_json(self):
         return {"shiftAmount": self.shift_amount_c.to_json_obj() }
 
+    def get_compact_params_json(self):
+        return {"shiftAmount": self.shift_amount_c.to_json_obj() }
+
 

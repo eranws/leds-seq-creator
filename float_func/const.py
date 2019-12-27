@@ -9,3 +9,9 @@ class ConstFloatFunc:
             "t": "const",
             "val": self.const_value
         }
+
+    def to_compact_json_obj(self):
+        return {
+            "t": "const",
+            "val": self.const_value
+        }

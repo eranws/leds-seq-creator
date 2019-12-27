@@ -4,6 +4,8 @@ from animations.animation import Animation
 from float_func.sin import SinFloatFunc
 from float_func.const import ConstFloatFunc
 from float_func.linear import LinearFloatFunc
+from infra.functions_store import float_functions_store
+
 
 class Rainbow(Animation):
 
@@ -15,7 +17,17 @@ class Rainbow(Animation):
         self.end_hue = end_hue
 
     def get_params_json(self):
-        return { "startHue": self.start_hue.to_json_obj(), "endHue": self.end_hue.to_json_obj() }
+        return {
+            "startHue": self.start_hue.to_json_obj(),
+            "endHue": self.end_hue.to_json_obj()
+        }
+
+    def get_compact_params_json(self):
+        return {
+            "startHue": float_functions_store.get_index(self.start_hue),
+            "endHue": float_functions_store.get_index(self.end_hue)
+        }
+
 
 
 def monochrome_to_colorful(timing, hue, amp = 0.5):

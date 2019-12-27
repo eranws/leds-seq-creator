@@ -1,4 +1,5 @@
 from animations.animation import Animation
+from infra.functions_store import float_functions_store
 
 
 class SnakeAnimation(Animation):
@@ -18,3 +19,9 @@ class SnakeAnimation(Animation):
             "dir": self.dir.to_json_obj()
         }
 
+    def get_compact_params_json(self):
+        return {
+            "headPos": float_functions_store.get_index(self.head_pos),
+            "length": float_functions_store.get_index(self.length),
+            "dir": self.dir.to_json_obj()
+        }

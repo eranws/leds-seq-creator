@@ -18,3 +18,13 @@ class StepsFloatFunc:
             "diff": self.value_diff,
             "init": self.initial_value
         }
+
+    def to_compact_json_obj(self):
+        return {
+            "t": "steps",
+
+            "num": self.num_of_steps,
+            "diff": self.value_diff,
+            "init": self.initial_value
+        }
+

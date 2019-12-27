@@ -12,3 +12,6 @@ class RandBrightnessAnimation(Animation):
 
     def get_params_json(self):
         return {}
+
+    def get_compact_params_json(self):
+        return {}
