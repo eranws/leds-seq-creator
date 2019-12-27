@@ -1,4 +1,5 @@
 from led_objects.led_object import LedObject, SegmentProxy
+from led_objects.objects_selector import elements_flatten
 
 
 class Star(LedObject):
@@ -49,4 +50,4 @@ class Star(LedObject):
 
 star7 = Star(50, 3)
 
-stars = [star7]
+stars = elements_flatten([star7])

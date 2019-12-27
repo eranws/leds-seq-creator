@@ -3,10 +3,12 @@ from enum import Enum
 
 from animations.confetti import ConfettiAnimation
 from animations.fill import FillAnimation
+from animations.hue_shift_cycle import HueShiftCycleAnimation
 from animations.rand_brightness import RandBrightnessAnimation
 from animations.rand_sat import RandSaturationAnimation
+from discrete_float_func.step_diff import StepDiffDiscreteFloatFunc
+from discrete_float_func.step_target import StepTargetDiscreteFloatFunc
 from float_func.steps import StepsFloatFunc
-from infra import timing, stored_animations
 from animations.alternate_coloring import AlternateColoringAnimation
 from animations.brightness import BrightnessAnimation
 from animations.const_color import ConstColorAnimation
@@ -141,6 +143,9 @@ class EffectFactory:
     def fill_in_out(self, edge = 1.0):
         FillAnimation(ConstFloatFunc(0.0), HalfFloatFunc(LinearFloatFunc(0.0, edge), LinearFloatFunc(edge, 0.0))).apply()
 
+    def fill_out_in(self, edge = 1.0):
+        FillAnimation(ConstFloatFunc(0.0), HalfFloatFunc(LinearFloatFunc(1.0, 1-edge), LinearFloatFunc(1-edge, 1.0))).apply()
+
     def segment_breath(self, length = 0.25):
         FillAnimation(SinFloatFunc(0.0, 1.0 - length, -0.25, 1), SinFloatFunc(length, 1.0, -0.25, 1)).apply()
 
@@ -153,6 +158,12 @@ class EffectFactory:
 
     def segment_down(self, length = 0.25):
         FillAnimation(LinearFloatFunc(1.0 - length, 0.0),LinearFloatFunc(1.0, length)).apply()
+
+    def hue_shift_cycle_target(self, start=0.0, end=1.0):
+        HueShiftCycleAnimation(StepTargetDiscreteFloatFunc(start, end)).apply()
+
+    def hue_shift_cycle_diff(self, start=0.0, dx=0.25):
+        HueShiftCycleAnimation(StepDiffDiscreteFloatFunc(start, dx)).apply()
 
 
 effect = EffectFactory()
