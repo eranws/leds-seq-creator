@@ -35,7 +35,7 @@ def n_episodes(start, end):
         episodes(start, end)
 
 
-song_settings(bpm=126, beats_per_episode=32, start_offset=0)
+song_settings(bpm=126, beats_per_episode=32, start_offset=3)
 
 # episode 0 start triolas, last 8 beats are different
 n_episodes(0, 2.75)
@@ -816,4 +816,4 @@ color.uniform(white)
 
 
 send_to_mqtt("nikki")
-start_song("nikki", 160)
+start_song("nikki", 0)
