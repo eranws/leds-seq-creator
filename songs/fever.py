@@ -752,7 +752,7 @@ color.uniform(yellow_string)
 effect.fade_out()
 
 send_to_mqtt("fever")
-start_song("fever", 0)
+start_song("fever", 180)
 
 # elements(meduza, sheep)
 # effect.fade_out()
