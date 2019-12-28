@@ -13,6 +13,7 @@ from led_objects.flood import cup_cakes, rugs, cup_cake3, rug6, rug4
 from led_objects.led_object import all
 from led_objects.flowers import flower6, flowers, paper5, papers, bottles, paper2, flower1, strings, gloves, gloves8, \
     bottle4, bottle5
+from led_objects.meduza import meduza
 from led_objects.objects_selector import elements
 from led_objects.stands import sticks8, single_sticks, sticks7, sticks3, lifas5, lifas1, lifas4, sticks, lifas, stands, \
     single_lifas, single_stands, single_stands_per_stand
@@ -425,11 +426,7 @@ play_note("C", 2.5)
 play_note("Bb", 3.0)
 play_note("D", 3.0)
 
-episodes(0, 1000)
-elements(star7)
-color.uniform(red)
-
 send_to_mqtt("under")
-# start_song("under", 1000)
+start_song("under", 0)
 
 

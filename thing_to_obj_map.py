@@ -4,7 +4,7 @@ from led_objects.cabbages import cabbage1, cabbage6, brain7, cabbage5, cup_cake4
 from led_objects.flood import cup_cake3, rug6, rug4
 from led_objects.flowers import flower6, bottle4, bottle5, paper5, paper2, flower1, gloves8
 from led_objects.stands import sticks8, sticks7, sticks3, lifas5, lifas1, lifas4
-from led_objects.stars import star7
+from led_objects.stars import star7, star8
 
 obj_to_thing = {
     flower6: "flower6",
@@ -32,7 +32,8 @@ obj_to_thing = {
     sheep: "sheep",
     meduza: "meduza",
     star7: "star7",
-    gloves8: "gloves8"
+    gloves8: "gloves8",
+    star8: "star8"
 }
 
 all_objects = obj_to_thing.keys()

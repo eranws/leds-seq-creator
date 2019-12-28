@@ -11,3 +11,10 @@ class StepTargetDiscreteFloatFunc:
             "start": self.start,
             "end": self.end,
         }
+
+    def to_compact_json_obj(self):
+        return {
+            "t": "step_target",
+            "start": self.start,
+            "end": self.end,
+        }

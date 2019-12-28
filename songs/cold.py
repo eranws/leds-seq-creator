@@ -2,7 +2,9 @@ import random
 
 from animations import brightness
 from animations.hue_shift import hue_shift_jump_on_cycle
+from animations.rainbow import Rainbow
 from animations_lib.fade import fade_out_gradually_rand, fade_out_wave_rand
+from float_func.sin import SinFloatFunc
 from infra.animations_factory import color, effect
 from infra.length import short, medium, long, soft, hard, total
 from led_objects.cabbages import cabbage1, cabbage6, brain7, cup_cake4, cabbage5, cabbages, donut1, donut3, \
@@ -12,7 +14,7 @@ from led_objects.groups import group1, group2, group8, group3, group6, group4, g
 from led_objects.led_object import all
 from led_objects.flowers import flower6, flowers, paper5, papers, bottles, paper2, flower1
 from led_objects.meduza import meduza
-from led_objects.objects_selector import elements
+from led_objects.objects_selector import elements, elements_random
 from led_objects.stands import sticks8, single_sticks, sticks7, sticks3, lifas5, lifas1, lifas4, sticks, lifas, stands, \
     single_lifas, single_stands, single_stands_per_stand
 from network.send_to_mqtt import send_to_mqtt, start_song
@@ -39,29 +41,34 @@ voices = [{"name": segment["name"],
            "cues": list(sorted([cue for cue in cues if cue >= segment["start"] and cue <= segment["end"]]))
            } for segment in segments if segment["name"] != "fade"]
 
-for voice in voices:
+beats(0, 1000)
+elements(all)
+cycle(15)
+Rainbow(SinFloatFunc(-0.01, 0.12, 0, 1), SinFloatFunc(-0.01, 0.12, 0.5, 1)).apply()
+effect.brightness(0.25)
 
-    elements(all)
+for voice in voices:
 
     beats(voice["start"], voice["end"])
 
-    # coloring
-    if voice["name"] == "la":
-        color.gradient(0.98, 1.05)
-    else:
-        color.gradient(0.6, 0.75)
-        effect.brightness(0.5)
-    effect.hue_saw_tooth(0.1)
-
-    # fade in in entrence
-    beats(voice["start"], voice["start"] + 0.3)
-    effect.fade_in()
+    # # coloring
+    # if voice["name"] == "la":
+    #     color.gradient(0.98, 1.05)
+    # else:
+    #     color.gradient(0.6, 0.75)
+    #     effect.brightness(0.5)
+    # effect.hue_saw_tooth(0.1)
+    #
+    # # fade in in entrence
+    # beats(voice["start"], voice["start"] + 0.3)
+    # effect.fade_in()
 
     beats(voice["fade"], voice["end"])
-    if voice["name"] == "la":
-        fade_out_wave_rand()
-    else:
-        fade_out_gradually_rand()
+    # effect.fade_out()
+    # if voice["name"] == "la":
+    #     fade_out_wave_rand()
+    # else:
+    #     fade_out_gradually_rand()
 
 send_to_mqtt("cold")
 start_song("cold", 0)

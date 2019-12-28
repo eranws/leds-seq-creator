@@ -11,3 +11,10 @@ class StepDiffDiscreteFloatFunc:
             "start": self.start,
             "dx": self.dx,
         }
+
+    def to_compact_json_obj(self):
+        return {
+            "t": "step_diff",
+            "start": self.start,
+            "dx": self.dx,
+        }

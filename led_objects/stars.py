@@ -52,7 +52,7 @@ class Star(LedObject):
 
 
 star7 = Star(50, 3)
-single_star7 = elements_flatten([star7.all])
+star8 = Star(25, 2)
 
-stars = elements_flatten([star7])
+stars = elements_flatten([star7, star8])
 single_stars = elements_flatten([star.all for star in stars])
