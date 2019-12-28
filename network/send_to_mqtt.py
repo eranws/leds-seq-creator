@@ -45,7 +45,6 @@ def send_to_mqtt(filename):
         animations_json = [an.to_json_obj(False) for an in led_object.animations]
 
         animations_json_compact = [an.to_json_obj(True) for an in led_object.animations]
-        print(float_functions_store.saved_func_by_index)
         compact_json = {"float_funcs": float_functions_store.saved_func_by_index,
                         "boolean_funcs": boolean_functions_store.saved_func_by_index,
                         "discrete_float_funcs": discrete_float_functions_store.saved_func_by_index,
@@ -57,6 +56,8 @@ def send_to_mqtt(filename):
         print(f"sending json to thing {thing_name} size: {len(json_str)}, compact: {len(json_str_compact)}")
         print(json_str)
         msg_info = client.publish("animations/{}/{}".format(thing_name, filename), json_str, qos=1)
+        sent_not_acked.add(msg_info.mid)
+        msg_info = client.publish("animations_c/{}/{}".format(thing_name, filename), json_str_compact, qos=1)
         sent_not_acked.add(msg_info.mid)
 
     client.loop_forever(10)

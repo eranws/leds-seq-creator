@@ -10,7 +10,7 @@ from led_objects.flowers import flower6, flower1, paper5, paper2, bottle4, bottl
 from led_objects.meduza import meduza
 from led_objects.sheep import sheep
 from led_objects.stands import sticks7, lifas4, lifas1, lifas5, sticks3
-from led_objects.stars import star7
+from led_objects.stars import star7, star8
 from thing_to_obj_map import obj_to_thing
 
 mqtt_host_name = "10.0.0.200"
@@ -49,7 +49,7 @@ def send_to_all_things():
         send_to_single_thing(thing_name, led_object)
 
 
-send_to_single_thing("meduza", meduza)
+send_to_single_thing("star8", star8)
 #send_to_all_things();
 
 time.sleep(3)

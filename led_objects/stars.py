@@ -49,5 +49,6 @@ class Star(LedObject):
 
 
 star7 = Star(50, 3)
+star8 = Star(25, 2)
 
-stars = elements_flatten([star7])
+stars = elements_flatten([star7, star8])
