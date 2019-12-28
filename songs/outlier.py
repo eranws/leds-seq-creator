@@ -13,7 +13,7 @@ from led_objects.flowers import flower6, flowers, paper5, papers, flower1, paper
 from led_objects.objects_selector import elements
 from led_objects.stands import sticks8, single_sticks, sticks7, sticks3, lifas5, lifas1, lifas4, lifas, sticks, \
     single_lifas
-from led_objects.stars import star7
+from led_objects.stars import star7, stars, single_stars
 
 from network.send_to_mqtt import send_to_mqtt, start_song
 from infra.timing import song_settings, episodes, episode, cycle, cycle_beats, beats
@@ -359,8 +359,8 @@ fast(14*32, 15*32, [sticks],[single_sticks],[0.14,0.8])
 # for el in all: #[cabbage1,cabbage5,cabbage6,brain7,flower6,flower1,paper5,paper2,donut1,donut3]:
 #     el.random
 
-fast(15*32, 16*32, [sticks,lifas],[single_sticks,single_lifas,strings,cup_cakes],[0.14,0.8])
-fast(512,550, [all],[single_sticks,single_lifas,not_tubes],[0.14,0.8])
+fast(15*32, 16*32, [sticks,lifas,stars],[single_sticks,single_lifas,strings,cup_cakes,single_stars],[0.14,0.8])
+fast(512,550, [all],[single_sticks,single_lifas,single_stars,not_tubes],[0.14,0.8])
 
 # for el in all: #[cabbage1,cabbage5,cabbage6,brain7,flower6,flower1,paper5,paper2,donut1,donut3]:
 #     el.straight
@@ -574,6 +574,6 @@ color.gradient(0,1)
 effect.fade_out()
 
 send_to_mqtt("outlier")
-start_song("outlier",16.4*8)#offset in seconds
+start_song("outlier",16.4*13)#offset in seconds
 
 
