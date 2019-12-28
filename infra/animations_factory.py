@@ -137,6 +137,9 @@ class EffectFactory:
     def fill(self):
         FillAnimation(ConstFloatFunc(0.0), LinearFloatFunc(0.0, 1.0)).apply()
 
+    def fill_in_steps(self, num_steps):
+        FillAnimation(ConstFloatFunc(0.0), StepsFloatFunc(num_steps, 1/num_steps, 1/num_steps)).apply()
+
     def fill_out(self, reverse=False):
         if reverse:
             FillAnimation(LinearFloatFunc(0.0, 1.0), ConstFloatFunc(1.0)).apply()
