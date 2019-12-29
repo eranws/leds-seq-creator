@@ -4,6 +4,7 @@ from animations import brightness
 from animations.brightness import BrightnessAnimation
 from animations.fill import FillAnimation
 from animations.hue_shift import hue_shift_jump_on_cycle
+from animations.rainbow import Rainbow
 from float_func.const import ConstFloatFunc
 from float_func.linear import LinearFloatFunc
 from float_func.sin import SinFloatFunc
@@ -25,7 +26,7 @@ from led_objects.stands import sticks8, single_sticks, sticks7, sticks3, lifas5,
     single_lifas, single_stands, single_stands_per_stand
 from led_objects.stars import stars, star7, single_stars
 from network.send_to_mqtt import send_to_mqtt, start_song
-from infra.timing import song_settings, episodes, episode, cycle, cycle_beats, beats
+from infra.timing import song_settings, episodes, episode, cycle, cycle_beats, beats, beats_in_episode
 from infra.colors import *
 
 song_settings(bpm=125, beats_per_episode=32, start_offset=3)
@@ -115,16 +116,16 @@ def yeah_round(elem, col):
     effect.brightness(val=0)
 
 
-def meduza_shake():
+def meduza_shake(col):
     elements(meduza)
-    color.gradient(col7[1], col7[1])
+    var_col(col)
     cycle(4)
     cycle_beats(0, 3)
     effect.brightness(0)
     cycle_beats(3, 3.25)
     effect.fill()
     cycle_beats(3.25, 4)
-    effect.hue_breath(col7[0]-col7[1])
+    effect.hue_breath(col[0]-col[1])
 
 
 def wave():
@@ -225,15 +226,17 @@ for n, e in enumerate(tubes):
     color.gradient(c, c + 0.2)
     equalizer(e)
 
+col_warm = [.9, 1.1]
 for n, elem in enumerate(tubes):
     episodes(7+n/8, 8+n/8)
     elements(elem.all)
-    color.gradient(.9, 1.1)
+    var_col(col_warm)
     yeah_fill()
 
+col_cold = [.3, .8]
 for n, elem in enumerate([sticks3, lifas1, sticks8, lifas5, sticks7]):
     episodes(8 + n / 8, 9.5)
-    yeah_round(elem, [.3,.8])
+    yeah_round(elem, col_cold)
 
 # separate for lifas4 with only 4 legs
 n = 5
@@ -275,18 +278,11 @@ effect.hue_breath()
 cycle(4)
 effect.saw_tooth()
 
-
 for elem in tubes:
     episodes(9.5, 11)
     elements(elem.all)
     var_col(col7)
     yeah_fill()
-
-beats(32*10, 32*10+4)
-meduza_shake()
-
-beats(32*10-4, 32*10)
-meduza_shake()
 
 episodes(10, 12)
 elements(non_tubes)
@@ -302,11 +298,11 @@ for b in range(0, 64, 4):
 for elem in tubes:
     beats(380, 384)
     elements(elem.all)
-    var_col(purple_strip)
+    var_col(col7)
     yeah_fill()
     beats(348, 352)
     elements(elem.all)
-    var_col(purple_strip)
+    var_col(red)
     yeah_fill()
 
 episodes(12, 13)
@@ -317,31 +313,67 @@ yeah_fill()
 episodes(13, 14)
 elements_random(all)
 color.gradient(.45, .95)
-cycle(4)
-wave()
 cycle(32)
 effect.fill()
+cycle(.5)
+effect.hue_shift_cycle_target(end=.2)
+cycle(8)
+wave()
+
+col_fin = turquoise_string
+episodes(14, 14.25)
+elements_random(all)
+Rainbow(LinearFloatFunc(0.65, col_fin[0]), LinearFloatFunc(1.15, col_fin[0])).apply()
+episodes(14.25, 15)
+color.uniform(col_fin)
 
 episodes(14, 15)
-elements(single_stands)
-color.uniform(turquoise_string)
-effect.fill()
-
-episodes(14, 15.125)
 elements(non_tubes)
-color.uniform(turquoise_string)
-cycle(4)
-wave()
-cycle(36)
+cycle(32)
 effect.fill_out()
 effect.fade_out()
+cycle(16)
+wave()
 
-episodes(15-1/8, 15.125)
+
+episodes(14.25, 15.0625)
+cycle(26)
+elements(single_stands)
+color.uniform(col_fin)
+cycle_beats(0, 8)
+effect.fill_out()
+effect.fade_in()
+cycle_beats(8, 16)
+effect.fill()
+cycle_beats(16, 26)
+effect.fill_out(reverse=True)
+
+episodes(14.875, 15.125)
 elements(meduza)
 color.gradient(.45, .95)
-cycle(16)
+cycle(8)
 effect.blink_repeat(128)
+cycle_beats(0, 7)
 effect.fade_in()
+cycle_beats(7, 8)
+effect.fade_out()
+
+episodes(15.25, 15.5)
+elements_random(sheep)
+color.gradient(.05, 0)
+cycle(8)
+cycle_beats(0, 2)
+elements_random(sheep)
+effect.fill()
+r = 8
+for b in range(r):
+    cycle_beats(2+4*b/r, 2+4*(b+1)/r)
+    effect.random_brightness()
+cycle_beats(6, 8)
+elements_random(sheep)
+effect.fill_out(reverse=True)
+effect.fade_out()
+
 
 # fast strings
 beats(48, 51)
@@ -353,16 +385,65 @@ fast_string(lifas5, [0.9, 1])
 beats(112, 115)
 fast_string(sticks8, [0.3, 0.6])
 
-beats(132, 136)
+beats(132, 135)
 fast_string(lifas4, [0.1, 0.3])
 
 beats(192, 195)
 elements_random(all)
 color.uniform(white)
-cycle(2)
+cycle(1.5)
 effect.fill_in_out()
 
+beats(368, 371)
+fast_string(lifas4, [0.1, 0.3])
+
+beats(7*32+12, 7*32+16)
+meduza_shake(col_warm)
+
+beats(7*32+16, 7*32+20)
+meduza_shake(col_warm)
+
+beats(8*32-4, 8*32)
+meduza_shake(col_warm)
+
+beats(8*32, 8*32+4)
+meduza_shake(col_warm)
+
+beats(8*32+12, 8*32+16)
+meduza_shake(col_warm)
+
+beats(32*10-4, 32*10)
+meduza_shake(col=col7)
+
+beats(32*10, 32*10+4)
+meduza_shake(col=col7)
+
+beats(32*10+12, 32*10+16)
+meduza_shake(col=col7)
+
+beats(348, 352)
+meduza_shake(col=red)
+
+beats(32*14+3, 32*14+6)
+elements(single_sticks)
+cycle(3)
+effect.fill_out_in()
+
+beats(32*14+9, 32*14+10)
+elements(single_stars)
+cycle(1)
+effect.fill_out_in()
+
+beats(32*14+11, 32*14+12)
+elements(single_stars)
+cycle(1)
+effect.fill_out_in()
+
+beats(32*14+13, 32*14+16)
+elements(single_stars)
+cycle(3)
+effect.fill_out_in()
+
+
 send_to_mqtt("kerala")
-start_song("kerala", 15*4)
-
-
+start_song("kerala", 15*0)
