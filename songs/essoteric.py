@@ -6,11 +6,12 @@ from led_objects.cabbages import cabbage1, cabbage6, brain7, cup_cake4, cabbage5
 from led_objects.flood import cup_cakes, cup_cake3, rug4, rug6, rugs
 from led_objects.groups import group1, group2, group3, group4, group5, group6, group7, group8
 from led_objects.led_object import all
-from led_objects.flowers import flower6, flowers, paper5, papers, bottles, paper2, flower1, bottle4, bottle5
+from led_objects.flowers import flower6, flowers, paper5, papers, bottles, paper2, flower1, bottle4, bottle5, gloves
 from led_objects.meduza import meduza
 from led_objects.objects_selector import elements
 from led_objects.stands import sticks8, single_sticks, sticks7, sticks3, lifas5, lifas1, lifas4, sticks, lifas, stands, \
     single_lifas
+from led_objects.stars import stars, star7, star8
 from network.send_to_mqtt import send_to_mqtt, start_song
 from infra.timing import song_settings, episodes, episode, cycle, cycle_beats, beats
 from infra.colors import *
@@ -98,7 +99,7 @@ def coloropening():
     color.uniform((0.05, 1.0, 1.0))
     effect.saw_tooth(1.0, False)
 
-    elements(brains)
+    elements(brains, stars)
     cycle(beats=16)
     cycle_beats(6, 6.74)
     color.uniform((0.995, 0.85, 1.0))
@@ -152,7 +153,7 @@ def coloropening():
     color.uniform((0.03, 1.0, 0.8))
     effect.saw_tooth(1.0, False)
 
-    elements(rugs)
+    elements(rugs, gloves)
     cycle(beats=16)
     cycle_beats(14, 14.74)
     color.uniform(coral)
@@ -270,7 +271,7 @@ violin2(lifas4, purple_strip[0], indigo[0])
 
 episodes(5, 7)
 cycle(8)
-elements(flowers, cabbages, cup_cakes,papers, donuts)
+elements(flowers, cabbages, cup_cakes,papers, donuts, stars. gloves)
 color.uniform((0.11, 0.8, 0.4))
 effect.breath(0.8)
 
@@ -344,7 +345,7 @@ def small_bit():
     beats((16*7) +6.0, (16*7) + 32)
     color.uniform(light_orange_strip)
 
-    elements(lifas5.stand(1))
+    elements(star8)
     beats((16*7) +6.55, (16*7) + 32)
     color.uniform(light_blue)
 
@@ -364,7 +365,7 @@ def small_bit():
     beats((16*7) +8.12, (16*7) + 32)
     color.uniform(magenta)
 
-    elements(lifas5.stand(4))
+    elements(lifas5.stand(1), lifas5.stand(4))
     beats((16*7) +8.5, (16*7) + 32)
     color.uniform(dark_blue)
 
@@ -392,7 +393,7 @@ def small_bit():
     beats((16*7) +11.0, (16*7) + 32)
     color.uniform(light_green)
 
-    elements(sticks8.stand(4))
+    elements(sticks8.stand(4), sticks8.stand(1))
     beats((16*7) +11.34, (16*7) + 32)
     color.uniform((0.9, 1.0, 1.0))
 
@@ -400,7 +401,7 @@ def small_bit():
     beats((16*7) +11.66, (16*7) + 32)
     color.uniform(dark_blue)
 
-    elements(lifas4.stand(1))
+    elements(star7)
     beats((16*7) +12.12, (16*7) + 32)
     color.uniform(yellow_string)
 
@@ -432,11 +433,11 @@ def small_bit():
     beats((16*7) +15.0, (16*7) + 32)
     color.uniform(turquoise_string)
 
-    elements(sticks8.stand(1))
+    elements(gloves)
     beats((16*7) +15.34, (16*7) + 32)
     color.uniform((0.87, 1.0, 1.0))
 
-    elements(lifas4.stand(3))
+    elements(lifas4.stand(3), lifas4.stand(1))
     beats((16*7) +15.66, (16*7) + 32.0)
     color.uniform(yellow_strip)
 
@@ -537,12 +538,12 @@ color.gradient(0.78, 0.9)
 effect.saw_tooth(hard, False)
 
 cycle_beats(2.0, 2.5)
-elements(rug4, rug6)
+elements(stars)
 color.gradient(0.78, 0.9)
 effect.saw_tooth(hard, False)
 
 cycle_beats(2.5, 2.9)
-elements(rug4,rug6)
+elements(stars)
 color.gradient(0.78, 0.9)
 effect.saw_tooth(hard, False)
 
@@ -725,7 +726,7 @@ def full_wave():
     effect.fill()
     color.uniform(aquamarine)
 
-    elements(cabbage6, bottle4)
+    elements(cabbage6, bottle4, star7)
     cycle_beats(0.2, 0.47)
     effect.fill()
     color.uniform(aquamarine)
@@ -735,7 +736,7 @@ def full_wave():
     effect.fill()
     color.uniform(aquamarine)
 
-    elements(cabbage6, bottle5)
+    elements(cabbage6, bottle5, star8)
     cycle_beats(0.25, 0.47)
     effect.fill()
     color.uniform(aquamarine)
@@ -760,12 +761,12 @@ def full_wave():
     effect.fill()
     color.uniform(aquamarine)
 
-    elements(sticks8, paper2, flower6)
+    elements(sticks8, paper2, flower6, star7)
     cycle_beats(0.375, 0.47)
     effect.fill()
     color.uniform(aquamarine)
 
-    elements(donut1)
+    elements(donut1, gloves)
     cycle_beats(0.4, 0.47)
     effect.fill()
     color.uniform(aquamarine)
@@ -804,12 +805,12 @@ effect.hue_shift(medium)
 #     e.random
 
 beats(184, 192)
-elements(cabbages, brains,lifas)
+elements(cabbages, brains,lifas, stars)
 color.uniform(yellow_strip)
 effect.snake(0.6)
 
 beats(186, 192)
-elements(sticks, flowers, cup_cakes)
+elements(sticks, flowers, cup_cakes, gloves)
 color.uniform(yellow_strip)
 effect.snake(0.6)
 
@@ -952,7 +953,7 @@ elements(cabbages)
 color.uniform(coral)
 effect.fade_out()
 
-elements(rugs)
+elements(rugs, gloves)
 color.uniform(magenta)
 effect.fade_out()
 
@@ -960,7 +961,7 @@ elements(flowers)
 color.uniform((0.03, 1.0, 1.0))
 effect.fade_out()
 
-elements(brains)
+elements(brains, stars)
 color.uniform((0.995, 0.85, 1.0))
 effect.fade_out()
 
@@ -1004,5 +1005,5 @@ effect.breath(hard)
 
 
 send_to_mqtt("essoteric")
-start_song("essoteric", 145)
+start_song("essoteric", 0)
 
