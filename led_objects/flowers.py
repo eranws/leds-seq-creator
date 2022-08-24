@@ -1,5 +1,4 @@
 from led_objects.led_object import LedObject
-from led_objects.objects_selector import elements_flatten
 
 class Flower(LedObject):
 

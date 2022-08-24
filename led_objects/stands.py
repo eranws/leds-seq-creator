@@ -1,6 +1,4 @@
 from led_objects.led_object import LedObject, SegmentProxy
-from led_objects.objects_selector import elements_flatten
-
 
 class Stands(LedObject):
 
