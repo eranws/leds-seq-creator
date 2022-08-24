@@ -14,5 +14,20 @@ group6 = elements_flatten([flower6, cabbage6, rug6])
 group7 = elements_flatten([sticks7, brain7, star7])
 group8 = elements_flatten([sticks8, gloves8, star8])
 
+# cabbages:
+cabbages = elements_flatten([cabbage1, cabbage6, cabbage5])
+brains = elements_flatten([brain7])
+twists = elements_flatten([cabbages, brains])
+donuts = elements_flatten([donut1, donut3])
 
+# flowers:
+flowers = elements_flatten([flower1, flower6])
+bottles = elements_flatten([bottle4, bottle5])
+papers = [paper2, paper5] # ??
+strings = elements_flatten([flowers, bottles, papers])
+gloves = elements_flatten([gloves8])
 
+# flood:
+cup_cakes = elements_flatten([cup_cake4, cup_cake3])
+rugs = elements_flatten([rug4, rug6])
+floods = elements_flatten([cup_cakes, rugs])
