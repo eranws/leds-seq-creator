@@ -2,7 +2,6 @@ import random
 
 all = []
 
-
 class LedObject:
 
     def __init__(self, total_pixels, add_to_all = True):

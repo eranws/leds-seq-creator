@@ -6,16 +6,21 @@ from float_func.sin import SinFloatFunc
 from infra.animations_factory import color, effect
 
 from led_objects.groups import group1, group2, group3, group4, group5, group6, group7, group8
-from led_objects.groups import flowers, papers, bottles, strings
-from led_objects.groups import cabbages,brains, donuts
-from led_objects.groups import cup_cakes, rugs, floods
+from led_objects.groups import flowers
+from led_objects.groups import papers
+from led_objects.groups import bottles
+from led_objects.groups import strings
+from led_objects.groups import cabbages
+from led_objects.groups import brains
+from led_objects.groups import donuts
+from led_objects.groups import cup_cakes
+from led_objects.groups import rugs
 
 from led_objects.led_object import all
 from led_objects.meduza import meduza
 from led_objects.objects_selector import elements
 from led_objects.sheep import sheep
-from led_objects.stands import sticks, lifas, stands, \
-    single_stands
+from led_objects.stands import sticks, lifas, single_stands
 from network.send_to_mqtt import send_to_mqtt, start_song
 from infra.timing import song_settings, episodes, episode, cycle, cycle_beats, beats
 from infra.colors import *

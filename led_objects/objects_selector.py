@@ -1,5 +1,3 @@
-import itertools
-
 from led_objects.led_object import LedObject, SegmentProxy
 
 stored_objects = []
