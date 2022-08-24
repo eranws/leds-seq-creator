@@ -6,9 +6,10 @@ from float_func.linear import LinearFloatFunc
 from float_func.steps import StepsFloatFunc
 from infra.animations_factory import color, effect
 from infra.length import short, medium, long, soft, hard, total
-from led_objects.common import no_stands
+from led_objects.groups import no_stands
 from led_objects.stars import stars, star7, single_stars
 from led_objects.groups import group1, group2, group3, group4, group5, group6, group7, group8
+
 from led_objects.meduza import meduza
 from led_objects.cabbages import cabbage1, cabbage6, brain7, cabbage5, cabbages, brains, donut1, donut3, twists, donuts
 from led_objects.flood import floods, cup_cakes, cup_cake3, rug4, cup_cake4, rug6, rugs

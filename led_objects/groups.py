@@ -1,9 +1,9 @@
 from led_objects.cabbages import donut1, cabbage1, donut3, cup_cake4, cabbage5, cabbage6, brain7
 from led_objects.flood import cup_cake3, rug4, rug6
 from led_objects.flowers import flower1, paper2, bottle4, paper5, bottle5, flower6, gloves8
-from led_objects.objects_selector import elements_flatten
 from led_objects.stands import lifas1, sticks3, lifas4, lifas5, sticks7, sticks8
 from led_objects.stars import star7, star8
+from led_objects.objects_selector import elements_flatten
 
 group1 = elements_flatten([flower1, donut1, lifas1, cabbage1])
 group2 = elements_flatten([paper2])
@@ -38,6 +38,14 @@ single_sticks = elements_flatten([stick.all for stick in sticks])
 lifas = elements_flatten([lifas1, lifas4, lifas5])
 single_lifas = elements_flatten([lifa.all for lifa in lifas])
 
+# stands:
 stands = elements_flatten([sticks, lifas])
 single_stands = elements_flatten([single_lifas, single_sticks])
 single_stands_per_stand = elements_flatten(single_sticks + single_lifas)
+
+# stars:
+stars = elements_flatten([star7, star8])
+single_stars = elements_flatten([star.all for star in stars])
+
+# common (no-stands):
+no_stands = elements_flatten([flowers, bottles, cabbages, papers, cup_cakes, donuts, brains, rugs, gloves, stars])
