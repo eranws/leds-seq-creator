@@ -27,20 +27,12 @@ client = mqtt.Client(mqtt_client_id)
 client.connect(mqtt_host_name)
 
 def send_to_single_thing(thing_name, led_object):
-    controller_objs_config = led_objects.object_config_pb2.ControllerObjectsConfig()
-    controller_objs_config.number_of_pixels = led_object.total_pixels
-    for segment_name, indices in led_object.mapping.items():
-        segment = controller_objs_config.segments.add()
-        segment.name = segment_name
-        segment.indices.extend(indices)
-    proto_str = controller_objs_config.SerializeToString()
-
     json_str = json.dumps(ledObjectToJson(led_object), separators=(',', ':'))
-    print(f"proto size: {len(proto_str)} json size: {len(json_str)}")
+    print(f"json size: {len(json_str)}")
+    print(json_str)
 
     topic = "objects-config/" + thing_name
-    print("sending config to thing '{}' with size '{}'".format(thing_name, len(proto_str)))
-    client.publish(topic, proto_str)
+    client.publish(topic, json_str)
 
 def send_to_all_things():
     for obj_with_thing in obj_to_thing.items():
@@ -49,8 +41,8 @@ def send_to_all_things():
         send_to_single_thing(thing_name, led_object)
 
 
-send_to_single_thing("star8", star8)
-#send_to_all_things();
+# send_to_single_thing("flower1", flower1)
+send_to_all_things();
 
 time.sleep(3)
 

@@ -11,7 +11,7 @@ class Twist(LedObject):
         #cabbages.append(self)
 
 
-cabbage1 = Twist(260)
+cabbage1 = Twist(50)
 cabbage6 = Twist(300)
 cabbage5 = Twist(300)
 
