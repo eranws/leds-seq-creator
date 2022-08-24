@@ -31,3 +31,13 @@ gloves = elements_flatten([gloves8])
 cup_cakes = elements_flatten([cup_cake4, cup_cake3])
 rugs = elements_flatten([rug4, rug6])
 floods = elements_flatten([cup_cakes, rugs])
+
+# stands:
+sticks = elements_flatten([sticks3, sticks7, sticks8])
+single_sticks = elements_flatten([stick.all for stick in sticks])
+lifas = elements_flatten([lifas1, lifas4, lifas5])
+single_lifas = elements_flatten([lifa.all for lifa in lifas])
+
+stands = elements_flatten([sticks, lifas])
+single_stands = elements_flatten([single_lifas, single_sticks])
+single_stands_per_stand = elements_flatten(single_sticks + single_lifas)

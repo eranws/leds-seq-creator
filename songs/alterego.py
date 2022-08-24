@@ -15,19 +15,19 @@ from led_objects.groups import brains
 from led_objects.groups import donuts
 from led_objects.groups import cup_cakes
 from led_objects.groups import rugs
+from led_objects.groups import sticks
+from led_objects.groups import lifas
+from led_objects.groups import single_stands
 
 from led_objects.led_object import all
-from led_objects.meduza import meduza
 from led_objects.objects_selector import elements
-from led_objects.sheep import sheep
-from led_objects.stands import sticks, lifas, single_stands
 from network.send_to_mqtt import send_to_mqtt, start_song
 from infra.timing import song_settings, episodes, episode, cycle, cycle_beats, beats
 from infra.colors import *
 
 song_settings(bpm=123, beats_per_episode=32, start_offset=3)
 
-all.append(meduza)
+# all.append(meduza)
 groups = [group1, group2, group3, group4, group5, group6, group7, group8]
 
 def single_equalizer(phase, max_val):
@@ -48,15 +48,16 @@ effect.fill()
 episode(0)
 cycle(32)
 cycle_beats(0,16)
-elements(all,sheep)
+# elements(all,sheep)
+elements(all)
 color.uniform(aquamarine)
 effect.fill()
 cycle_beats(16,32)
-elements(all,sheep)
+elements(all)
 color.uniform(aquamarine)
 effect.hue_saw_tooth(red[0]-aquamarine[0])
 cycle_beats(31,32)
-elements(all,sheep)
+elements(all)
 color.uniform(red)
 effect.saw_tooth()
 
@@ -78,8 +79,6 @@ episode(2)
 cycle(0.5)
 elements(all)
 effect.random_brightness()
-
-meduza.random
 
 episodes(2,3)
 cycle(2)
@@ -120,7 +119,7 @@ effect.blink_repeat(2)
 
 episode(5)
 cycle(2)
-elements(all,sheep)
+elements(all)
 color.gradient(-0.2,0.2)
 effect.hue_saw_tooth(0.6)
 
@@ -179,12 +178,6 @@ elements(donuts)
 color.gradient(coral[0],red[0])
 effect.snake()
 
-episodes(7.75,9)
-cycle(0.5)
-elements(meduza)
-color.gradient(coral[0],red[0])
-effect.snake()
-
 episode(8)
 cycle(32)
 elements(all)
@@ -222,6 +215,6 @@ color.uniform(coral)
 effect.saw_tooth()
 
 send_to_mqtt("alterego")
-start_song("alterego", 6)
+start_song("alterego", 16)
 
 

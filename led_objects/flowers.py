@@ -8,13 +8,13 @@ class Flower(LedObject):
         self.mapping = {"a": list(range(start_index, self.total_pixels))}
         self.create_random_for_all()
 
-flower1 = Flower(200)
-flower6 = Flower(150)
+flower1 = Flower(30)
+flower6 = Flower(15)
 
-bottle4 = Flower(50)
-bottle5 = Flower(50)
+bottle4 = Flower(5)
+bottle5 = Flower(5)
 
-paper2 = Flower(50, 9)
-paper5 = Flower(50, 12)
+paper2 = Flower(5, 2)
+paper5 = Flower(5, 3)
 
-gloves8 = Flower(50)
+gloves8 = Flower(5)
