@@ -1,67 +1,37 @@
 import paho.mqtt.client as mqtt
 import json
-
-from led_objects.cabbages import Cabbage1
-from led_objects.flowers import CoralFlower1
-from led_objects.led_objects import AllObjects
+from led_objects.led_object import all
+from infra.colors import red, blue
+from infra.animations_factory import effect, color
+from infra.timing import cycle, episodes, song_settings
+from led_objects.flowers import flower1
+from led_objects.cabbages import cabbage1
+from led_objects.objects_selector import elements
 from thing_to_obj_map import obj_to_thing
-from infra.timing import TimingFactory
 
-from infra import colors
-import animations.rainbow as rainbow
-import animations.const_color as const_color
-import animations.hue_shift as hue_shift
-import animations.brightness as brightness
-import animations.alternate as alternate
+song_settings(bpm=123, beats_per_episode=32, start_offset=0)
 
-tf = TimingFactory(123, 32)
+all.append(flower1)
+all.append(cabbage1)
 
-CoralFlower1.add_animation(rainbow.slow_colors_mess(tf.single_episode(episode_index=0, beats_per_cycle=4)))
-CoralFlower1.add_animation(brightness.fade_in(tf.single_episode(episode_index=0, beats_per_cycle=None)))
+episodes(0,10)
+# cycle_beats(0,16)
+elements(cabbage1)
+cycle(32)
+color.uniform(red)
+effect.fill()
 
-AllObjects.add_animation(rainbow.moving_full_rainbow(tf.single_episode(episode_index=1, beats_per_cycle=8)))
-AllObjects.add_animation(hue_shift.hue_shift_jump_on_cycle(tf.single_episode(episode_index=1, beats_per_cycle=1), 2))
-
-CoralFlower1.add_animation(rainbow.monochrome_to_colorful(tf.single_episode(episode_index=2, beats_per_cycle=4), hue=0.0, amp=0.5))
-
-CoralFlower1.add_animation(rainbow.very_colorful(tf.single_episode(episode_index=3, beats_per_cycle=4)))
-
-timing = tf.single_episode(episode_index=4, beats_per_cycle=4)
-Cabbage1.add_animation(rainbow.static_full_rainbow(timing))
-Cabbage1.add_animation(brightness.on_cycle_sin(timing))
-
-timing = tf.single_episode(episode_index=5, beats_per_cycle=1)
-AllObjects.add_animation(const_color.const_color_by_name(timing, colors.red))
-AllObjects.add_animation(alternate.change_on_cycle_adjacent_hues(timing))
-
-timing = tf.single_episode(episode_index=6, beats_per_cycle=1)
-CoralFlower1.add_animation(const_color.const_color_by_name(timing, colors.blue))
-CoralFlower1.add_animation(alternate.colors_colide(timing))
-
-timing = tf.single_episode(episode_index=7, beats_per_cycle=4)
-CoralFlower1.add_animation(const_color.const_color_by_name(timing, colors.blue))
-CoralFlower1.add_animation(alternate.alternate_color_move(timing))
-
-timing = tf.single_episode(episode_index=8, beats_per_cycle=4)
-CoralFlower1.add_animation(const_color.const_color_by_name(timing, colors.blue))
-CoralFlower1.add_animation(hue_shift.hue_shift_jump_on_cycle(timing))
-CoralFlower1.add_animation(brightness.on_cycle_sin(timing, -0.25))
-
-
-
-#animations = [animation_rand_hue, animation_hue_shift_on_beat]
-#animations = [animation_const, hue_shift_smooth, animation_brightness_on_beat]
-#animations = [animation_const, animation_alternate, animation_hue_shift_on_8beat]
-#animations = [animation_const, animation_hue_shift_on_beat]
-#animations = [animation_const, saw_teeth_on_beat]
-#animations = [rainbow_animation.to_json_obj()]
+elements(flower1)
+cycle(16)
+color.uniform(blue)
+effect.fill()
 
 host_name = "10.0.0.200"
 client = mqtt.Client("leds-seq-creator")
 client.connect(host_name)
 
 for led_object, thing_name in obj_to_thing.items():
-    animations_json = [an.to_json_obj() for an in led_object.animations]
+    animations_json = [an.to_json_obj(False) for an in led_object.animations]
     json_str = json.dumps(animations_json, separators=(',',':')) + '\0'
     print("sending json of size {} to thing {}".format(len(json_str), thing_name))
     client.publish("animations/{}/alterego".format(thing_name), json_str)
