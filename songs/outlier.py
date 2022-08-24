@@ -1,19 +1,11 @@
-import random
 
-from animations import brightness
 from infra.animations_factory import color, effect
-from infra.length import short, medium, long, soft, hard, total
 from led_objects import meduza, sheep
 
-from led_objects.cabbages import cabbage1, cabbage6, brain7, cabbage5, cabbages, brains, donut1, donut3, donuts
-from led_objects.flood import rugs, cup_cakes, cup_cake3, rug6, cup_cake4
-from led_objects.groups import group1
+from led_objects.instances import *
+from led_objects.groups import *
 from led_objects.led_object import all
-from led_objects.flowers import flower6, flowers, paper5, papers, flower1, paper2, strings, bottles
 from led_objects.objects_selector import elements
-from led_objects.stands import sticks8, single_sticks, sticks7, sticks3, lifas5, lifas1, lifas4, lifas, sticks, \
-    single_lifas
-from led_objects.stars import star7, stars, single_stars
 
 from network.send_to_mqtt import send_to_mqtt, start_song
 from infra.timing import song_settings, episodes, episode, cycle, cycle_beats, beats

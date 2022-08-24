@@ -1,10 +1,11 @@
 from led_objects.meduza import meduza
 from led_objects.sheep import sheep
-from led_objects.cabbages import cabbage1, cabbage6, brain7, cabbage5, cup_cake4, donut1, donut3
-from led_objects.flood import cup_cake3, rug6, rug4
-from led_objects.flowers import flower6, bottle4, bottle5, paper5, paper2, flower1, gloves8
-from led_objects.stands import sticks8, sticks7, sticks3, lifas5, lifas1, lifas4
-from led_objects.stars import star7, star8
+from led_objects.instances import *
+# from led_objects.instances import cabbage1, cabbage6, brain7, cabbage5, cup_cake4, donut1, donut3
+# from led_objects.instances import cup_cake3, rug6, rug4
+# from led_objects.instances import flower6, bottle4, bottle5, paper5, paper2, flower1, gloves8
+# from led_objects.instances import sticks8, sticks7, sticks3, lifas5, lifas1, lifas4
+# from led_objects.instances import star7, star8
 
 obj_to_thing = {
     # flower6: "flower6",

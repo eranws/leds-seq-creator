@@ -1,17 +1,19 @@
 from animations import brightness
 from infra.animations_factory import color, effect
 from infra.length import short, medium, long, soft, hard, total
-from led_objects.cabbages import cabbage1, cabbage6, brain7, cup_cake4, cabbage5, cabbages, donut1, donut3, \
-    brains, twists, donuts
-from led_objects.flood import cup_cakes, cup_cake3, rug4, rug6, rugs
+from led_objects.instances import *
+# from led_objects.instances import cabbage1, cabbage6, brain7, cup_cake4, cabbage5, cabbages, donut1, donut3, \
+    # brains, twists, donuts
+# from led_objects.flood import cup_cakes, cup_cake3, rug4, rug6, rugs
 from led_objects.groups import group1, group2, group3, group4, group5, group6, group7, group8
+from led_objects.groups import *
 from led_objects.led_object import all
-from led_objects.flowers import flower6, flowers, paper5, papers, bottles, paper2, flower1, bottle4, bottle5, gloves
+# from led_objects.flowers import flower6, flowers, paper5, papers, bottles, paper2, flower1, bottle4, bottle5, gloves
 from led_objects.meduza import meduza
 from led_objects.objects_selector import elements
-from led_objects.stands import sticks8, single_sticks, sticks7, sticks3, lifas5, lifas1, lifas4, sticks, lifas, stands, \
-    single_lifas
-from led_objects.stars import stars, star7, star8
+# from led_objects.stands import sticks8, single_sticks, sticks7, sticks3, lifas5, lifas1, lifas4, sticks, lifas, stands, \
+    # single_lifas
+# from led_objects.stars import stars, star7, star8
 from network.send_to_mqtt import send_to_mqtt, start_song
 from infra.timing import song_settings, episodes, episode, cycle, cycle_beats, beats
 from infra.colors import *
@@ -271,7 +273,7 @@ violin2(lifas4, purple_strip[0], indigo[0])
 
 episodes(5, 7)
 cycle(8)
-elements(flowers, cabbages, cup_cakes,papers, donuts, stars. gloves)
+elements(flowers, cabbages, cup_cakes,papers, donuts, stars, gloves)
 color.uniform((0.11, 0.8, 0.4))
 effect.breath(0.8)
 

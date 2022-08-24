@@ -1,32 +1,22 @@
 import random
 
-from animations import brightness
 from animations.brightness import BrightnessAnimation
 from animations.fill import FillAnimation
-from animations.hue_shift import hue_shift_jump_on_cycle
 from animations.rainbow import Rainbow
 from float_func.const import ConstFloatFunc
 from float_func.linear import LinearFloatFunc
 from float_func.sin import SinFloatFunc
 from float_func.steps import StepsFloatFunc
 from infra.animations_factory import color, effect
-from infra.length import short, medium, long, soft, hard, total
-from led_objects.cabbages import cabbage1, cabbage6, brain7, cup_cake4, cabbage5, cabbages, donut1, donut3, \
-    brains, twists, donuts
-from led_objects.common import no_stands
-from led_objects.flood import cup_cakes, rugs, cup_cake3, rug6, rug4
+from led_objects.instances import * 
 from led_objects.groups import group1, group2, group3, group8, group6, group7, group4, group5
+from led_objects.groups import *
 from led_objects.led_object import all
-from led_objects.flowers import flower6, flowers, paper5, papers, bottles, paper2, flower1, strings, gloves, gloves8, \
-    bottle4, bottle5
 from led_objects.meduza import meduza
 from led_objects.objects_selector import elements, elements_random
 from led_objects.sheep import sheep
-from led_objects.stands import sticks8, single_sticks, sticks7, sticks3, lifas5, lifas1, lifas4, sticks, lifas, stands, \
-    single_lifas, single_stands, single_stands_per_stand
-from led_objects.stars import stars, star7, single_stars
 from network.send_to_mqtt import send_to_mqtt, start_song
-from infra.timing import song_settings, episodes, episode, cycle, cycle_beats, beats, beats_in_episode
+from infra.timing import song_settings, episodes, cycle, cycle_beats, beats
 from infra.colors import *
 
 song_settings(bpm=125, beats_per_episode=32, start_offset=3)
