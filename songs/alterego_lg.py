@@ -5,6 +5,7 @@ from animations.fill import FillAnimation
 from float_func.const import ConstFloatFunc
 from float_func.sin import SinFloatFunc
 from infra.animations_factory import color, effect
+from infra.equalizer import equalizer
 from led_objects.instances import *
 from led_objects.groups import *
 from led_objects.led_object import all
@@ -20,13 +21,13 @@ song_settings(bpm=123, beats_per_episode=32, start_offset=3)
 all.append(meduza)
 groups = [group1, group2, group3, group4, group5, group6, group7, group8]
 
-def single_equalizer(phase, max_val):
-    FillAnimation(ConstFloatFunc(0.0), SinFloatFunc(0.1, max_val, phase, 1)).apply()
+# def single_equalizer(phase, max_val):
+#     FillAnimation(ConstFloatFunc(0.0), SinFloatFunc(0.1, max_val, phase, 1)).apply()
 
-def equalizer(elem):
-    for p, s in enumerate(elem.all):
-        elements(s)
-        single_equalizer(p/len(elem.all),random.uniform(0.6,1))
+# def equalizer(elem):
+#     for p, s in enumerate(elem.all):
+#         elements(s)
+#         single_equalizer(p/len(elem.all),random.uniform(0.6,1))
 
 
 # def full_wave(cyc,col_grad):

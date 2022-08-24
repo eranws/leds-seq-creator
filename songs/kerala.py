@@ -1,5 +1,4 @@
 import random
-
 from animations.brightness import BrightnessAnimation
 from animations.fill import FillAnimation
 from animations.rainbow import Rainbow
@@ -7,6 +6,7 @@ from float_func.const import ConstFloatFunc
 from float_func.linear import LinearFloatFunc
 from float_func.sin import SinFloatFunc
 from float_func.steps import StepsFloatFunc
+from infra.equalizer import equalizer
 from infra.animations_factory import color, effect
 from led_objects.instances import * 
 from led_objects.groups import group1, group2, group3, group8, group6, group7, group4, group5
@@ -68,16 +68,6 @@ def hue_beat(strength):
     effect.hue_breath(edge=strength)
     cycle_beats(2.5, 3)
     effect.hue_breath(edge=strength)
-
-
-def single_equalizer(phase, max_val):
-    FillAnimation(ConstFloatFunc(0.0), SinFloatFunc(0.1, max_val, phase, 1)).apply()
-
-
-def equalizer(elem):
-    for p, s in enumerate(elem.all):
-        elements(s)
-        single_equalizer(p/len(elem.all),random.uniform(0.6,1))
 
 
 def yeah_fill():

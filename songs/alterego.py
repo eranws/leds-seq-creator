@@ -30,14 +30,6 @@ song_settings(bpm=123, beats_per_episode=32, start_offset=3)
 # all.append(meduza)
 groups = [group1, group2, group3, group4, group5, group6, group7, group8]
 
-def single_equalizer(phase, max_val):
-    FillAnimation(ConstFloatFunc(0.0), SinFloatFunc(0.1, max_val, phase, 1)).apply()
-
-def equalizer(elem):
-    for p, s in enumerate(elem.all):
-        elements(s)
-        single_equalizer(p/len(elem.all),random.uniform(0.6,1))
-
 episodes(0,10)
 cycle(32)
 cycle_beats(0,16)
