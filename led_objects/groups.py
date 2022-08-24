@@ -1,8 +1,8 @@
-from led_objects.cabbages import donut1, cabbage1, donut3, cup_cake4, cabbage5, cabbage6, brain7
-from led_objects.flood import cup_cake3, rug4, rug6
-from led_objects.flowers import flower1, paper2, bottle4, paper5, bottle5, flower6, gloves8
-from led_objects.stands import lifas1, sticks3, lifas4, lifas5, sticks7, sticks8
-from led_objects.stars import star7, star8
+# from led_objects.instances import donut1, cabbage1, donut3, cup_cake4, cabbage5, cabbage6, brain7, cup_cake3, rug4, rug6
+from led_objects.instances import  *
+# from led_objects.flowers import flower1, paper2, bottle4, paper5, bottle5, flower6, gloves8
+# from led_objects.stands import lifas1, sticks3, lifas4, lifas5, sticks7, sticks8
+# from led_objects.stars import star7, star8
 from led_objects.objects_selector import elements_flatten
 
 group1 = elements_flatten([flower1, donut1, lifas1, cabbage1])

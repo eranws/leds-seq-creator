@@ -19,13 +19,3 @@ class Stands(LedObject):
     def all(self):
         return [SegmentProxy(self, str(i)) for i in range(1, self.num_of_sticks + 1)]
 
-
-sticks8 = Stands([12, 31, 46, 56, 72])
-sticks7 = Stands([16, 29, 51, 68, 87, 103])
-sticks3 = Stands([55, 106, 150, 190, 227])
-
-
-lifas5 = Stands([38, 72, 106, 147, 193])
-lifas1 = Stands([45, 84, 103, 131, 164])
-lifas4 = Stands([55, 122, 178, 228])
-

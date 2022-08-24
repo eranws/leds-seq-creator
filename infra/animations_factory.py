@@ -22,9 +22,17 @@ from float_func.half import HalfFloatFunc
 from float_func.linear import LinearFloatFunc
 from float_func.repeat import RepeatFloatFunc
 from float_func.sin import SinFloatFunc
-from infra.length import short, medium, long, soft, hard, total
 from led_objects.objects_selector import get_elements
 
+# from infra.length import short, medium, long, soft, hard, total
+
+short = "short"
+medium = "medium"
+long = "long"
+
+soft = "soft"
+hard = "hard"
+total = "total"
 
 class ColorFactory:
 

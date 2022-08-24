@@ -49,5 +49,3 @@ class Star(LedObject):
         return [SegmentProxy(self, str(i)) for i in range(0, self.number_of_rays)]
 
 
-star7 = Star(50, 3)
-star8 = Star(25, 2)
