@@ -8,7 +8,7 @@ def get_elements():
     return stored_objects
 
 
-def should_unapack(elems):
+def should_unpack(elems):
     return any(isinstance(el, list) for el in elems)
 
 
@@ -24,7 +24,7 @@ def unpack_elements(elems):
 
 def elements_flatten(elems):
     unpacked = unpack_elements(elems)
-    while should_unapack(unpacked):
+    while should_unpack(unpacked):
         unpacked = unpack_elements(unpacked)
     return unpacked
 
