@@ -27,9 +27,7 @@ def send_to_single_thing(thing_name, led_object):
     client.publish(topic, json_str)
 
 def send_to_all_things():
-    for obj_with_thing in obj_to_thing.items():
-        thing_name = obj_with_thing[1]
-        led_object = obj_with_thing[0]
+    for led_object,thing_name in obj_to_thing.items():
         send_to_single_thing(thing_name, led_object)
 
 
