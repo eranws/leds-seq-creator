@@ -4,8 +4,7 @@ from led_objects.led_object import all
 from infra.colors import red, blue
 from infra.animations_factory import effect, color
 from infra.timing import cycle, episodes, song_settings
-from led_objects.flowers import flower1
-from led_objects.instances import cabbage1
+from led_objects.instances import flower1, cabbage1
 from led_objects.objects_selector import elements
 from thing_to_obj_map import obj_to_thing
 
