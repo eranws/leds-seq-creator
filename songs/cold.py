@@ -1,4 +1,3 @@
-
 from animations.rainbow import Rainbow
 from float_func.sin import SinFloatFunc
 from infra.animations_factory import effect
@@ -10,23 +9,43 @@ from infra.colors import *
 
 song_settings(bpm=60, beats_per_episode=1, start_offset=0)
 
-with open('/home/amir/labels/cold.txt') as fp:
+with open("/home/amir/labels/cold.txt") as fp:
     row_lines = [l.split() for l in fp]
-    segments = [{"start": float(label[0]), "end": float(label[1]), "name": label[2]} for label in row_lines if len(label) == 3]
+    segments = [
+        {"start": float(label[0]), "end": float(label[1]), "name": label[2]}
+        for label in row_lines
+        if len(label) == 3
+    ]
     cues = [float(label[0]) for label in row_lines if len(label) == 2]
 
 # map fade start time to end time
 fades = [segment for segment in segments if segment["name"] == "fade"]
+
+
 def find_fade_end(start_time):
     dist = [fade for fade in fades if abs(start_time - fade["start"]) < 0.05]
     return dist[0]["end"]
 
-voices = [{"name": segment["name"],
-           "start": segment["start"],
-           "fade": segment["end"],
-           "end": find_fade_end(segment["end"]),
-           "cues": list(sorted([cue for cue in cues if cue >= segment["start"] and cue <= segment["end"]]))
-           } for segment in segments if segment["name"] != "fade"]
+
+voices = [
+    {
+        "name": segment["name"],
+        "start": segment["start"],
+        "fade": segment["end"],
+        "end": find_fade_end(segment["end"]),
+        "cues": list(
+            sorted(
+                [
+                    cue
+                    for cue in cues
+                    if cue >= segment["start"] and cue <= segment["end"]
+                ]
+            )
+        ),
+    }
+    for segment in segments
+    if segment["name"] != "fade"
+]
 
 beats(0, 1000)
 elements(all)
@@ -59,5 +78,3 @@ for voice in voices:
 
 send_to_mqtt("cold")
 start_song("cold", 0)
-
-

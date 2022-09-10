@@ -1,6 +1,4 @@
-
 class StepDiffDiscreteFloatFunc:
-
     def __init__(self, start, dx):
         self.start = start
         self.dx = dx

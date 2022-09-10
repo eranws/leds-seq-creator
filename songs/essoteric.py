@@ -2,23 +2,36 @@ from animations import brightness
 from infra.animations_factory import color, effect
 from infra.length import short, medium, long, soft, hard, total
 from led_objects.instances import *
+
 # from led_objects.instances import cabbage1, cabbage6, brain7, cup_cake4, cabbage5, cabbages, donut1, donut3, \
-    # brains, twists, donuts
+# brains, twists, donuts
 # from led_objects.flood import cup_cakes, cup_cake3, rug4, rug6, rugs
-from led_objects.groups import group1, group2, group3, group4, group5, group6, group7, group8
+from led_objects.groups import (
+    group1,
+    group2,
+    group3,
+    group4,
+    group5,
+    group6,
+    group7,
+    group8,
+)
 from led_objects.groups import *
 from led_objects.led_object import all
+
 # from led_objects.flowers import flower6, flowers, paper5, papers, bottles, paper2, flower1, bottle4, bottle5, gloves
 from led_objects.meduza import meduza
 from led_objects.objects_selector import elements
+
 # from led_objects.stands import sticks8, single_sticks, sticks7, sticks3, lifas5, lifas1, lifas4, sticks, lifas, stands, \
-    # single_lifas
+# single_lifas
 # from led_objects.stars import stars, star7, star8
 from network.send_to_mqtt import send_to_mqtt, start_song
 from infra.timing import song_settings, episodes, episode, cycle, cycle_beats, beats
 from infra.colors import *
 
 song_settings(bpm=73.5, beats_per_episode=16, start_offset=3)
+
 
 def yellowopening():
 
@@ -70,8 +83,10 @@ def yellowopening():
     color.uniform(light_yellow_strip)
     effect.saw_tooth(1.0, False)
 
+
 episode(0)
 yellowopening()
+
 
 def coloropening():
     elements(cabbages)
@@ -124,7 +139,7 @@ def coloropening():
     cycle_beats(8, 8.74)
     color.uniform(pink_string)
     effect.breath(0.4)
-    cycle_beats(8.74 , 16)
+    cycle_beats(8.74, 16)
     color.uniform(pink_string)
     effect.saw_tooth(1.0, False)
 
@@ -164,6 +179,7 @@ def coloropening():
     color.uniform(coral)
     effect.saw_tooth(1.0, False)
 
+
 episode(1)
 coloropening()
 
@@ -187,21 +203,24 @@ def clapping(clapping_lights):
     effect.snake(0.2)
     color.uniform((0.995, 0.75, 0.4))
 
+
 episode(2)
 clapping(all)
+
 
 def light_stick_on_note(stick_to_light, g1, g2, stand_index, b_start, b_end):
 
     if stick_to_light.num_of_sticks > 4:
-        note_to_stand = {1:1, 2:2, 3:3, 4:4, 5:5}
+        note_to_stand = {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
     else:
-        note_to_stand = {1:1, 2:2, 3:3, 4:4, 5:1}
+        note_to_stand = {1: 1, 2: 2, 3: 3, 4: 4, 5: 1}
 
     elements(stick_to_light.stand(note_to_stand[stand_index]))
     cycle(beats=8)
     cycle_beats(b_start, b_end)
     color.gradient(g1, g2)
     effect.snake(1.0, True)
+
 
 def violin1(stick_to_light, g1, g2):
     light_stick_on_note(stick_to_light, g1, g2, 3, 0.0, 0.85)
@@ -221,13 +240,12 @@ def violin1(stick_to_light, g1, g2):
     light_stick_on_note(stick_to_light, g1, g2, 4, 7.0, 8.0)
 
 
-
 def light_lifa_on_note(lifa_to_light, g1, g2, stand_index, b_start, b_end):
 
     if lifa_to_light.num_of_sticks > 4:
-        note_to_stand = {1:1, 2:2, 3:3, 4:4, 5:5}
+        note_to_stand = {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
     else:
-        note_to_stand = {1:1, 2:2, 3:3, 4:4, 5:1}
+        note_to_stand = {1: 1, 2: 2, 3: 3, 4: 4, 5: 1}
 
     elements(lifa_to_light.stand(note_to_stand[stand_index]))
     cycle(beats=8)
@@ -255,7 +273,6 @@ def violin2(lifa_to_light, g1, g2):
     light_lifa_on_note(lifa_to_light, g1, g2, 4, 7.0, 8.0)
 
 
-
 episodes(3, 7)
 violin1(sticks3, 0.035, yellow_strip[0])
 
@@ -273,175 +290,174 @@ violin2(lifas4, purple_strip[0], indigo[0])
 
 episodes(5, 7)
 cycle(8)
-elements(flowers, cabbages, cup_cakes,papers, donuts, stars, gloves)
+elements(flowers, cabbages, cup_cakes, papers, donuts, stars, gloves)
 color.uniform((0.11, 0.8, 0.4))
 effect.breath(0.8)
-
-
 
 
 def small_bit():
     effect.hue_breath(0.4)
 
     elements(flower6)
-    beats((16 * 7) + 0.12, (16*7) + 32)
+    beats((16 * 7) + 0.12, (16 * 7) + 32)
     color.uniform(red)
 
     elements(cabbage1)
-    beats((16*7) +0.5, (16*7) + 32)
+    beats((16 * 7) + 0.5, (16 * 7) + 32)
     color.uniform(aquamarine)
 
     elements(lifas5.stand(3), lifas5.stand(5))
-    beats((16*7) +1.0, (16*7) + 32)
+    beats((16 * 7) + 1.0, (16 * 7) + 32)
     color.uniform(blue)
 
     elements(cup_cake4)
-    beats((16*7) +1.37, (16*7) + 32)
+    beats((16 * 7) + 1.37, (16 * 7) + 32)
     color.uniform(purple_string)
 
     elements(lifas4.stand(4))
-    beats((16*7) +1.75, (16*7) + 32)
+    beats((16 * 7) + 1.75, (16 * 7) + 32)
     color.uniform(yellow_string)
 
     elements(paper2)
-    beats((16*7) +2.0, (16*7) + 32)
+    beats((16 * 7) + 2.0, (16 * 7) + 32)
     color.uniform(orange_string)
 
     elements(lifas5.stand(2))
-    beats((16*7) +2.55, (16*7) + 32)
+    beats((16 * 7) + 2.55, (16 * 7) + 32)
     color.uniform(light_blue)
 
     elements(donut3)
-    beats((16*7) +3.0, (16*7) + 32)
+    beats((16 * 7) + 3.0, (16 * 7) + 32)
     color.uniform(light_green)
 
     elements(cabbage5)
-    beats((16*7) +3.34, (16*7) + 32)
+    beats((16 * 7) + 3.34, (16 * 7) + 32)
     color.uniform(coral)
 
     elements(sticks7.stand(1))
-    beats((16*7) +3.66, (16*7) + 32)
+    beats((16 * 7) + 3.66, (16 * 7) + 32)
     color.uniform(blue)
 
     elements(flower1)
-    beats((16*7) +4.12, (16*7) + 32)
+    beats((16 * 7) + 4.12, (16 * 7) + 32)
     color.uniform(light_purple_string)
 
     elements(bottle4)
-    beats((16*7) +4.5, (16*7) + 32)
+    beats((16 * 7) + 4.5, (16 * 7) + 32)
     color.uniform(aquamarine)
 
     elements(sticks8.stand(2))
-    beats((16*7) +5.0, (16*7) + 32)
+    beats((16 * 7) + 5.0, (16 * 7) + 32)
     color.uniform((0.87, 1.0, 1.0))
 
     elements(cup_cake3)
-    beats((16*7) +5.37, (16*7) + 32)
+    beats((16 * 7) + 5.37, (16 * 7) + 32)
     color.uniform(light_pink_strip)
 
     elements(lifas1.stand(3))
-    beats((16*7) +5.75, (16*7) + 32)
+    beats((16 * 7) + 5.75, (16 * 7) + 32)
     color.uniform(light_turquoise_string)
 
     elements(sticks3.stand(3))
-    beats((16*7) +6.0, (16*7) + 32)
+    beats((16 * 7) + 6.0, (16 * 7) + 32)
     color.uniform(light_orange_strip)
 
     elements(star8)
-    beats((16*7) +6.55, (16*7) + 32)
+    beats((16 * 7) + 6.55, (16 * 7) + 32)
     color.uniform(light_blue)
 
     elements(lifas4.stand(2))
-    beats((16*7) +7.0, (16*7) + 32)
+    beats((16 * 7) + 7.0, (16 * 7) + 32)
     color.uniform(yellow_strip)
 
     elements(rug4)
-    beats((16*7) +7.34, (16*7) + 32)
+    beats((16 * 7) + 7.34, (16 * 7) + 32)
     color.uniform(coral)
 
-    elements(sticks7. stand(2))
-    beats((16*7) +7.66, (16*7) + 32)
+    elements(sticks7.stand(2))
+    beats((16 * 7) + 7.66, (16 * 7) + 32)
     color.uniform(blue)
 
     elements(bottle5)
-    beats((16*7) +8.12, (16*7) + 32)
+    beats((16 * 7) + 8.12, (16 * 7) + 32)
     color.uniform(magenta)
 
     elements(lifas5.stand(1), lifas5.stand(4))
-    beats((16*7) +8.5, (16*7) + 32)
+    beats((16 * 7) + 8.5, (16 * 7) + 32)
     color.uniform(dark_blue)
 
     elements(lifas1.stand(5))
-    beats((16*7) +9.0, (16*7) + 32)
+    beats((16 * 7) + 9.0, (16 * 7) + 32)
     color.uniform(light_turquoise_string)
 
     elements(sticks7.stand(6))
-    beats((16*7) +9.37, (16*7) + 32)
+    beats((16 * 7) + 9.37, (16 * 7) + 32)
     color.uniform(blue)
 
     elements(rug6)
-    beats((16*7) +9.75, (16*7) + 32)
+    beats((16 * 7) + 9.75, (16 * 7) + 32)
     color.uniform(turquoise_string)
 
     elements(sticks3.stand(1))
-    beats((16*7) +10.0, (16*7) + 32)
+    beats((16 * 7) + 10.0, (16 * 7) + 32)
     color.uniform(orange_string)
 
     elements(brain7)
-    beats((16*7) +10.55, (16*7) + 32)
+    beats((16 * 7) + 10.55, (16 * 7) + 32)
     color.uniform(blue)
 
     elements(paper5)
-    beats((16*7) +11.0, (16*7) + 32)
+    beats((16 * 7) + 11.0, (16 * 7) + 32)
     color.uniform(light_green)
 
     elements(sticks8.stand(4), sticks8.stand(1))
-    beats((16*7) +11.34, (16*7) + 32)
+    beats((16 * 7) + 11.34, (16 * 7) + 32)
     color.uniform((0.9, 1.0, 1.0))
 
     elements([sticks7.stand(2), sticks7.stand(4)])
-    beats((16*7) +11.66, (16*7) + 32)
+    beats((16 * 7) + 11.66, (16 * 7) + 32)
     color.uniform(dark_blue)
 
     elements(star7)
-    beats((16*7) +12.12, (16*7) + 32)
+    beats((16 * 7) + 12.12, (16 * 7) + 32)
     color.uniform(yellow_string)
 
     elements(sticks3.stand(2))
-    beats((16*7) +12.5, (16*7) + 32)
+    beats((16 * 7) + 12.5, (16 * 7) + 32)
     color.uniform(orange_string)
 
     elements(lifas1.stand(2))
-    beats((16*7) +13.0, (16*7) + 32)
+    beats((16 * 7) + 13.0, (16 * 7) + 32)
     color.uniform(turquoise_strip)
 
     elements([sticks7.stand(3), sticks7.stand(5)])
-    beats((16*7) +13.37, (16*7) + 32)
+    beats((16 * 7) + 13.37, (16 * 7) + 32)
     color.uniform(light_blue)
 
     elements([sticks8.stand(3), sticks8.stand(5)])
-    beats((16*7) +13.75, (16*7) + 32)
+    beats((16 * 7) + 13.75, (16 * 7) + 32)
     color.uniform(magenta)
 
     elements(donut1)
-    beats((16*7) +14.0, (16*7) + 32)
+    beats((16 * 7) + 14.0, (16 * 7) + 32)
     color.uniform(yellow_string)
 
     elements(sticks3.stand(5), sticks3.stand(4))
-    beats((16*7) +14.55, (16*7) + 32)
+    beats((16 * 7) + 14.55, (16 * 7) + 32)
     color.uniform(orange_strip)
 
     elements([lifas1.stand(1), lifas1.stand(4)])
-    beats((16*7) +15.0, (16*7) + 32)
+    beats((16 * 7) + 15.0, (16 * 7) + 32)
     color.uniform(turquoise_string)
 
     elements(gloves)
-    beats((16*7) +15.34, (16*7) + 32)
+    beats((16 * 7) + 15.34, (16 * 7) + 32)
     color.uniform((0.87, 1.0, 1.0))
 
     elements(lifas4.stand(3), lifas4.stand(1))
-    beats((16*7) +15.66, (16*7) + 32.0)
+    beats((16 * 7) + 15.66, (16 * 7) + 32.0)
     color.uniform(yellow_strip)
+
 
 episodes(7, 9)
 small_bit()
@@ -458,9 +474,6 @@ beats(143, 144)
 elements(all)
 color.gradient(red[0], orange_strip[0])
 effect.saw_tooth(total)
-
-
-
 
 
 def quickgroupcolorchange():
@@ -506,8 +519,6 @@ episode(9)
 cycle(4)
 elements(all)
 effect.hue_breath(0.1)
-
-
 
 
 episode(10)
@@ -580,7 +591,7 @@ color.gradient(0.78, 0.9)
 effect.saw_tooth(hard, False)
 
 cycle_beats(7.0, 8.0)
-elements(papers,cabbages, single_sticks)
+elements(papers, cabbages, single_sticks)
 color.gradient(0.78, 0.9)
 effect.saw_tooth(hard, False)
 
@@ -684,7 +695,6 @@ effect.saw_tooth(hard, False)
 #     color.uniform(green)
 
 
-
 def full_wave():
     cycle(0.5)
 
@@ -778,6 +788,7 @@ def full_wave():
     effect.fill()
     color.uniform(aquamarine)
 
+
 def stopmotion():
 
     cycle(2)
@@ -793,6 +804,7 @@ def stopmotion():
     elements(all)
     effect.hue_shift_steps(4, 0.08)
 
+
 episode(11)
 stopmotion()
 cycle(8)
@@ -807,7 +819,7 @@ effect.hue_shift(medium)
 #     e.random
 
 beats(184, 192)
-elements(cabbages, brains,lifas, stars)
+elements(cabbages, brains, lifas, stars)
 color.uniform(yellow_strip)
 effect.snake(0.6)
 
@@ -836,18 +848,20 @@ effect.snake(0.6)
 for e in all:
     e.straight
 
+
 def light_stick_on_note_end(stick_to_light, c, stand_index, b_start, b_end):
 
     if stick_to_light.num_of_sticks > 4:
-        note_to_stand = {1:1, 2:2, 3:3, 4:4, 5:5}
+        note_to_stand = {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
     else:
-        note_to_stand = {1:1, 2:2, 3:3, 4:4, 5:1}
+        note_to_stand = {1: 1, 2: 2, 3: 3, 4: 4, 5: 1}
 
     elements(stick_to_light.stand(note_to_stand[stand_index]))
     cycle(beats=8)
     cycle_beats(b_start, b_end)
     color.uniform(c)
     effect.snake(1.0, True)
+
 
 def violin1end(stick_to_light, c):
     light_stick_on_note_end(stick_to_light, c, 3, 0.0, 0.85)
@@ -870,9 +884,9 @@ def violin1end(stick_to_light, c):
 def light_lifa_on_note(lifa_to_light, c, stand_index, b_start, b_end):
 
     if lifa_to_light.num_of_sticks > 4:
-        note_to_stand = {1:1, 2:2, 3:3, 4:4, 5:5}
+        note_to_stand = {1: 1, 2: 2, 3: 3, 4: 4, 5: 5}
     else:
-        note_to_stand = {1:1, 2:2, 3:3, 4:4, 5:1}
+        note_to_stand = {1: 1, 2: 2, 3: 3, 4: 4, 5: 1}
 
     elements(lifa_to_light.stand(note_to_stand[stand_index]))
     cycle(beats=8)
@@ -880,24 +894,25 @@ def light_lifa_on_note(lifa_to_light, c, stand_index, b_start, b_end):
     color.uniform(c)
     effect.snake(1.0, True)
 
-def violin2end (lifa_to_light, c):
 
+def violin2end(lifa_to_light, c):
 
-        light_lifa_on_note(lifa_to_light, c, 3, 0.0, 0.85)
-        light_lifa_on_note(lifa_to_light, c, 1, 0.55, 1.3)
-        light_lifa_on_note(lifa_to_light, c, 2, 1.0, 1.85)
-        light_lifa_on_note(lifa_to_light, c, 5, 1.55, 2.37)
-        light_lifa_on_note(lifa_to_light, c, 2, 2.07, 2.78)
-        light_lifa_on_note(lifa_to_light, c, 4, 2.48, 3.3)
-        light_lifa_on_note(lifa_to_light, c, 3, 3.0, 3.85)
-        light_lifa_on_note(lifa_to_light, c, 4, 3.55, 4.3)
-        light_lifa_on_note(lifa_to_light, c, 2, 4.0, 4.85)
-        light_lifa_on_note(lifa_to_light, c, 1, 4.55, 5.3)
-        light_lifa_on_note(lifa_to_light, c, 2, 5.0, 5.85)
-        light_lifa_on_note(lifa_to_light, c, 5, 5.55, 6.37)
-        light_lifa_on_note(lifa_to_light, c, 3, 6.07, 6.85)
-        light_lifa_on_note(lifa_to_light, c, 2, 6.55, 7.3)
-        light_lifa_on_note(lifa_to_light, c, 4, 7.0, 8.0)
+    light_lifa_on_note(lifa_to_light, c, 3, 0.0, 0.85)
+    light_lifa_on_note(lifa_to_light, c, 1, 0.55, 1.3)
+    light_lifa_on_note(lifa_to_light, c, 2, 1.0, 1.85)
+    light_lifa_on_note(lifa_to_light, c, 5, 1.55, 2.37)
+    light_lifa_on_note(lifa_to_light, c, 2, 2.07, 2.78)
+    light_lifa_on_note(lifa_to_light, c, 4, 2.48, 3.3)
+    light_lifa_on_note(lifa_to_light, c, 3, 3.0, 3.85)
+    light_lifa_on_note(lifa_to_light, c, 4, 3.55, 4.3)
+    light_lifa_on_note(lifa_to_light, c, 2, 4.0, 4.85)
+    light_lifa_on_note(lifa_to_light, c, 1, 4.55, 5.3)
+    light_lifa_on_note(lifa_to_light, c, 2, 5.0, 5.85)
+    light_lifa_on_note(lifa_to_light, c, 5, 5.55, 6.37)
+    light_lifa_on_note(lifa_to_light, c, 3, 6.07, 6.85)
+    light_lifa_on_note(lifa_to_light, c, 2, 6.55, 7.3)
+    light_lifa_on_note(lifa_to_light, c, 4, 7.0, 8.0)
+
 
 #
 #     light_lifa_on_note(lifa_to_light, c, 3, 0.0, 1.0)
@@ -926,7 +941,6 @@ def violin2end (lifa_to_light, c):
 #     light_lifa_on_note(lifa_to_light, c, 3, 6.07, 6.55)
 #     light_lifa_on_note(lifa_to_light, c, 2, 6.55, 7.0)
 #     light_lifa_on_note(lifa_to_light, c, 4, 7.0, 8.0)
-
 
 
 episodes(12, 14)
@@ -1005,7 +1019,5 @@ cycle(16)
 effect.breath(hard)
 
 
-
 send_to_mqtt("essoteric")
 start_song("essoteric", 0)
-

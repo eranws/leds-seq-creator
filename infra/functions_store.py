@@ -2,7 +2,6 @@ import json
 
 
 class FunctionsStore:
-
     def __init__(self):
         self.reset()
 
@@ -24,7 +23,7 @@ class FunctionsStore:
         """
 
         json_obj = func_obj.to_compact_json_obj()
-        json_str = json.dumps(json_obj, separators=(',',':'))
+        json_str = json.dumps(json_obj, separators=(",", ":"))
         if json_str in self.json_str_to_index:
             return self.json_str_to_index[json_str]
 

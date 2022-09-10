@@ -1,8 +1,6 @@
-
 class SinFloatFunc:
-
     def __init__(self, min_value, max_value, phase, repeats):
-        """ Initialize sin function with explicit paramters """
+        """Initialize sin function with explicit paramters"""
         self.min_value = min_value
         self.max_value = max_value
         self.phase = phase
@@ -16,19 +14,17 @@ class SinFloatFunc:
     def to_json_obj(self):
         return {
             "t": "sin",
-
             "min": self.min_value,
             "max": self.max_value,
             "phase": self.phase,
-            "rep": self.repeats
+            "rep": self.repeats,
         }
 
     def to_compact_json_obj(self):
         return {
             "t": "sin",
-
             "min": self.min_value,
             "max": self.max_value,
             "phase": self.phase,
-            "rep": self.repeats
+            "rep": self.repeats,
         }

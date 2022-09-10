@@ -6,14 +6,30 @@ from float_func.steps import StepsFloatFunc
 from infra.animations_factory import color, effect
 from led_objects.instances import *
 from led_objects.groups import *
-from led_objects.groups import group1, group2, group3, group4, group5, group6, group7, group8
+from led_objects.groups import (
+    group1,
+    group2,
+    group3,
+    group4,
+    group5,
+    group6,
+    group7,
+    group8,
+)
 
 from led_objects.meduza import meduza
 from led_objects.led_object import all
 from led_objects.objects_selector import elements
 from led_objects.sheep import sheep
 from network.send_to_mqtt import send_to_mqtt, start_song
-from infra.timing import song_settings, episodes, cycle, cycle_beats, beats, beats_in_episode
+from infra.timing import (
+    song_settings,
+    episodes,
+    cycle,
+    cycle_beats,
+    beats,
+    beats_in_episode,
+)
 from infra.colors import *
 
 
@@ -99,24 +115,24 @@ elements(all)
 color.uniform(black)
 
 # stretched out background sound
-beats(88, 88 + 2/3)
+beats(88, 88 + 2 / 3)
 elements(floods)
 color.uniform(red)
 effect.saw_tooth()
-beats(88 + 2/3, 89 + 1/3)
+beats(88 + 2 / 3, 89 + 1 / 3)
 elements(floods)
 color.uniform(red)
 effect.saw_tooth()
-beats(89 + 1/3, 90)
+beats(89 + 1 / 3, 90)
 elements(floods)
 color.uniform(red)
 effect.saw_tooth()
-beats(90, 90 + 2/3)
+beats(90, 90 + 2 / 3)
 elements(floods)
 color.uniform(red)
 effect.saw_tooth()
 
-beats(90 + 2/3, 91.5)
+beats(90 + 2 / 3, 91.5)
 elements(floods)
 color.uniform(red)
 effect.saw_tooth()
@@ -152,23 +168,23 @@ effect.saw_tooth()
 
 
 # stretched out bling sequence
-beats(89 + 1/11, 100)
+beats(89 + 1 / 11, 100)
 elements(lifas4)
 color.gradient(0.995, 0.61)
 
-beats(91 + 2/10, 100)
+beats(91 + 2 / 10, 100)
 elements(sticks3)
 color.gradient(0.995, 0.61)
 
-beats(93 + 4/10, 100)
+beats(93 + 4 / 10, 100)
 elements(lifas5)
 color.gradient(0.995, 0.61)
 
-beats(95 + 7/10, 100)
+beats(95 + 7 / 10, 100)
 elements(sticks7, sticks8)
 color.gradient(0.995, 0.61)
 
-beats(96 + 6/10, 100)
+beats(96 + 6 / 10, 100)
 elements(gloves8, meduza)
 color.gradient(0.995, 0.61)
 
@@ -217,19 +233,29 @@ color.uniform(magenta)
 
 # episode 3 small sounds end
 beats(120, 129)
-elements(sticks3.stand(1), sticks7.stand(1), sticks8.stand(1), star7.ray(1), star7.ray(7))
+elements(
+    sticks3.stand(1), sticks7.stand(1), sticks8.stand(1), star7.ray(1), star7.ray(7)
+)
 color.uniform(magenta)
 beats(121, 129)
-elements(sticks3.stand(2), sticks7.stand(2), sticks8.stand(2), star7.ray(2), star7.ray(8))
+elements(
+    sticks3.stand(2), sticks7.stand(2), sticks8.stand(2), star7.ray(2), star7.ray(8)
+)
 color.uniform(red)
 beats(122.33, 128.66)
-elements(sticks3.stand(3), sticks7.stand(3), sticks8.stand(3), star7.ray(3), star7.ray(9))
+elements(
+    sticks3.stand(3), sticks7.stand(3), sticks8.stand(3), star7.ray(3), star7.ray(9)
+)
 color.uniform(yellow_strip)
 beats(123.33, 128)
-elements(sticks3.stand(4), sticks7.stand(4), sticks8.stand(4), star7.ray(4), star7.ray(10))
+elements(
+    sticks3.stand(4), sticks7.stand(4), sticks8.stand(4), star7.ray(4), star7.ray(10)
+)
 color.uniform(orange_string)
 beats(124, 126)
-elements(sticks3.stand(5), sticks7.stand(5), sticks8.stand(5), star7.ray(5), star7.ray(11))
+elements(
+    sticks3.stand(5), sticks7.stand(5), sticks8.stand(5), star7.ray(5), star7.ray(11)
+)
 color.uniform(green)
 
 # episode 4 triolas and drum on 2 beats
@@ -323,9 +349,9 @@ n_episodes(5.5, 6)
 elements(floods)
 color.uniform(dark_green)
 cycle(2)
-cycle_beats(0, 2/3)
+cycle_beats(0, 2 / 3)
 effect.saw_tooth()
-cycle_beats(2/3, 2)
+cycle_beats(2 / 3, 2)
 effect.saw_tooth()
 cycle(None)
 fade_in_parameteric(1.0, 2.0)
@@ -429,7 +455,7 @@ effect.hue_shift(-0.2)
 effect.brightness(0.5)
 
 # episode 10 triolas come back still with drama
-n_episodes(10, 10 + 15/16)
+n_episodes(10, 10 + 15 / 16)
 elements(bottles, flowers, papers, lifas, sticks, gloves8)
 color.uniform(pink_string)
 cycle(8)
@@ -486,7 +512,7 @@ effect.fade_in()
 
 # episode 11
 # bass drum
-n_episodes(11, 11 + 7/8)
+n_episodes(11, 11 + 7 / 8)
 elements(star7)
 color.uniform(red)
 cycle(2)
@@ -509,12 +535,30 @@ color.gradient(0.6, 1.0)
 effect.saw_tooth(1.0)
 
 cycle_beats(1, 1.66)
-elements([lifas1.stand(1), lifas4.stand(1), lifas5.stand(1), lifas1.stand(3), lifas4.stand(3), lifas5.stand(3)])
+elements(
+    [
+        lifas1.stand(1),
+        lifas4.stand(1),
+        lifas5.stand(1),
+        lifas1.stand(3),
+        lifas4.stand(3),
+        lifas5.stand(3),
+    ]
+)
 color.gradient(0.4, 0.8)
 effect.saw_tooth(1.0)
 
 cycle_beats(1.33, 2.0)
-elements([lifas1.stand(2), lifas4.stand(2), lifas5.stand(2), lifas1.stand(4), lifas4.stand(4), lifas5.stand(4)])
+elements(
+    [
+        lifas1.stand(2),
+        lifas4.stand(2),
+        lifas5.stand(2),
+        lifas1.stand(4),
+        lifas4.stand(4),
+        lifas5.stand(4),
+    ]
+)
 color.gradient(0.2, 0.6)
 effect.saw_tooth(1.0)
 
@@ -524,12 +568,30 @@ color.gradient(0.6, 1.0)
 effect.saw_tooth(1.0)
 
 cycle_beats(3, 3.66)
-elements([sticks3.stand(2), sticks7.stand(2), sticks8.stand(2), sticks3.stand(4), sticks7.stand(4), sticks8.stand(4)])
+elements(
+    [
+        sticks3.stand(2),
+        sticks7.stand(2),
+        sticks8.stand(2),
+        sticks3.stand(4),
+        sticks7.stand(4),
+        sticks8.stand(4),
+    ]
+)
 color.gradient(0.4, 0.8)
 effect.saw_tooth(1.0)
 
 cycle_beats(3.33, 4.0)
-elements([sticks3.stand(1), sticks7.stand(1), sticks8.stand(1), sticks3.stand(3), sticks7.stand(3), sticks8.stand(3)])
+elements(
+    [
+        sticks3.stand(1),
+        sticks7.stand(1),
+        sticks8.stand(1),
+        sticks3.stand(3),
+        sticks7.stand(3),
+        sticks8.stand(3),
+    ]
+)
 color.gradient(0.2, 0.6)
 effect.saw_tooth(1.0)
 
@@ -656,7 +718,7 @@ effect.hue_shift_cycle_diff(0.0, 0.01)
 
 # episode 15
 # enter high violin
-n_episodes(15, 16 + 15/16)
+n_episodes(15, 16 + 15 / 16)
 elements(single_stands)
 color.gradient(0.7, 0.9)
 cycle(2)
@@ -667,7 +729,7 @@ effect.hue_shift_cycle_diff(0.0, 0.04)
 
 # episode 16
 # enter second triola
-n_episodes(16, 16 + 15/16)
+n_episodes(16, 16 + 15 / 16)
 elements(no_stands)
 color.gradient(0.8, 1.0)
 effect.brightness(0.5)
@@ -687,7 +749,7 @@ elements(papers, cup_cakes)
 effect.fill_out_in()
 
 # background increasing to explosion at end of episode
-n_episodes(16.5, 16 + 15/16)
+n_episodes(16.5, 16 + 15 / 16)
 elements(all)
 fade_in_parameteric(1.0, 1.5)
 
@@ -696,7 +758,7 @@ color.uniform(red)
 effect.fade_in()
 
 # episodes 17, 18 drama
-n_episodes(17, 17 + 15/16)
+n_episodes(17, 17 + 15 / 16)
 cycle(4)
 cycle_beats(0, 2)
 elements(no_stands, meduza, sheep)
@@ -709,20 +771,20 @@ color.gradient(0.2, 0.4)
 elements(single_stands)
 cycle(8)
 cycle_beats(2, 4)
-FillAnimation(ConstFloatFunc(0.0), StepsFloatFunc(6, 1/6, 1/6)).apply()
+FillAnimation(ConstFloatFunc(0.0), StepsFloatFunc(6, 1 / 6, 1 / 6)).apply()
 cycle_beats(6, 8)
-FillAnimation(ConstFloatFunc(0.0), StepsFloatFunc(6, -1/6, 1)).apply()
+FillAnimation(ConstFloatFunc(0.0), StepsFloatFunc(6, -1 / 6, 1)).apply()
 
 cycle(4)
 elements(all, meduza, sheep)
 effect.hue_shift_cycle_diff(0.0, 0.2)
 
-n_episodes(17 + 15/16, 18)
+n_episodes(17 + 15 / 16, 18)
 elements(single_stands)
 color.gradient(0.6, 0.8)
 effect.blink_repeat(3)
 
-n_episodes(18, 18 + 15/16)
+n_episodes(18, 18 + 15 / 16)
 cycle(4)
 cycle_beats(0, 2)
 elements(no_stands, meduza, sheep)
@@ -735,15 +797,15 @@ color.gradient(0.2, 0.4)
 elements(single_stands)
 cycle(8)
 cycle_beats(2, 4)
-FillAnimation(ConstFloatFunc(0.0), StepsFloatFunc(6, 1/6, 1/6)).apply()
+FillAnimation(ConstFloatFunc(0.0), StepsFloatFunc(6, 1 / 6, 1 / 6)).apply()
 cycle_beats(6, 8)
-FillAnimation(ConstFloatFunc(0.0), StepsFloatFunc(6, -1/6, 1)).apply()
+FillAnimation(ConstFloatFunc(0.0), StepsFloatFunc(6, -1 / 6, 1)).apply()
 
 cycle(4)
 elements(all, meduza, sheep)
 effect.hue_shift_cycle_diff(0.0, 0.2)
 
-n_episodes(18 + 15/16, 19)
+n_episodes(18 + 15 / 16, 19)
 elements(single_stands)
 color.gradient(0.6, 0.8)
 effect.blink_repeat(3)
@@ -752,7 +814,7 @@ effect.blink_repeat(3)
 n_episodes(19, 20.5)
 elements(no_stands, meduza, sheep)
 color.uniform(red)
-BrightnessAnimation(StepsFloatFunc(12, -1/12, 1)).apply()
+BrightnessAnimation(StepsFloatFunc(12, -1 / 12, 1)).apply()
 cycle(4)
 effect.hue_shift_cycle_target(0, indigo[0])
 
@@ -761,9 +823,9 @@ elements(single_stands)
 color.gradient(0.2, 0.4)
 cycle(4)
 cycle_beats(0, 2)
-FillAnimation(ConstFloatFunc(0.0), StepsFloatFunc(3, 1/3, 1/3)).apply()
+FillAnimation(ConstFloatFunc(0.0), StepsFloatFunc(3, 1 / 3, 1 / 3)).apply()
 cycle_beats(2, 4)
-FillAnimation(ConstFloatFunc(0.0), StepsFloatFunc(3, -1/3, 1)).apply()
+FillAnimation(ConstFloatFunc(0.0), StepsFloatFunc(3, -1 / 3, 1)).apply()
 cycle(4)
 effect.hue_shift_cycle_diff(0.0, 0.02)
 

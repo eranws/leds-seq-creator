@@ -14,11 +14,11 @@ class FillAnimation(Animation):
     def get_params_json(self):
         return {
             "fill_start_pos": self.start_pos.to_json_obj(),
-            "fill_end_pos": self.end_pos.to_json_obj()
-            }
+            "fill_end_pos": self.end_pos.to_json_obj(),
+        }
 
     def get_compact_params_json(self):
         return {
             "fill_start_pos": float_functions_store.get_index(self.start_pos),
             "fill_end_pos": float_functions_store.get_index(self.end_pos),
-            }
+        }

@@ -11,7 +11,7 @@ class ConstColorAnimation(Animation):
         self.hsv = hsv
 
     def get_params_json(self):
-        return {"hsv": hsv_to_json(self.hsv) }
+        return {"hsv": hsv_to_json(self.hsv)}
 
     def get_compact_params_json(self):
-        return {"hsv": hsv_to_json(self.hsv) }
+        return {"hsv": hsv_to_json(self.hsv)}

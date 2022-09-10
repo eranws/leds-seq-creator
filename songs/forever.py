@@ -6,7 +6,16 @@ from float_func.sin import SinFloatFunc
 from infra.animations_factory import color, effect
 from infra.length import short, medium, long, soft, hard, total
 from led_objects.instances import *
-from led_objects.groups import group1, group2, group3, group4, group5, group6, group7, group8
+from led_objects.groups import (
+    group1,
+    group2,
+    group3,
+    group4,
+    group5,
+    group6,
+    group7,
+    group8,
+)
 from led_objects.groups import *
 from led_objects.led_object import all
 from led_objects.meduza import meduza
@@ -30,120 +39,118 @@ def wave():
     BrightnessAnimation(SinFloatFunc(0.2, 1.0, 0.75, 1)).apply()
 
 
-#background
-episodes(0,4)
-elements_random(list(set(all)-set(stars)-set(papers)))
+# background
+episodes(0, 4)
+elements_random(list(set(all) - set(stars) - set(papers)))
 cycle(1)
 color.uniform(turquoise_string)
-effect.hue_shift_cycle_target(0, red[0]-turquoise_string[0])
+effect.hue_shift_cycle_target(0, red[0] - turquoise_string[0])
 wave()
 
-#Humming
+# Humming
 def humming(start_beat):
-    beats(start_beat, start_beat+10)
+    beats(start_beat, start_beat + 10)
     elements(stars)
     color.uniform(red)
 
-    beats(start_beat, start_beat+1)
+    beats(start_beat, start_beat + 1)
     elements(single_stars)
     effect.fill_in_steps(3)
 
-    beats(start_beat+8.5, start_beat+10)
+    beats(start_beat + 8.5, start_beat + 10)
     elements(single_stars)
     effect.fill_out()
 
-    beats(start_beat+2, start_beat+8)
+    beats(start_beat + 2, start_beat + 8)
     elements_random(papers)
     cycle(2)
-    cycle_beats(0.5,1)
+    cycle_beats(0.5, 1)
     color.uniform(light_orange_strip)
     effect.brightness(0.5)
     effect.fade_in()
-    cycle_beats(1,2)
+    cycle_beats(1, 2)
     color.uniform(light_orange_string)
     effect.brightness(0.5)
     effect.fill_out()
+
 
 humming(2)
 humming(18)
 
 
+# Episode 4- Shout
 
-
-#Episode 4- Shout
-
-beats(31,61)
+beats(31, 61)
 cycle(4)
-cycle_beats(0,2)
+cycle_beats(0, 2)
 elements(single_stands)
-color.gradient(white,purple_string)
+color.gradient(white, purple_string)
 effect.fill()
 
 ###############episode 4##############
 
-beats(33,70)
+beats(33, 70)
 cycle(8)
-cycle_beats(0,1)
-elements(list(set(all)-set(stands)-set(cabbages)))
+cycle_beats(0, 1)
+elements(list(set(all) - set(stands) - set(cabbages)))
 color.alternate(light_purple_string, purple_string)
 effect.saw_tooth(medium)
-cycle_beats(1,2)
-elements(list(set(all)-set(stands)-set(cabbages)))
+cycle_beats(1, 2)
+elements(list(set(all) - set(stands) - set(cabbages)))
 color.alternate(light_purple_string, purple_string)
 effect.saw_tooth(medium)
-cycle_beats(2,8)
-elements(list(set(all)-set(stands)-set(cabbages)))
+cycle_beats(2, 8)
+elements(list(set(all) - set(stands) - set(cabbages)))
 color.gradient(indigo[0], purple_strip[0])
 effect.hue_breath()
 
 
-
-#Weird sound
-beats(48.6,49.3)
+# Weird sound
+beats(48.6, 49.3)
 elements(cabbages)
 color.uniform(indigo)
 effect.snake(0.2, True)
 
-#Confetti
-beats(60,62)
+# Confetti
+beats(60, 62)
 elements_random(cabbages)
-color.alternate(turquoise_string,indigo)
+color.alternate(turquoise_string, indigo)
 effect.fill_in_out()
 
 
 ##drums##
-beats(63,63.3)
+beats(63, 63.3)
 elements(group1)
 color.uniform(red)
 effect.hue_blink(medium)
 
-beats(63.5,63.8)
+beats(63.5, 63.8)
 elements(group5)
 color.uniform(red)
 effect.fill
 
-beats(64,64.3)
+beats(64, 64.3)
 elements(group3)
 color.uniform(red)
 effect.blink(medium)
 
 
-#Episode8
+# Episode8
 
-#Singing
+# Singing
 
-episodes(8,12)
+episodes(8, 12)
 cycle(8)
-cycle_beats(0,1)
-elements(list(set(all)-set(stands)-set(cabbages)))
+cycle_beats(0, 1)
+elements(list(set(all) - set(stands) - set(cabbages)))
 color.alternate(light_purple_string, purple_string)
 effect.saw_tooth(medium)
-cycle_beats(1,2)
-elements(list(set(all)-set(stands)-set(cabbages)))
+cycle_beats(1, 2)
+elements(list(set(all) - set(stands) - set(cabbages)))
 color.alternate(light_purple_string, purple_string)
 effect.saw_tooth(medium)
-cycle_beats(2,8)
-elements(list(set(all)-set(stands)-set(cabbages)))
+cycle_beats(2, 8)
+elements(list(set(all) - set(stands) - set(cabbages)))
 color.gradient(indigo[0], purple_strip[0])
 effect.hue_breath()
 wave()
@@ -162,71 +169,71 @@ wave()
 # effect.breath()
 # wave()
 
-#piano
-beats(67,91)
+# piano
+beats(67, 91)
 cycle(4)
-cycle_beats(0,0.5)
+cycle_beats(0, 0.5)
 elements(group1)
 color.gradient(red[0], light_pink_strip[0])
 effect.blink(medium)
-cycle_beats(0.5,1)
+cycle_beats(0.5, 1)
 elements(group3)
 color.gradient(red[0], light_pink_strip[0])
 effect.blink(medium)
 
-#Drums
+# Drums
 
-beats(92.5,93.3)
+beats(92.5, 93.3)
 cycle(1)
 elements(sticks)
 color.uniform(orange_string)
 effect.blink(medium)
-beats(93.3,94)
+beats(93.3, 94)
 cycle(1)
 elements(sticks)
 color.uniform(orange_string)
 effect.blink(medium)
 
-beats(94,95)
-cycle(1/4)
+beats(94, 95)
+cycle(1 / 4)
 elements(sticks)
 color.uniform(orange_string)
 effect.blink(total)
 
-beats(95,95.5)
+beats(95, 95.5)
 cycle(1)
 elements(paper2)
 color.uniform(red)
 effect.blink(total)
 
-beats(95.5,96)
+beats(95.5, 96)
 cycle(1)
 elements(paper5)
 color.uniform(red)
 effect.blink(total)
 
-beats(96,96.5)
+beats(96, 96.5)
 cycle(1)
 elements(all)
 color.uniform(white)
 effect.blink(total)
 
-#Episode12
+# Episode12
 
-#Singing
+# Singing
 
-episodes(12,16)
+episodes(12, 16)
 cycle(8)
-cycle_beats(0,1)
-elements(list(set(all)-set(stands)-set(cabbages)))
+cycle_beats(0, 1)
+elements(list(set(all) - set(stands) - set(cabbages)))
 color.alternate(light_purple_string, purple_string)
 effect.saw_tooth(medium)
-cycle_beats(1,2)
-elements(list(set(all)-set(stands)-set(cabbages)))
+cycle_beats(1, 2)
+elements(list(set(all) - set(stands) - set(cabbages)))
 color.alternate(light_purple_string, purple_string)
 effect.saw_tooth(medium)
-cycle_beats(2,8)
-elements(list(set(all)-set(stands)-set(cabbages)))
+cycle_beats(2, 8)
+elements(list(set(all) - set(stands) - set(cabbages)))
 color.gradient(indigo[0], purple_strip[0])
 effect.hue_breath()
 wave()
@@ -238,73 +245,70 @@ wave()
 # wave()
 
 
+# end of last episode
 
-#end of last episode
-
-beats(96,96.5)
+beats(96, 96.5)
 cycle(1)
 elements(all)
 color.uniform(white)
 effect.blink(total)
 
 
-#piano
-beats(99,115)
+# piano
+beats(99, 115)
 cycle(4)
-cycle_beats(0,0.5)
-elements(group5,group4)
+cycle_beats(0, 0.5)
+elements(group5, group4)
 color.gradient(indigo[0], light_blue[0])
 effect.blink(medium)
-cycle_beats(0.5,1)
-elements(group3,group2,group1)
+cycle_beats(0.5, 1)
+elements(group3, group2, group1)
 color.gradient(indigo[0], light_pink_strip[0])
 effect.blink(medium)
 
-#piano
-beats(115,131)
+# piano
+beats(115, 131)
 cycle(4)
-cycle_beats(0,0.5)
-elements(group1,group6,group8)
+cycle_beats(0, 0.5)
+elements(group1, group6, group8)
 color.gradient(indigo[0], light_blue[0])
 effect.blink(medium)
-cycle_beats(0.5,1)
-elements(group4,group6)
+cycle_beats(0.5, 1)
+elements(group4, group6)
 color.gradient(indigo[0], light_pink_strip[0])
 effect.blink(medium)
 
 
-#Drums
-beats(124.5,125.3)
+# Drums
+beats(124.5, 125.3)
 cycle(1)
 elements(sticks)
 color.uniform(red)
 effect.blink(medium)
 
-beats(125.3,126)
+beats(125.3, 126)
 cycle(1)
 elements(sticks)
 color.uniform(red)
 effect.blink(medium)
 
-beats(126,127)
-cycle(1/4)
+beats(126, 127)
+cycle(1 / 4)
 elements(sticks)
 color.uniform(red)
 effect.blink(total)
 
 
-beats(127,127.5)
+beats(127, 127.5)
 cycle(1)
 elements(all)
 color.uniform(white)
 effect.blink(total)
 
-beats(128,129)
+beats(128, 129)
 elements(all)
 color.uniform(white)
 effect.blink_repeat(64)
-
-
 
 
 send_to_mqtt("forever")

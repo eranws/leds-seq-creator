@@ -1,4 +1,3 @@
-
 short = "short"
 medium = "medium"
 long = "long"
@@ -6,4 +5,3 @@ long = "long"
 soft = "soft"
 hard = "hard"
 total = "total"
-

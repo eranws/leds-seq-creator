@@ -2,7 +2,6 @@ from led_objects.led_object import LedObject, SegmentProxy
 
 
 class Sheep(LedObject):
-
     def __init__(self):
         super(Sheep, self).__init__(total_pixels=302, add_to_all=False)
 
@@ -28,9 +27,15 @@ class Sheep(LedObject):
 
         all_bp_lists = [self.mapping["bp" + str(i)] for i in range(0, 10)]
         all_bp_flat = [item for sublist in all_bp_lists for item in sublist]
-        self.mapping["a"] = self.mapping["head"] + self.mapping["leg_fl"] + self.mapping["leg_fr"] + \
-                            self.mapping["leg_bl"] + self.mapping["leg_br"] + self.mapping["eyes"] + all_bp_flat
-
+        self.mapping["a"] = (
+            self.mapping["head"]
+            + self.mapping["leg_fl"]
+            + self.mapping["leg_fr"]
+            + self.mapping["leg_bl"]
+            + self.mapping["leg_br"]
+            + self.mapping["eyes"]
+            + all_bp_flat
+        )
 
     def leg_front_left(self):
         return SegmentProxy(self, "leg_fl")

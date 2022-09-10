@@ -38,5 +38,3 @@ effect.fade_in()
 
 send_to_mqtt("game_audio/win3")
 start_song("game_audio/win3", 0)
-
-

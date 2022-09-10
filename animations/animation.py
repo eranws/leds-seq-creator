@@ -5,7 +5,6 @@ from led_objects.objects_selector import get_elements
 
 
 class Animation:
-
     def __init__(self):
         self.timing = None
         self.repeat_params = None
@@ -23,7 +22,7 @@ class Animation:
             "p": self.segments if len(self.segments) != 1 else self.segments[0],
             "s": self.timing.get_start_time_ms(),
             "e": self.timing.get_end_time_ms(),
-            "params": params
+            "params": params,
         }
 
         if self.timing.repeats:
@@ -37,8 +36,12 @@ class Animation:
             curr_length_in_beats = self.repeat_params["curr_length_beats"]
             if not curr_length_in_beats:
                 curr_length_in_beats = total_beats
-            json_obj["rep_s"] = self.repeat_params["repeat_start_beat"] / float(curr_length_in_beats)
-            json_obj["rep_e"] = self.repeat_params["repeat_end_beat"] / float(curr_length_in_beats)
+            json_obj["rep_s"] = self.repeat_params["repeat_start_beat"] / float(
+                curr_length_in_beats
+            )
+            json_obj["rep_e"] = self.repeat_params["repeat_end_beat"] / float(
+                curr_length_in_beats
+            )
             num_repeat = total_beats / curr_length_in_beats
             json_obj["rep_num"] = num_repeat
         return json_obj

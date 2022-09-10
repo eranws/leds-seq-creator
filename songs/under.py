@@ -17,11 +17,45 @@ song_settings(bpm=128, beats_per_episode=32, start_offset=3)
 elements(all)
 
 note_to_elem1 = {
-    "D": [sticks3.stand(1), sticks7.stand(1), sticks8.stand(1), lifas1.stand(1), lifas4.stand(1), lifas5.stand(1)],
-    "Bb": [sticks3.stand(2), sticks7.stand(2), sticks8.stand(2), lifas1.stand(2), lifas4.stand(2), lifas5.stand(2)],
-    "F": [sticks3.stand(3), sticks7.stand(3), sticks8.stand(3), lifas1.stand(3), lifas4.stand(3), lifas5.stand(3)],
-    "C": [sticks3.stand(4), sticks7.stand(4), sticks8.stand(4), lifas1.stand(4), lifas4.stand(4), lifas5.stand(4)],
-    "Eb": [sticks3.stand(5), sticks7.stand(5), sticks8.stand(5), lifas1.stand(5), lifas5.stand(5)],
+    "D": [
+        sticks3.stand(1),
+        sticks7.stand(1),
+        sticks8.stand(1),
+        lifas1.stand(1),
+        lifas4.stand(1),
+        lifas5.stand(1),
+    ],
+    "Bb": [
+        sticks3.stand(2),
+        sticks7.stand(2),
+        sticks8.stand(2),
+        lifas1.stand(2),
+        lifas4.stand(2),
+        lifas5.stand(2),
+    ],
+    "F": [
+        sticks3.stand(3),
+        sticks7.stand(3),
+        sticks8.stand(3),
+        lifas1.stand(3),
+        lifas4.stand(3),
+        lifas5.stand(3),
+    ],
+    "C": [
+        sticks3.stand(4),
+        sticks7.stand(4),
+        sticks8.stand(4),
+        lifas1.stand(4),
+        lifas4.stand(4),
+        lifas5.stand(4),
+    ],
+    "Eb": [
+        sticks3.stand(5),
+        sticks7.stand(5),
+        sticks8.stand(5),
+        lifas1.stand(5),
+        lifas5.stand(5),
+    ],
     "A": [sticks7.stand(6)],
 }
 
@@ -46,17 +80,19 @@ note_to_color = {
 notes = ["A", "C", "D", "F", "Bb", "Eb"]
 
 beats(2, 20)
-#make uniform coloring
+# make uniform coloring
 for note in notes:
     elements(note_to_elem1[note])
     c = note_to_color[note]
     color.uniform([c[0], 0.4, 0.5])
 
+
 def play_note(note, t):
-    cycle_beats(t, t+0.5)
+    cycle_beats(t, t + 0.5)
     elements(note_to_elem1[note])
     effect.brightness(2.0)
     BrightnessAnimation(LinearFloatFunc(1.0, 0.5)).apply()
+
 
 beats(2, 18)
 cycle(8)
@@ -110,10 +146,12 @@ beats(18, 80)
 elements(e)
 color.uniform((0.0, 0.0, 0.5))
 
+
 def play_note_elem(note, t):
-    cycle_beats(t, t+0.5)
+    cycle_beats(t, t + 0.5)
     elements(note_to_elem2[note])
     BrightnessAnimation(LinearFloatFunc(2.0, 1.0)).apply()
+
 
 beats(18, 34)
 cycle(8)
@@ -192,9 +230,9 @@ beats(80, 112)
 elements(single_stands)
 cycle(8)
 cycle_beats(0, 4)
-effect.snake(switch_direction = False)
+effect.snake(switch_direction=False)
 cycle_beats(4, 8)
-effect.snake(switch_direction = True)
+effect.snake(switch_direction=True)
 
 beats(112, 116)
 elements(stands)
@@ -264,19 +302,11 @@ elements(not_dotted)
 effect.breath(edge=0.4, reverse=False)
 
 
-
-
 ############################################################
 ############################################################
 # second part
 ############################################################
 ############################################################
-
-
-
-
-
-
 
 
 beats(182, 244)
@@ -290,9 +320,10 @@ effect.hue_saw_tooth(0.5)
 
 
 def drum(t, length):
-    beats(t, t+length)
+    beats(t, t + length)
     effect.brightness(2.0)
-    #effect.fade_out()
+    # effect.fade_out()
+
 
 beats(182, 216)
 elements(drums_e)
@@ -306,8 +337,6 @@ beats(216, 242)
 elements(e)
 cycle(1)
 effect.saw_tooth(0.3)
-
-
 
 
 beats(242, 244)
@@ -347,10 +376,9 @@ beats(244, 276)
 elements(single_stands)
 cycle(8)
 cycle_beats(0, 4)
-effect.snake(switch_direction = False)
+effect.snake(switch_direction=False)
 cycle_beats(4, 8)
-effect.snake(switch_direction = True)
-
+effect.snake(switch_direction=True)
 
 
 beats(280, 344)
@@ -418,5 +446,3 @@ play_note("D", 3.0)
 
 send_to_mqtt("under")
 start_song("under", 0)
-
-

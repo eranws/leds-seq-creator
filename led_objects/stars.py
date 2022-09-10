@@ -1,9 +1,9 @@
 from led_objects.led_object import LedObject, SegmentProxy
 
-class Star(LedObject):
 
+class Star(LedObject):
     def __init__(self, leds_per_cross, dark_center_len):
-        super(Star, self).__init__(total_pixels=6*leds_per_cross)
+        super(Star, self).__init__(total_pixels=6 * leds_per_cross)
 
         self.number_of_rays = 12
         self.ray_length = leds_per_cross // 2 - dark_center_len
@@ -23,13 +23,19 @@ class Star(LedObject):
         self.mapping["a"] = [item for sublist in all_segments for item in sublist]
         self.create_random_for_all()
 
-    def add_cross_mapping(self, cross_index, leds_per_cross, dark_center_len, first_index, second_index):
+    def add_cross_mapping(
+        self, cross_index, leds_per_cross, dark_center_len, first_index, second_index
+    ):
         corss_start_index = cross_index * leds_per_cross
         ray_2_part_offset = leds_per_cross // 2 + dark_center_len
 
-        self.mapping[str(first_index)] = list(range(corss_start_index, corss_start_index + self.ray_length))
+        self.mapping[str(first_index)] = list(
+            range(corss_start_index, corss_start_index + self.ray_length)
+        )
         second_ray_start = corss_start_index + ray_2_part_offset
-        self.mapping[str(second_index)] = list(reversed(range(second_ray_start, second_ray_start + self.ray_length)))
+        self.mapping[str(second_index)] = list(
+            reversed(range(second_ray_start, second_ray_start + self.ray_length))
+        )
 
     def ray_out(self, index):
         if index < 0 or index >= self.number_of_rays:
@@ -47,5 +53,3 @@ class Star(LedObject):
     @property
     def all(self):
         return [SegmentProxy(self, str(i)) for i in range(0, self.number_of_rays)]
-
-

@@ -15,9 +15,9 @@ lifas5 = Stands([38, 72, 106, 147, 193])
 lifas1 = Stands([45, 84, 103, 131, 164])
 lifas4 = Stands([55, 122, 178, 228])
 
-#stars:
-star7 = Star(3,1)
-star8 = Star(4,2)
+# stars:
+star7 = Star(3, 1)
+star8 = Star(4, 2)
 
 cabbage6 = cabbage1
 cabbage5 = cabbage1
@@ -35,4 +35,3 @@ bottle5 = flower1
 paper2 = flower1
 paper5 = flower1
 gloves8 = flower1
-

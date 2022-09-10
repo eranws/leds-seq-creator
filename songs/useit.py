@@ -14,6 +14,8 @@ song_settings(bpm=125, beats_per_episode=32, start_offset=3)
 """
 Episode 0: intro, bobjects enter the scene graduately
 """
+
+
 def fade_in_blink_0(e, start_beat):
     episodes(0 + start_beat / 32, 1)
     elements(e)
@@ -22,13 +24,16 @@ def fade_in_blink_0(e, start_beat):
     effect.blink_repeat(16, 0.3)
     effect.fade_in()
 
+
 fade_in_blink_0([flowers, rugs], 0)
 fade_in_blink_0([papers, bottles], 8)
 fade_in_blink_0([cup_cakes, donuts], 16)
 fade_in_blink_0([cabbages, brains], 24)
 
+
 def snake_on_sticks(e, start_beat):
     beats(start_beat, start_beat + 8)
+
 
 episode(0)
 cycle(16)
@@ -75,7 +80,6 @@ cycle_beats(2, 4)
 color.gradient(0.82, 0.72)
 
 
-
 episodes(1, 5)
 cycle(16)
 cycle_beats(12, 16)
@@ -89,6 +93,8 @@ effect.blink_repeat(32, 0.2)
 """
 episode 5 melody
 """
+
+
 def melody_on_sticks_6(stand, cycle_beat_index, length, c):
     e = [sticks3.stand(stand), sticks7.stand(stand), sticks8.stand(stand)]
     episodes(5 + cycle_beat_index / 32.0, 6)
@@ -104,6 +110,7 @@ def melody_on_sticks_6(stand, cycle_beat_index, length, c):
     cycle(8)
     effect.breath()
 
+
 melody_on_sticks_6(1, 0, 2.0, (0.72, 1.0, 1.0))
 melody_on_sticks_6(2, 0.75, 2.0, (0.72, 1.0, 1.0))
 melody_on_sticks_6(3, 1.5, 2.0, (0.72, 1.0, 1.0))
@@ -113,6 +120,7 @@ melody_on_sticks_6(5, 3, 1.0, (0.82, 1.0, 1.0))
 episodes(6, 10)
 cycle(32)
 
+
 def snake_on_object_7(o, beat_start, length, c):
     episodes(6 + beat_start / 32.0, 7)
     cycle(4)
@@ -121,6 +129,7 @@ def snake_on_object_7(o, beat_start, length, c):
     elements(o)
     color.uniform(c)
     effect.snake(4.0)
+
 
 snake_on_object_7(cabbage1, 0, 2.0, (0.72, 1.0, 1.0))
 snake_on_object_7(cabbage5, 0.75, 2.0, (0.72, 1.0, 1.0))
@@ -146,10 +155,26 @@ effect.snake()
 
 
 episode(8)
-elements([donut1, flower1, cabbage1, cup_cake3, donut3, sticks3, bottle4, paper5, cabbage5, rug6, cabbage6, flower6])
+elements(
+    [
+        donut1,
+        flower1,
+        cabbage1,
+        cup_cake3,
+        donut3,
+        sticks3,
+        bottle4,
+        paper5,
+        cabbage5,
+        rug6,
+        cabbage6,
+        flower6,
+    ]
+)
 color.uniform((0.72, 1.0, 0.25))
 elements([lifas1, paper2, rug4, lifas4, lifas5, bottle5, brain7, sticks7])
 color.uniform((0.82, 1.0, 0.25))
+
 
 def ligth_on_beat(beat_start, length, e, c):
     cycle(16)
@@ -157,6 +182,7 @@ def ligth_on_beat(beat_start, length, e, c):
     elements(e)
     color.uniform(c)
     effect.saw_tooth(0.75)
+
 
 ligth_on_beat(0, 2.0, donut1, (0.72, 1.0, 1.0))
 ligth_on_beat(0.75, 2.0, flower1, (0.72, 1.0, 1.0))
@@ -186,6 +212,7 @@ ligth_on_beat(12.0 + 3.0, 1.0, sticks7, (0.82, 1.0, 1.0))
 Episode 9
 """
 
+
 def alternate_change_9(start_beat, e):
     episodes(9 + start_beat / 32.0, 10)
     elements(e)
@@ -200,6 +227,7 @@ def alternate_change_9(start_beat, e):
     color.alternate((0.82, 1.0, 1.0), (0.72, 1.0, 1.0))
     cycle_beats(3.0, 4.0)
     color.alternate((0.72, 1.0, 1.0), (0.82, 1.0, 1.0))
+
 
 alternate_change_9(0, flowers)
 alternate_change_9(8, bottles)
@@ -220,16 +248,18 @@ color.uniform((0.72, 1.0, 0.3))
 episode(12)
 elements(all)
 color.uniform((0.9, 1.0, 0.3))
-effect.hue_saw_tooth(0.1 + 1.0/12.0)
+effect.hue_saw_tooth(0.1 + 1.0 / 12.0)
 
 episodes(11.0, 11.125)
 effect.fade_in()
+
 
 def breath_elements_11_13(elem, cycle_amount, beat_offset, edge):
     episodes(11.5 + beat_offset / 32, 13.0)
     elements(elem)
     cycle(cycle_amount)
     effect.breath(edge, True)
+
 
 breath_elements_11_13([flower1, cup_cake3], 4, 0, 0.3)
 breath_elements_11_13([brain7, rug4, sticks7], 8, 0, 0.4)
@@ -245,15 +275,15 @@ breath_elements_11_13([cabbage6, paper2], 8, 3, 0.8)
 
 episode(13)
 elements(all)
-color.uniform((1.0/12.0, 1.0, 1.0))
+color.uniform((1.0 / 12.0, 1.0, 1.0))
 
-episodes(13 + 9/32.0, 13 + 11/32.0)
+episodes(13 + 9 / 32.0, 13 + 11 / 32.0)
 effect.saw_tooth(0.7)
-episodes(13 + 11/32.0, 13 + 15/32.0)
+episodes(13 + 11 / 32.0, 13 + 15 / 32.0)
 effect.brightness(0.3)
-episodes(13 + 15/32.0, 13 + 15.5/32.0)
+episodes(13 + 15 / 32.0, 13 + 15.5 / 32.0)
 effect.saw_tooth(0.7, True)
-episodes(13+31/32.0, 14)
+episodes(13 + 31 / 32.0, 14)
 color.uniform(black)
 
 elements(meduza)
@@ -262,6 +292,7 @@ color.uniform((0.72, 1.0, 1.0))
 for e in all:
     e.straight
 
+
 def snake_group_14(g, start_beat):
     episodes(14 + start_beat / 32.0, 15 + start_beat / 32.0)
     cycle(8)
@@ -269,6 +300,7 @@ def snake_group_14(g, start_beat):
     elements(g)
     color.uniform((0.72, 1.0, 1.0))
     effect.snake(3)
+
 
 snake_group_14(group1, 0)
 snake_group_14(group2, 1)
@@ -318,7 +350,7 @@ elements(cabbages)
 color.uniform((0.72, 1.0, 1.0))
 
 
-episodes(17 - 4/32.0, 17)
+episodes(17 - 4 / 32.0, 17)
 elements(all)
 color.uniform((0.72, 1.0, 1.0))
 effect.fill()
@@ -347,12 +379,10 @@ color.uniform(yellow_string)
 cycle(1)
 effect.saw_tooth()
 
-episodes(18, 18 + 0.5/32.0)
+episodes(18, 18 + 0.5 / 32.0)
 elements(all)
 color.uniform((0.82, 1.0, 1.0))
 effect.fill_out()
 
 send_to_mqtt("useit")
 start_song("useit", 0)
-
-

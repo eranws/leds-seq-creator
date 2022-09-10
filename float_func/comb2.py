@@ -2,7 +2,6 @@ from infra.functions_store import float_functions_store
 
 
 class Comb2FloatFunc:
-
     def __init__(self, amount1, func1, amount2, func2):
         self.amount1 = amount1
         self.func1 = func1

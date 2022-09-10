@@ -21,7 +21,7 @@ for elem in all:
     episodes(start_beat / 60.0, 2.0)
     elements(elem)
     cycle(5)
-    #cycle(2.0 + random.random() * 1.0)
+    # cycle(2.0 + random.random() * 1.0)
     effect.segment_breath(0.05)
 
     cycle(3.0 + random.random() * 3.0)

@@ -2,9 +2,9 @@ import random
 
 all = []
 
-class LedObject:
 
-    def __init__(self, total_pixels, add_to_all = True):
+class LedObject:
+    def __init__(self, total_pixels, add_to_all=True):
         self.total_pixels = total_pixels
         self.animations = []
         self.current_mapping = "a"
@@ -22,7 +22,9 @@ class LedObject:
 
         not_found = set(segments).difference(set(self.mapping.keys()))
         if not_found:
-            raise Exception("could not find segment with name {} in object".format(not_found))
+            raise Exception(
+                "could not find segment with name {} in object".format(not_found)
+            )
 
         self.animations.append(animation)
 
@@ -41,7 +43,6 @@ class LedObject:
 
 
 class SegmentProxy:
-
     def __init__(self, led_object, segment_name):
         self._led_object = led_object
         self._segment_name = segment_name

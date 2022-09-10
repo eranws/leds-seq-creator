@@ -2,7 +2,6 @@ from infra.functions_store import float_functions_store
 
 
 class RepeatFloatFunc:
-
     def __init__(self, num_of_times, func_to_repeat):
         self.num_of_times = num_of_times
         self.func_to_repeat = func_to_repeat
@@ -16,12 +15,12 @@ class RepeatFloatFunc:
         return {
             "t": "repeat",
             "num": self.num_of_times,
-            "func": self.func_to_repeat.to_json_obj()
+            "func": self.func_to_repeat.to_json_obj(),
         }
 
     def to_compact_json_obj(self):
         return {
             "t": "repeat",
             "num": self.num_of_times,
-            "func": float_functions_store.get_index(self.func_to_repeat)
+            "func": float_functions_store.get_index(self.func_to_repeat),
         }

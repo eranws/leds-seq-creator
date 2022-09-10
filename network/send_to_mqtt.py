@@ -3,7 +3,11 @@ import json
 
 import paho.mqtt.client as mqtt
 
-from infra.functions_store import float_functions_store, boolean_functions_store, discrete_float_functions_store
+from infra.functions_store import (
+    float_functions_store,
+    boolean_functions_store,
+    discrete_float_functions_store,
+)
 from thing_to_obj_map import obj_to_thing
 
 host_name = "10.0.0.200"
@@ -11,6 +15,7 @@ sender_mqtt_client_id = "leds-seq-creator"
 
 
 sent_not_acked = set()
+
 
 def on_publish_callback(client, userdata, mid):
     global sent_not_acked
@@ -23,7 +28,7 @@ def on_publish_callback(client, userdata, mid):
 def start_song(song_name, start_time=0):
     json_data = {
         "file_id": "{}.wav".format(song_name),
-        "start_offset_ms": int(start_time * 1000)
+        "start_offset_ms": int(start_time * 1000),
     }
     body = json.dumps(json_data)
     conn = http.client.HTTPConnection(host_name, 8080)
@@ -38,9 +43,11 @@ def send_to_mqtt(filename):
 
     for led_object, thing_name in obj_to_thing.items():
         animations_json = [an.to_json_obj(False) for an in led_object.animations]
-        json_str = json.dumps(animations_json, separators=(',', ':')) + '\0'
+        json_str = json.dumps(animations_json, separators=(",", ":")) + "\0"
         print(json_str)
-        msg_info = client.publish("animations/{}/{}".format(thing_name, filename), json_str, qos=1)
+        msg_info = client.publish(
+            "animations/{}/{}".format(thing_name, filename), json_str, qos=1
+        )
         sent_not_acked.add(msg_info.mid)
 
     client.loop_forever(10)

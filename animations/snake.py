@@ -16,12 +16,12 @@ class SnakeAnimation(Animation):
         return {
             "headPos": self.head_pos.to_json_obj(),
             "length": self.length.to_json_obj(),
-            "dir": self.dir.to_json_obj()
+            "dir": self.dir.to_json_obj(),
         }
 
     def get_compact_params_json(self):
         return {
             "headPos": float_functions_store.get_index(self.head_pos),
             "length": float_functions_store.get_index(self.length),
-            "dir": boolean_functions_store.get_index(self.dir)
+            "dir": boolean_functions_store.get_index(self.dir),
         }

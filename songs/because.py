@@ -3,7 +3,16 @@ from float_func.sin import SinFloatFunc
 from infra.animations_factory import color, effect
 from infra.length import medium, soft, hard, total
 from led_objects.instances import cabbage6, brain7, cabbages, donut1
-from led_objects.groups import group1, group2, group3, group4, group5, group6, group7, group8
+from led_objects.groups import (
+    group1,
+    group2,
+    group3,
+    group4,
+    group5,
+    group6,
+    group7,
+    group8,
+)
 from led_objects.led_object import all
 from led_objects.flowers import paper5, papers, paper2, flower1, bottle4
 from led_objects.meduza import meduza
@@ -15,7 +24,7 @@ from infra.colors import *
 
 song_settings(bpm=60, beats_per_episode=1, start_offset=0)
 
-#AHHHHHH
+# AHHHHHH
 beats(3.7, 6.75)
 elements(papers)
 color.uniform((0.39, 0.55, 0.5))
@@ -71,7 +80,7 @@ effect.fade_out()
 beats(28.13, 33.47)
 elements(all)
 effect.breath(medium)
-#Second singing
+# Second singing
 for e in all:
     e.random
 
@@ -85,8 +94,6 @@ beats(39.5, 41.5)
 effect.fade_in()
 beats(49, 51)
 effect.fade_out()
-
-
 
 
 for e in all:
@@ -139,7 +146,6 @@ elements([group5, group4])
 BrightnessAnimation(SinFloatFunc(0.2, 1.0, 0.75, 1)).apply()
 
 
-
 elements(all)
 beats(83, 87)
 effect.fade_in()
@@ -152,42 +158,42 @@ elements(bottle4)
 color.uniform(light_coral)
 effect.breath(medium)
 
-beats(78+4/9, 83)
+beats(78 + 4 / 9, 83)
 elements(paper5)
 color.uniform(light_coral)
 effect.breath(medium)
 
-beats(78+8/9, 83)
+beats(78 + 8 / 9, 83)
 elements(sticks7)
 color.uniform(light_coral)
 effect.breath(medium)
 
-beats(78+12/9, 83)
+beats(78 + 12 / 9, 83)
 elements(flower1)
 color.uniform(light_coral)
 effect.breath(medium)
 
-beats(78+16/9, 83)
+beats(78 + 16 / 9, 83)
 elements(brain7)
 color.uniform(light_coral)
 effect.breath(medium)
 
-beats(78+20/9, 83)
+beats(78 + 20 / 9, 83)
 elements(lifas5)
 color.uniform(light_coral)
 effect.breath(medium)
 
-beats(78+24/9, 83)
+beats(78 + 24 / 9, 83)
 elements(donut1)
 color.uniform(light_coral)
 effect.breath(medium)
 
-beats(78+28/9, 83)
+beats(78 + 28 / 9, 83)
 elements(cabbage6)
 color.uniform(light_coral)
 effect.breath(medium)
 
-beats(78+32/9, 83)
+beats(78 + 32 / 9, 83)
 elements(paper2)
 color.uniform(light_coral)
 effect.breath(medium)
@@ -198,9 +204,10 @@ color.uniform(light_coral)
 effect.breath(soft)
 
 beats(82.5, 83)
-elements(lifas1, paper2, cabbage6, donut1, lifas5, brain7, flower1, paper5, sticks7, bottle4)
+elements(
+    lifas1, paper2, cabbage6, donut1, lifas5, brain7, flower1, paper5, sticks7, bottle4
+)
 effect.fade_out()
-
 
 
 beats(89.5, 94)
@@ -212,7 +219,6 @@ beats(91, 94)
 elements(sticks8.all)
 color.uniform(light_coral)
 effect.fill()
-
 
 
 beats(92.5, 94)
@@ -286,11 +292,6 @@ color.uniform(orange_strip)
 effect.saw_tooth(total, False)
 
 
-
-
-
-
-
 beats(132.2, 137.5)
 elements(all)
 color.uniform((0.1, 0.8, 1.0))
@@ -342,11 +343,5 @@ effect.brightness(0.5)
 # note_list_groups([30.85, 31.12, 31.47], 33.55, [cabbage1, cabbage5, cabbage6], True)
 
 
-
-
-
-
 send_to_mqtt("because")
 start_song("because", 0)
-
-
