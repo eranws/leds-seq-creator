@@ -1,7 +1,4 @@
-import copy
-from enum import Enum
-
-from animations.confetti import ConfettiAnimation
+# from animations.confetti import ConfettiAnimation
 from animations.fill import FillAnimation
 from animations.hue_shift_cycle import HueShiftCycleAnimation
 from animations.rand_brightness import RandBrightnessAnimation
@@ -139,8 +136,8 @@ class EffectFactory:
     def random_saturation(self):
         RandSaturationAnimation().apply()
 
-    def confetti(self):
-        ConfettiAnimation(ConstFloatFunc(0.5)).apply()
+    # def confetti(self):
+        # ConfettiAnimation(ConstFloatFunc(0.5)).apply()
 
     def fill(self):
         FillAnimation(ConstFloatFunc(0.0), LinearFloatFunc(0.0, 1.0)).apply()
