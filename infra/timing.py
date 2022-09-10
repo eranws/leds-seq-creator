@@ -12,11 +12,12 @@ class TimeFrame:
 
     def __init__(self, bpm:float, start_beat_index:float, end_beat_index:float, beats_in_cycle:float = None, start_offset:float = 0):
         """
+        :param start_offset: the offset in ms for the first beat in the song
         :param bpm: the song's beat per minutes
         :param start_beat_index: the index of the beat that start the time frame
         :param end_beat_index: the index of the (one plus) last beat in the time frame
         :param beats_in_cycle: how many beats form a cycle in this time frame
-        :param start_offset: the offset in ms for the first beat in the song
+        :param cycle_beats: ?
         """
         self._start_offset = start_offset
         self._bpm = bpm
