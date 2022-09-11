@@ -12,8 +12,7 @@ sender_mqtt_client_id = "leds-seq-creator"
 sent_not_acked = set()
 
 
-def on_publish_callback(client, userdata, mid):
-    global sent_not_acked
+def on_publish_callback(client, _, mid):
     sent_not_acked.remove(mid)
     if len(sent_not_acked) == 0:
         print("sent all messages, disconnecting from mqtt")
@@ -31,7 +30,6 @@ def start_song(song_name, start_time=0):
 
 
 def send_to_mqtt(filename):
-    global sent_not_acked
     client = mqtt.Client(sender_mqtt_client_id)
     client.connect(host_name)
     client.on_publish = on_publish_callback

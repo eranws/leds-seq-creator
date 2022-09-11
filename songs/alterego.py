@@ -1,8 +1,5 @@
 import random
 
-from animations.fill import FillAnimation
-from float_func.const import ConstFloatFunc
-from float_func.sin import SinFloatFunc
 from infra.animations_factory import color, effect
 
 from led_objects.groups import (

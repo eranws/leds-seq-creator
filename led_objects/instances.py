@@ -1,5 +1,4 @@
-from led_objects.led_object import LedObject, SegmentProxy
-from led_objects.flowers import Flower
+from led_objects.led_object import LedObject
 from led_objects.stands import Stands
 from led_objects.stars import Star
 
