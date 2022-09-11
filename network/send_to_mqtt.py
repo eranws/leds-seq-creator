@@ -3,11 +3,6 @@ import json
 
 import paho.mqtt.client as mqtt
 
-from infra.functions_store import (
-    float_functions_store,
-    boolean_functions_store,
-    discrete_float_functions_store,
-)
 from thing_to_obj_map import obj_to_thing
 
 host_name = "10.0.0.200"
