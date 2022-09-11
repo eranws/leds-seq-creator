@@ -17,16 +17,14 @@ except OSError as e:
     print(e)
 
 
-def ledObjectToJson(led_object):
-    led_object_json = {
-        "total_pixels": led_object.total_pixels,
-        "objects": led_object.mapping,
-    }
-    return json.dumps(led_object_json, separators=(",", ":"))
-
-
 def send_to_single_thing(thing_name, led_object):
-    json_str = ledObjectToJson(led_object)
+    json_str = json.dumps(
+        {
+            "total_pixels": led_object.total_pixels,
+            "objects": led_object.mapping,
+        },
+        separators=(",", ":"),
+    )
     print(f"json size: {len(json_str)}")
     print(json_str)
 
